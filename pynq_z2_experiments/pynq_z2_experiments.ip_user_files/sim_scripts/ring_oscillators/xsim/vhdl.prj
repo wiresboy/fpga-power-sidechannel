@@ -1,0 +1,4 @@
+vhdl xil_defaultlib  \
+"../../../bd/ring_oscillators/ip/ring_oscillators_axi_bram_ctrl_0_0/sim/ring_oscillators_axi_bram_ctrl_0_0.vhd" \
+
+nosort

@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="single_ro" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="STALE" Timestamp="1605165865"/>
-    <Generation Name="IMPLEMENTATION" State="STALE" Timestamp="1605165865"/>
-    <Generation Name="SIMULATION" State="STALE" Timestamp="1605165865"/>
-    <Generation Name="HW_HANDOFF" State="STALE" Timestamp="1605165865"/>
+    <Generation Name="SYNTHESIS" State="RESET" Timestamp="1605222269"/>
+    <Generation Name="IMPLEMENTATION" State="RESET" Timestamp="1605222269"/>
+    <Generation Name="SIMULATION" State="RESET" Timestamp="1605222269"/>
+    <Generation Name="HW_HANDOFF" State="RESET" Timestamp="1605222269"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\single_ro_axi_bram_ctrl_0_0\single_ro_axi_bram_ctrl_0_0.xci" Type="IP">
         <Instance HierarchyPath="axi_bram_ctrl_0"/>
@@ -23,14 +23,6 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
-      <File Name="ip\single_ro_axi_ro_control_0_0\single_ro_axi_ro_control_0_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_ro_control_0"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
       <File Name="ip\single_ro_xbar_0\single_ro_xbar_0.xci" Type="IP">
         <Instance HierarchyPath="axi_interconnect_0/xbar"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
@@ -40,8 +32,39 @@
         <UsedIn Val="SIMULATION"/>
       </File>
       <File Name="ip\single_ro_axi_interconnect_0_0\single_ro_axi_interconnect_0_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_interconnect_0"/>
         <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\single_ro_ring_oscillator_modu_0_0\single_ro_ring_oscillator_modu_0_0.xci" Type="IP">
+        <Instance HierarchyPath="ring_oscillator_modu_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\single_ro_axi_ro_control_0_1\single_ro_axi_ro_control_0_1.xci" Type="IP">
+        <Instance HierarchyPath="axi_ro_control_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\single_ro_auto_pc_0\single_ro_auto_pc_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0/s00_couplers/auto_pc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\single_ro_s00_mmu_0\single_ro_s00_mmu_0.xci" Type="IP">
+        <Instance HierarchyPath="axi_interconnect_0/s00_mmu"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>

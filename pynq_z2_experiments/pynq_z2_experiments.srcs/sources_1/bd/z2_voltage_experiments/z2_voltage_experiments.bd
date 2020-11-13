@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x0",
+      "boundary_crc": "0xCC6CFA53C0928857",
       "device": "xc7z020clg400-1",
       "name": "z2_voltage_experiments",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -12,7 +12,9 @@
       "processing_system7_0": "",
       "xadc_wiz_0": "",
       "ps7_0_axi_periph": {
-        "s00_couplers": {}
+        "s00_couplers": {
+          "auto_pc": ""
+        }
       },
       "rst_ps7_0_100M": ""
     },
@@ -56,7 +58,7 @@
             "value": "100.000000"
           },
           "PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ": {
-            "value": "250.000000"
+            "value": "200.000000"
           },
           "PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ": {
             "value": "10.000000"
@@ -140,7 +142,7 @@
             "value": "100000000"
           },
           "PCW_CLK1_FREQ": {
-            "value": "250000000"
+            "value": "200000000"
           },
           "PCW_CLK2_FREQ": {
             "value": "10000000"
@@ -443,7 +445,7 @@
             "value": "100"
           },
           "PCW_FPGA1_PERIPHERAL_FREQMHZ": {
-            "value": "250"
+            "value": "200"
           },
           "PCW_FPGA2_PERIPHERAL_FREQMHZ": {
             "value": "50"
@@ -1490,7 +1492,7 @@
             "value": "0"
           },
           "PCW_UIPARAM_GENERATE_SUMMARY": {
-            "value": "NA"
+            "value": "NONE"
           },
           "PCW_USB0_PERIPHERAL_ENABLE": {
             "value": "0"
@@ -1785,11 +1787,55 @@
                 "direction": "I"
               }
             },
+            "components": {
+              "auto_pc": {
+                "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
+                "xci_name": "z2_voltage_experiments_auto_pc_0",
+                "parameters": {
+                  "MI_PROTOCOL": {
+                    "value": "AXI4LITE"
+                  },
+                  "SI_PROTOCOL": {
+                    "value": "AXI3"
+                  }
+                },
+                "addressing": {
+                  "interface_ports": {
+                    "S_AXI": {
+                      "mode": "Slave",
+                      "bridges": [
+                        "M_AXI"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
             "interface_nets": {
-              "s00_couplers_to_s00_couplers": {
+              "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
-                  "M_AXI"
+                  "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
+                ]
+              }
+            },
+            "nets": {
+              "S_ACLK_1": {
+                "ports": [
+                  "S_ACLK",
+                  "auto_pc/aclk"
+                ]
+              },
+              "S_ARESETN_1": {
+                "ports": [
+                  "S_ARESETN",
+                  "auto_pc/aresetn"
                 ]
               }
             }

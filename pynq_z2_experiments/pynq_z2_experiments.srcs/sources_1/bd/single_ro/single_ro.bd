@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x0",
+      "boundary_crc": "0x480272A03058762E",
       "device": "xc7z020clg400-1",
       "name": "single_ro",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -11,13 +11,17 @@
     "design_tree": {
       "axi_bram_ctrl_0": "",
       "blk_mem_gen_0": "",
-      "axi_ro_control_0": "",
       "axi_interconnect_0": {
         "xbar": "",
-        "s00_couplers": {},
+        "s00_couplers": {
+          "auto_pc": ""
+        },
         "m00_couplers": {},
-        "m01_couplers": {}
-      }
+        "m01_couplers": {},
+        "s00_mmu": ""
+      },
+      "axi_ro_control_0": "",
+      "ring_oscillator_modu_0": ""
     },
     "interface_ports": {
       "S00_AXI_0": {
@@ -34,6 +38,9 @@
           },
           "PROTOCOL": {
             "value": "AXI4"
+          },
+          "FREQ_HZ": {
+            "value": "200000000"
           },
           "ID_WIDTH": {
             "value": "0"
@@ -198,10 +205,6 @@
           }
         }
       },
-      "axi_ro_control_0": {
-        "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.0.1",
-        "xci_name": "single_ro_axi_ro_control_0_0"
-      },
       "axi_interconnect_0": {
         "vlnv": "xilinx.com:ip:axi_interconnect:2.1",
         "xci_name": "single_ro_axi_interconnect_0_0",
@@ -354,11 +357,55 @@
                 "direction": "I"
               }
             },
+            "components": {
+              "auto_pc": {
+                "vlnv": "xilinx.com:ip:axi_protocol_converter:2.1",
+                "xci_name": "single_ro_auto_pc_0",
+                "parameters": {
+                  "MI_PROTOCOL": {
+                    "value": "AXI4LITE"
+                  },
+                  "SI_PROTOCOL": {
+                    "value": "AXI4"
+                  }
+                },
+                "addressing": {
+                  "interface_ports": {
+                    "S_AXI": {
+                      "mode": "Slave",
+                      "bridges": [
+                        "M_AXI"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
             "interface_nets": {
-              "s00_couplers_to_s00_couplers": {
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
+                ]
+              },
+              "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
-                  "M_AXI"
+                  "auto_pc/S_AXI"
+                ]
+              }
+            },
+            "nets": {
+              "S_ACLK_1": {
+                "ports": [
+                  "S_ACLK",
+                  "auto_pc/aclk"
+                ]
+              },
+              "S_ARESETN_1": {
+                "ports": [
+                  "S_ARESETN",
+                  "auto_pc/aresetn"
                 ]
               }
             }
@@ -470,31 +517,39 @@
                 ]
               }
             }
+          },
+          "s00_mmu": {
+            "vlnv": "xilinx.com:ip:axi_mmu:2.1",
+            "xci_name": "single_ro_s00_mmu_0",
+            "addressing": {
+              "interface_ports": {
+                "S_AXI": {
+                  "mode": "Slave",
+                  "bridges": [
+                    "M_AXI"
+                  ]
+                }
+              }
+            }
           }
         },
         "interface_nets": {
-          "axi_interconnect_0_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
-            ]
-          },
           "s00_couplers_to_xbar": {
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
             ]
           },
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
-            ]
-          },
           "m00_couplers_to_axi_interconnect_0": {
             "interface_ports": [
               "M00_AXI",
               "m00_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
             ]
           },
           "m01_couplers_to_axi_interconnect_0": {
@@ -508,6 +563,18 @@
               "xbar/M01_AXI",
               "m01_couplers/S_AXI"
             ]
+          },
+          "S00_AXI_1": {
+            "interface_ports": [
+              "S00_AXI",
+              "s00_mmu/S_AXI"
+            ]
+          },
+          "s00_mmu_M_AXI": {
+            "interface_ports": [
+              "s00_mmu/M_AXI",
+              "s00_couplers/S_AXI"
+            ]
           }
         },
         "nets": {
@@ -520,7 +587,8 @@
               "m00_couplers/M_ACLK",
               "m01_couplers/M_ACLK",
               "m00_couplers/S_ACLK",
-              "m01_couplers/S_ACLK"
+              "m01_couplers/S_ACLK",
+              "s00_mmu/aclk"
             ]
           },
           "axi_interconnect_0_ARESETN_net": {
@@ -532,8 +600,79 @@
               "m00_couplers/M_ARESETN",
               "m01_couplers/M_ARESETN",
               "m00_couplers/S_ARESETN",
-              "m01_couplers/S_ARESETN"
+              "m01_couplers/S_ARESETN",
+              "s00_mmu/aresetn"
             ]
+          }
+        }
+      },
+      "axi_ro_control_0": {
+        "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.0.1",
+        "xci_name": "single_ro_axi_ro_control_0_1"
+      },
+      "ring_oscillator_modu_0": {
+        "vlnv": "xilinx.com:module_ref:ring_oscillator_module_wrap:1.0",
+        "xci_name": "single_ro_ring_oscillator_modu_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "ring_oscillator_module_wrap",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_200MHz": {
+            "direction": "I"
+          },
+          "rst_n": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "cycles_per_integration": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "num_ro_enabled": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "aquire_mode": {
+            "direction": "I"
+          },
+          "ro_rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "start_aquire": {
+            "direction": "I"
+          },
+          "status": {
+            "direction": "O",
+            "left": "7",
+            "right": "0"
+          },
+          "last_ro_sum": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "bram_addr_a": {
+            "direction": "O",
+            "left": "16",
+            "right": "0"
+          },
+          "bram_clk_a": {
+            "direction": "O",
+            "left": "16",
+            "right": "0"
+          },
+          "bram_din_a": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          },
+          "bram_we_a": {
+            "direction": "O"
           }
         }
       }
@@ -543,6 +682,12 @@
         "interface_ports": [
           "S00_AXI_0",
           "axi_interconnect_0/S00_AXI"
+        ]
+      },
+      "axi_interconnect_0_M00_AXI": {
+        "interface_ports": [
+          "axi_interconnect_0/M00_AXI",
+          "axi_ro_control_0/S00_AXI"
         ]
       },
       "axi_interconnect_0_M01_AXI": {
@@ -556,12 +701,6 @@
           "axi_bram_ctrl_0/BRAM_PORTA",
           "blk_mem_gen_0/BRAM_PORTB"
         ]
-      },
-      "axi_interconnect_0_M00_AXI": {
-        "interface_ports": [
-          "axi_interconnect_0/M00_AXI",
-          "axi_ro_control_0/S00_AXI"
-        ]
       }
     },
     "nets": {
@@ -572,8 +711,9 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_interconnect_0/M01_ACLK",
           "axi_interconnect_0/M00_ACLK",
+          "axi_interconnect_0/S00_ACLK",
           "axi_ro_control_0/s00_axi_aclk",
-          "axi_interconnect_0/S00_ACLK"
+          "ring_oscillator_modu_0/clk_200MHz"
         ]
       },
       "S00_ARESETN_0_1": {
@@ -583,8 +723,75 @@
           "axi_interconnect_0/M01_ARESETN",
           "axi_interconnect_0/M00_ARESETN",
           "axi_interconnect_0/ARESETN",
+          "axi_bram_ctrl_0/s_axi_aresetn",
           "axi_ro_control_0/s00_axi_aresetn",
-          "axi_bram_ctrl_0/s_axi_aresetn"
+          "ring_oscillator_modu_0/rst_n"
+        ]
+      },
+      "ring_oscillator_modu_0_last_ro_sum": {
+        "ports": [
+          "ring_oscillator_modu_0/last_ro_sum",
+          "axi_ro_control_0/last_ro_sum"
+        ]
+      },
+      "ring_oscillator_modu_0_status": {
+        "ports": [
+          "ring_oscillator_modu_0/status",
+          "axi_ro_control_0/ext_status"
+        ]
+      },
+      "axi_ro_control_0_cycles_per_integration": {
+        "ports": [
+          "axi_ro_control_0/cycles_per_integration",
+          "ring_oscillator_modu_0/cycles_per_integration"
+        ]
+      },
+      "axi_ro_control_0_num_ro_enabled": {
+        "ports": [
+          "axi_ro_control_0/num_ro_enabled",
+          "ring_oscillator_modu_0/num_ro_enabled"
+        ]
+      },
+      "axi_ro_control_0_aquire_mode": {
+        "ports": [
+          "axi_ro_control_0/aquire_mode",
+          "ring_oscillator_modu_0/aquire_mode"
+        ]
+      },
+      "axi_ro_control_0_ro_rst": {
+        "ports": [
+          "axi_ro_control_0/ro_rst",
+          "ring_oscillator_modu_0/ro_rst"
+        ]
+      },
+      "axi_ro_control_0_start_aquire": {
+        "ports": [
+          "axi_ro_control_0/start_aquire",
+          "ring_oscillator_modu_0/start_aquire"
+        ]
+      },
+      "ring_oscillator_modu_0_bram_addr_a": {
+        "ports": [
+          "ring_oscillator_modu_0/bram_addr_a",
+          "blk_mem_gen_0/addra"
+        ]
+      },
+      "ring_oscillator_modu_0_bram_clk_a": {
+        "ports": [
+          "ring_oscillator_modu_0/bram_clk_a",
+          "blk_mem_gen_0/clka"
+        ]
+      },
+      "ring_oscillator_modu_0_bram_din_a": {
+        "ports": [
+          "ring_oscillator_modu_0/bram_din_a",
+          "blk_mem_gen_0/dina"
+        ]
+      },
+      "ring_oscillator_modu_0_bram_we_a": {
+        "ports": [
+          "ring_oscillator_modu_0/bram_we_a",
+          "blk_mem_gen_0/wea"
         ]
       }
     },

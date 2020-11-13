@@ -29,8 +29,8 @@ module ring_oscillator_set_wrap
 		input [15:0] cycles_per_integration, 
 		input [15:0] num_ro_enabled,
 		
-		output reg [LOG_NUM_RO+WIDTH-1:0] sum,
-		output reg sum_updated
+		output wire [LOG_NUM_RO+WIDTH-1:0] sum,
+		output wire sum_updated
 	);
 	ring_oscillator_set #(.WIDTH(WIDTH), .LOG_NUM_RO(LOG_NUM_RO)) RO_set (
 		.rst(rst),

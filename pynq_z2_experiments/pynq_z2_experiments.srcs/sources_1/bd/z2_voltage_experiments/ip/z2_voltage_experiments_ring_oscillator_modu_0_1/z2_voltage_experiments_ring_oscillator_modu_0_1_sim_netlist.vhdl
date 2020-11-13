@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Nov 13 02:51:09 2020
+-- Date        : Fri Nov 13 15:13:25 2020
 -- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_ring_oscillator_modu_0_1/z2_voltage_experiments_ring_oscillator_modu_0_1_sim_netlist.vhdl
@@ -2411,6 +2411,10 @@ entity z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set is
     clk_200MHz : in STD_LOGIC;
     cycles_per_integration : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ro_rst : in STD_LOGIC;
+    bram_we_a_0 : in STD_LOGIC;
+    bram_we_a_1 : in STD_LOGIC;
+    bram_we_a_2 : in STD_LOGIC;
+    bram_we_a_3 : in STD_LOGIC;
     num_ro_enabled : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
@@ -2550,6 +2554,7 @@ architecture STRUCTURE of z2_voltage_experiments_ring_oscillator_modu_0_1_ring_o
   signal sum2 : STD_LOGIC_VECTOR ( 15 downto 1 );
   signal \sum[9]_i_1_n_0\ : STD_LOGIC;
   signal sum_comb : STD_LOGIC_VECTOR ( 9 downto 0 );
+  signal sum_updated : STD_LOGIC;
   signal sum_updated_i_1_n_0 : STD_LOGIC;
   signal \NLW_cycle_count_reg[12]_i_1_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 to 3 );
   signal NLW_sum0_carry_O_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -2600,14 +2605,26 @@ Inv0: unisim.vcomponents.LUT1
       I0 => enable,
       O => enable_inv_delay0
     );
-\cycle_count[0]_i_1\: unisim.vcomponents.LUT3
+bram_we_a_INST_0: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"BA"
+      INIT => X"FFFE0000"
     )
         port map (
-      I0 => ro_rst,
-      I1 => \sum1_carry__1_n_1\,
-      I2 => \sum0_carry__0_n_2\,
+      I0 => bram_we_a_0,
+      I1 => bram_we_a_1,
+      I2 => bram_we_a_2,
+      I3 => bram_we_a_3,
+      I4 => sum_updated,
+      O => bram_we_a
+    );
+\cycle_count[0]_i_1\: unisim.vcomponents.LUT3
+    generic map(
+      INIT => X"F4"
+    )
+        port map (
+      I0 => \sum1_carry__1_n_1\,
+      I1 => \sum0_carry__0_n_2\,
+      I2 => ro_rst,
       O => \cycle_count[0]_i_1_n_0\
     );
 \cycle_count[0]_i_3\: unisim.vcomponents.LUT1
@@ -2927,12 +2944,12 @@ sum0_carry: unisim.vcomponents.CARRY4
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(12),
-      I1 => cycles_per_integration(12),
-      I2 => cycles_per_integration(14),
-      I3 => cycle_count_reg(14),
-      I4 => cycles_per_integration(13),
-      I5 => cycle_count_reg(13),
+      I0 => cycles_per_integration(14),
+      I1 => cycle_count_reg(14),
+      I2 => cycles_per_integration(13),
+      I3 => cycle_count_reg(13),
+      I4 => cycle_count_reg(12),
+      I5 => cycles_per_integration(12),
       O => \sum0_carry__0_i_2_n_0\
     );
 sum0_carry_i_1: unisim.vcomponents.LUT6
@@ -2940,12 +2957,12 @@ sum0_carry_i_1: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(9),
-      I1 => cycles_per_integration(9),
-      I2 => cycles_per_integration(11),
-      I3 => cycle_count_reg(11),
-      I4 => cycles_per_integration(10),
-      I5 => cycle_count_reg(10),
+      I0 => cycles_per_integration(11),
+      I1 => cycle_count_reg(11),
+      I2 => cycles_per_integration(10),
+      I3 => cycle_count_reg(10),
+      I4 => cycle_count_reg(9),
+      I5 => cycles_per_integration(9),
       O => sum0_carry_i_1_n_0
     );
 sum0_carry_i_2: unisim.vcomponents.LUT6
@@ -2953,12 +2970,12 @@ sum0_carry_i_2: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(6),
-      I1 => cycles_per_integration(6),
-      I2 => cycles_per_integration(8),
-      I3 => cycle_count_reg(8),
-      I4 => cycles_per_integration(7),
-      I5 => cycle_count_reg(7),
+      I0 => cycles_per_integration(8),
+      I1 => cycle_count_reg(8),
+      I2 => cycles_per_integration(7),
+      I3 => cycle_count_reg(7),
+      I4 => cycle_count_reg(6),
+      I5 => cycles_per_integration(6),
       O => sum0_carry_i_2_n_0
     );
 sum0_carry_i_3: unisim.vcomponents.LUT6
@@ -2966,12 +2983,12 @@ sum0_carry_i_3: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(3),
-      I1 => cycles_per_integration(3),
-      I2 => cycles_per_integration(5),
-      I3 => cycle_count_reg(5),
-      I4 => cycles_per_integration(4),
-      I5 => cycle_count_reg(4),
+      I0 => cycles_per_integration(5),
+      I1 => cycle_count_reg(5),
+      I2 => cycles_per_integration(4),
+      I3 => cycle_count_reg(4),
+      I4 => cycle_count_reg(3),
+      I5 => cycles_per_integration(3),
       O => sum0_carry_i_3_n_0
     );
 sum0_carry_i_4: unisim.vcomponents.LUT6
@@ -2979,12 +2996,12 @@ sum0_carry_i_4: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(0),
-      I1 => cycles_per_integration(0),
-      I2 => cycles_per_integration(2),
-      I3 => cycle_count_reg(2),
-      I4 => cycles_per_integration(1),
-      I5 => cycle_count_reg(1),
+      I0 => cycles_per_integration(2),
+      I1 => cycle_count_reg(2),
+      I2 => cycles_per_integration(1),
+      I3 => cycle_count_reg(1),
+      I4 => cycle_count_reg(0),
+      I5 => cycles_per_integration(0),
       O => sum0_carry_i_4_n_0
     );
 \sum0_inferred__0/i___2_carry\: unisim.vcomponents.CARRY4
@@ -3086,12 +3103,12 @@ sum1_carry: unisim.vcomponents.CARRY4
     );
 \sum1_carry__0_i_2\: unisim.vcomponents.LUT3
     generic map(
-      INIT => X"90"
+      INIT => X"82"
     )
         port map (
-      I0 => cycle_count_reg(15),
+      I0 => \sum1_carry__0_i_1_n_0\,
       I1 => sum2(15),
-      I2 => \sum1_carry__0_i_1_n_0\,
+      I2 => cycle_count_reg(15),
       O => \sum1_carry__0_i_2_n_0\
     );
 \sum1_carry__0_i_3\: unisim.vcomponents.LUT6
@@ -3099,12 +3116,12 @@ sum1_carry: unisim.vcomponents.CARRY4
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(12),
-      I1 => sum2(12),
-      I2 => sum2(14),
-      I3 => cycle_count_reg(14),
-      I4 => sum2(13),
-      I5 => cycle_count_reg(13),
+      I0 => sum2(14),
+      I1 => cycle_count_reg(14),
+      I2 => sum2(13),
+      I3 => cycle_count_reg(13),
+      I4 => cycle_count_reg(12),
+      I5 => sum2(12),
       O => \sum1_carry__0_i_3_n_0\
     );
 \sum1_carry__0_i_4\: unisim.vcomponents.LUT1
@@ -3151,12 +3168,12 @@ sum1_carry_i_1: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(9),
-      I1 => sum2(9),
-      I2 => sum2(11),
-      I3 => cycle_count_reg(11),
-      I4 => sum2(10),
-      I5 => cycle_count_reg(10),
+      I0 => sum2(11),
+      I1 => cycle_count_reg(11),
+      I2 => sum2(10),
+      I3 => cycle_count_reg(10),
+      I4 => cycle_count_reg(9),
+      I5 => sum2(9),
       O => sum1_carry_i_1_n_0
     );
 sum1_carry_i_10: unisim.vcomponents.LUT1
@@ -3244,12 +3261,12 @@ sum1_carry_i_2: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(6),
-      I1 => sum2(6),
-      I2 => sum2(8),
-      I3 => cycle_count_reg(8),
-      I4 => sum2(7),
-      I5 => cycle_count_reg(7),
+      I0 => sum2(8),
+      I1 => cycle_count_reg(8),
+      I2 => sum2(7),
+      I3 => cycle_count_reg(7),
+      I4 => cycle_count_reg(6),
+      I5 => sum2(6),
       O => sum1_carry_i_2_n_0
     );
 sum1_carry_i_3: unisim.vcomponents.LUT6
@@ -3257,25 +3274,25 @@ sum1_carry_i_3: unisim.vcomponents.LUT6
       INIT => X"9009000000009009"
     )
         port map (
-      I0 => cycle_count_reg(3),
-      I1 => sum2(3),
-      I2 => sum2(5),
-      I3 => cycle_count_reg(5),
-      I4 => sum2(4),
-      I5 => cycle_count_reg(4),
+      I0 => sum2(5),
+      I1 => cycle_count_reg(5),
+      I2 => sum2(4),
+      I3 => cycle_count_reg(4),
+      I4 => cycle_count_reg(3),
+      I5 => sum2(3),
       O => sum1_carry_i_3_n_0
     );
 sum1_carry_i_4: unisim.vcomponents.LUT6
     generic map(
-      INIT => X"6006000000006006"
+      INIT => X"0000900990090000"
     )
         port map (
-      I0 => cycles_per_integration(0),
-      I1 => cycle_count_reg(0),
-      I2 => sum2(2),
-      I3 => cycle_count_reg(2),
-      I4 => sum2(1),
-      I5 => cycle_count_reg(1),
+      I0 => sum2(2),
+      I1 => cycle_count_reg(2),
+      I2 => sum2(1),
+      I3 => cycle_count_reg(1),
+      I4 => cycle_count_reg(0),
+      I5 => cycles_per_integration(0),
       O => sum1_carry_i_4_n_0
     );
 sum1_carry_i_5: unisim.vcomponents.CARRY4
@@ -3443,7 +3460,7 @@ sum_updated_reg: unisim.vcomponents.FDRE
       C => clk_200MHz,
       CE => '1',
       D => sum_updated_i_1_n_0,
-      Q => bram_we_a,
+      Q => sum_updated,
       R => '0'
     );
 end STRUCTURE;
@@ -3454,12 +3471,13 @@ use UNISIM.VCOMPONENTS.ALL;
 entity z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module is
   port (
     bram_din_a : out STD_LOGIC_VECTOR ( 9 downto 0 );
-    bram_addr_a : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    bram_addr_a : out STD_LOGIC_VECTOR ( 16 downto 0 );
     bram_we_a : out STD_LOGIC;
     cycles_per_integration : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ro_rst : in STD_LOGIC;
     clk_200MHz : in STD_LOGIC;
     rst_n : in STD_LOGIC;
+    aquire_mode : in STD_LOGIC;
     start_aquire : in STD_LOGIC;
     num_ro_enabled : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
@@ -3468,9 +3486,31 @@ entity z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module is
 end z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module;
 
 architecture STRUCTURE of z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module is
-  signal \^bram_addr_a\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \^bram_addr_a\ : STD_LOGIC_VECTOR ( 16 downto 0 );
+  signal bram_we_a_INST_0_i_1_n_0 : STD_LOGIC;
+  signal bram_we_a_INST_0_i_2_n_0 : STD_LOGIC;
+  signal bram_we_a_INST_0_i_3_n_0 : STD_LOGIC;
+  signal bram_we_a_INST_0_i_4_n_0 : STD_LOGIC;
+  signal index : STD_LOGIC;
+  signal \index[16]_i_1_n_0\ : STD_LOGIC;
   signal \index[3]_i_2_n_0\ : STD_LOGIC;
-  signal \index[8]_i_1_n_0\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_0\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_1\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_2\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_3\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_4\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_5\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_6\ : STD_LOGIC;
+  signal \index_reg[11]_i_1_n_7\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_0\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_1\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_2\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_3\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_4\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_5\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_6\ : STD_LOGIC;
+  signal \index_reg[15]_i_1_n_7\ : STD_LOGIC;
+  signal \index_reg[16]_i_3_n_7\ : STD_LOGIC;
   signal \index_reg[3]_i_1_n_0\ : STD_LOGIC;
   signal \index_reg[3]_i_1_n_1\ : STD_LOGIC;
   signal \index_reg[3]_i_1_n_2\ : STD_LOGIC;
@@ -3487,11 +3527,83 @@ architecture STRUCTURE of z2_voltage_experiments_ring_oscillator_modu_0_1_ring_o
   signal \index_reg[7]_i_1_n_5\ : STD_LOGIC;
   signal \index_reg[7]_i_1_n_6\ : STD_LOGIC;
   signal \index_reg[7]_i_1_n_7\ : STD_LOGIC;
-  signal \index_reg[8]_i_2_n_7\ : STD_LOGIC;
-  signal \NLW_index_reg[8]_i_2_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
-  signal \NLW_index_reg[8]_i_2_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  signal \NLW_index_reg[16]_i_3_CO_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal \NLW_index_reg[16]_i_3_O_UNCONNECTED\ : STD_LOGIC_VECTOR ( 3 downto 1 );
+  attribute ADDER_THRESHOLD : integer;
+  attribute ADDER_THRESHOLD of \index_reg[11]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \index_reg[15]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \index_reg[16]_i_3\ : label is 11;
+  attribute ADDER_THRESHOLD of \index_reg[3]_i_1\ : label is 11;
+  attribute ADDER_THRESHOLD of \index_reg[7]_i_1\ : label is 11;
 begin
-  bram_addr_a(8 downto 0) <= \^bram_addr_a\(8 downto 0);
+  bram_addr_a(16 downto 0) <= \^bram_addr_a\(16 downto 0);
+bram_we_a_INST_0_i_1: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => \^bram_addr_a\(6),
+      I1 => \^bram_addr_a\(5),
+      I2 => \^bram_addr_a\(8),
+      I3 => \^bram_addr_a\(7),
+      O => bram_we_a_INST_0_i_1_n_0
+    );
+bram_we_a_INST_0_i_2: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => \^bram_addr_a\(10),
+      I1 => \^bram_addr_a\(9),
+      I2 => \^bram_addr_a\(12),
+      I3 => \^bram_addr_a\(11),
+      O => bram_we_a_INST_0_i_2_n_0
+    );
+bram_we_a_INST_0_i_3: unisim.vcomponents.LUT6
+    generic map(
+      INIT => X"FFFFFFFF7FFFFFFF"
+    )
+        port map (
+      I0 => \^bram_addr_a\(15),
+      I1 => \^bram_addr_a\(16),
+      I2 => \^bram_addr_a\(13),
+      I3 => \^bram_addr_a\(14),
+      I4 => \^bram_addr_a\(0),
+      I5 => aquire_mode,
+      O => bram_we_a_INST_0_i_3_n_0
+    );
+bram_we_a_INST_0_i_4: unisim.vcomponents.LUT4
+    generic map(
+      INIT => X"7FFF"
+    )
+        port map (
+      I0 => \^bram_addr_a\(2),
+      I1 => \^bram_addr_a\(1),
+      I2 => \^bram_addr_a\(4),
+      I3 => \^bram_addr_a\(3),
+      O => bram_we_a_INST_0_i_4_n_0
+    );
+\index[16]_i_1\: unisim.vcomponents.LUT2
+    generic map(
+      INIT => X"8"
+    )
+        port map (
+      I0 => rst_n,
+      I1 => start_aquire,
+      O => \index[16]_i_1_n_0\
+    );
+\index[16]_i_2\: unisim.vcomponents.LUT5
+    generic map(
+      INIT => X"FFFE0000"
+    )
+        port map (
+      I0 => bram_we_a_INST_0_i_1_n_0,
+      I1 => bram_we_a_INST_0_i_2_n_0,
+      I2 => bram_we_a_INST_0_i_3_n_0,
+      I3 => bram_we_a_INST_0_i_4_n_0,
+      I4 => rst_n,
+      O => index
+    );
 \index[3]_i_2\: unisim.vcomponents.LUT1
     generic map(
       INIT => X"1"
@@ -3500,46 +3612,134 @@ begin
       I0 => \^bram_addr_a\(0),
       O => \index[3]_i_2_n_0\
     );
-\index[8]_i_1\: unisim.vcomponents.LUT2
-    generic map(
-      INIT => X"8"
-    )
-        port map (
-      I0 => rst_n,
-      I1 => start_aquire,
-      O => \index[8]_i_1_n_0\
-    );
 \index_reg[0]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[3]_i_1_n_7\,
       Q => \^bram_addr_a\(0),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[10]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[11]_i_1_n_5\,
+      Q => \^bram_addr_a\(10),
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[11]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[11]_i_1_n_4\,
+      Q => \^bram_addr_a\(11),
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[11]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \index_reg[7]_i_1_n_0\,
+      CO(3) => \index_reg[11]_i_1_n_0\,
+      CO(2) => \index_reg[11]_i_1_n_1\,
+      CO(1) => \index_reg[11]_i_1_n_2\,
+      CO(0) => \index_reg[11]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \index_reg[11]_i_1_n_4\,
+      O(2) => \index_reg[11]_i_1_n_5\,
+      O(1) => \index_reg[11]_i_1_n_6\,
+      O(0) => \index_reg[11]_i_1_n_7\,
+      S(3 downto 0) => \^bram_addr_a\(11 downto 8)
+    );
+\index_reg[12]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[15]_i_1_n_7\,
+      Q => \^bram_addr_a\(12),
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[13]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[15]_i_1_n_6\,
+      Q => \^bram_addr_a\(13),
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[14]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[15]_i_1_n_5\,
+      Q => \^bram_addr_a\(14),
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[15]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[15]_i_1_n_4\,
+      Q => \^bram_addr_a\(15),
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[15]_i_1\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \index_reg[11]_i_1_n_0\,
+      CO(3) => \index_reg[15]_i_1_n_0\,
+      CO(2) => \index_reg[15]_i_1_n_1\,
+      CO(1) => \index_reg[15]_i_1_n_2\,
+      CO(0) => \index_reg[15]_i_1_n_3\,
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3) => \index_reg[15]_i_1_n_4\,
+      O(2) => \index_reg[15]_i_1_n_5\,
+      O(1) => \index_reg[15]_i_1_n_6\,
+      O(0) => \index_reg[15]_i_1_n_7\,
+      S(3 downto 0) => \^bram_addr_a\(15 downto 12)
+    );
+\index_reg[16]\: unisim.vcomponents.FDRE
+     port map (
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[16]_i_3_n_7\,
+      Q => \^bram_addr_a\(16),
+      R => \index[16]_i_1_n_0\
+    );
+\index_reg[16]_i_3\: unisim.vcomponents.CARRY4
+     port map (
+      CI => \index_reg[15]_i_1_n_0\,
+      CO(3 downto 0) => \NLW_index_reg[16]_i_3_CO_UNCONNECTED\(3 downto 0),
+      CYINIT => '0',
+      DI(3 downto 0) => B"0000",
+      O(3 downto 1) => \NLW_index_reg[16]_i_3_O_UNCONNECTED\(3 downto 1),
+      O(0) => \index_reg[16]_i_3_n_7\,
+      S(3 downto 1) => B"000",
+      S(0) => \^bram_addr_a\(16)
     );
 \index_reg[1]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[3]_i_1_n_6\,
       Q => \^bram_addr_a\(1),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
 \index_reg[2]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[3]_i_1_n_5\,
       Q => \^bram_addr_a\(2),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
 \index_reg[3]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[3]_i_1_n_4\,
       Q => \^bram_addr_a\(3),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
 \index_reg[3]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -3560,34 +3760,34 @@ begin
 \index_reg[4]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[7]_i_1_n_7\,
       Q => \^bram_addr_a\(4),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
 \index_reg[5]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[7]_i_1_n_6\,
       Q => \^bram_addr_a\(5),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
 \index_reg[6]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[7]_i_1_n_5\,
       Q => \^bram_addr_a\(6),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
 \index_reg[7]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
+      CE => index,
       D => \index_reg[7]_i_1_n_4\,
       Q => \^bram_addr_a\(7),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
 \index_reg[7]_i_1\: unisim.vcomponents.CARRY4
      port map (
@@ -3607,26 +3807,27 @@ begin
 \index_reg[8]\: unisim.vcomponents.FDRE
      port map (
       C => clk_200MHz,
-      CE => rst_n,
-      D => \index_reg[8]_i_2_n_7\,
+      CE => index,
+      D => \index_reg[11]_i_1_n_7\,
       Q => \^bram_addr_a\(8),
-      R => \index[8]_i_1_n_0\
+      R => \index[16]_i_1_n_0\
     );
-\index_reg[8]_i_2\: unisim.vcomponents.CARRY4
+\index_reg[9]\: unisim.vcomponents.FDRE
      port map (
-      CI => \index_reg[7]_i_1_n_0\,
-      CO(3 downto 0) => \NLW_index_reg[8]_i_2_CO_UNCONNECTED\(3 downto 0),
-      CYINIT => '0',
-      DI(3 downto 0) => B"0000",
-      O(3 downto 1) => \NLW_index_reg[8]_i_2_O_UNCONNECTED\(3 downto 1),
-      O(0) => \index_reg[8]_i_2_n_7\,
-      S(3 downto 1) => B"000",
-      S(0) => \^bram_addr_a\(8)
+      C => clk_200MHz,
+      CE => index,
+      D => \index_reg[11]_i_1_n_6\,
+      Q => \^bram_addr_a\(9),
+      R => \index[16]_i_1_n_0\
     );
 ros: entity work.z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
      port map (
       bram_din_a(9 downto 0) => bram_din_a(9 downto 0),
       bram_we_a => bram_we_a,
+      bram_we_a_0 => bram_we_a_INST_0_i_1_n_0,
+      bram_we_a_1 => bram_we_a_INST_0_i_2_n_0,
+      bram_we_a_2 => bram_we_a_INST_0_i_3_n_0,
+      bram_we_a_3 => bram_we_a_INST_0_i_4_n_0,
       clk_200MHz => clk_200MHz,
       cycles_per_integration(15 downto 0) => cycles_per_integration(15 downto 0),
       num_ro_enabled(15 downto 0) => num_ro_enabled(15 downto 0),
@@ -3640,12 +3841,13 @@ use UNISIM.VCOMPONENTS.ALL;
 entity z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module_wrap is
   port (
     bram_din_a : out STD_LOGIC_VECTOR ( 9 downto 0 );
-    bram_addr_a : out STD_LOGIC_VECTOR ( 8 downto 0 );
+    bram_addr_a : out STD_LOGIC_VECTOR ( 16 downto 0 );
     bram_we_a : out STD_LOGIC;
     cycles_per_integration : in STD_LOGIC_VECTOR ( 15 downto 0 );
     ro_rst : in STD_LOGIC;
     clk_200MHz : in STD_LOGIC;
     rst_n : in STD_LOGIC;
+    aquire_mode : in STD_LOGIC;
     start_aquire : in STD_LOGIC;
     num_ro_enabled : in STD_LOGIC_VECTOR ( 15 downto 0 )
   );
@@ -3657,7 +3859,8 @@ architecture STRUCTURE of z2_voltage_experiments_ring_oscillator_modu_0_1_ring_o
 begin
 rom: entity work.z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module
      port map (
-      bram_addr_a(8 downto 0) => bram_addr_a(8 downto 0),
+      aquire_mode => aquire_mode,
+      bram_addr_a(16 downto 0) => bram_addr_a(16 downto 0),
       bram_din_a(9 downto 0) => bram_din_a(9 downto 0),
       bram_we_a => bram_we_a,
       clk_200MHz => clk_200MHz,
@@ -3702,7 +3905,7 @@ end z2_voltage_experiments_ring_oscillator_modu_0_1;
 
 architecture STRUCTURE of z2_voltage_experiments_ring_oscillator_modu_0_1 is
   signal \<const0>\ : STD_LOGIC;
-  signal \^bram_addr_a\ : STD_LOGIC_VECTOR ( 8 downto 0 );
+  signal \^bram_addr_a\ : STD_LOGIC_VECTOR ( 16 downto 0 );
   signal \^bram_din_a\ : STD_LOGIC_VECTOR ( 9 downto 0 );
   signal \^clk_200mhz\ : STD_LOGIC;
   attribute X_INTERFACE_INFO : string;
@@ -3728,15 +3931,7 @@ begin
   bram_addr_a(19) <= \<const0>\;
   bram_addr_a(18) <= \<const0>\;
   bram_addr_a(17) <= \<const0>\;
-  bram_addr_a(16) <= \<const0>\;
-  bram_addr_a(15) <= \<const0>\;
-  bram_addr_a(14) <= \<const0>\;
-  bram_addr_a(13) <= \<const0>\;
-  bram_addr_a(12) <= \<const0>\;
-  bram_addr_a(11) <= \<const0>\;
-  bram_addr_a(10) <= \<const0>\;
-  bram_addr_a(9) <= \<const0>\;
-  bram_addr_a(8 downto 0) <= \^bram_addr_a\(8 downto 0);
+  bram_addr_a(16 downto 0) <= \^bram_addr_a\(16 downto 0);
   bram_clk_a <= \^clk_200mhz\;
   bram_din_a(31) <= \<const0>\;
   bram_din_a(30) <= \<const0>\;
@@ -3791,7 +3986,8 @@ GND: unisim.vcomponents.GND
     );
 inst: entity work.z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module_wrap
      port map (
-      bram_addr_a(8 downto 0) => \^bram_addr_a\(8 downto 0),
+      aquire_mode => aquire_mode,
+      bram_addr_a(16 downto 0) => \^bram_addr_a\(16 downto 0),
       bram_din_a(9 downto 0) => \^bram_din_a\(9 downto 0),
       bram_we_a => bram_we_a,
       clk_200MHz => \^clk_200mhz\,

@@ -41,3 +41,7 @@ __pycache__/
 GNUmakefile
 user.props
 pynq_z2_experiments/pynq_z2_experiments.runs/*
+pynq_z2_experiments/pynq_z2_experiments.cache/*
+
+
+!pynq_z2_experiments/pynq_z2_experiments.runs/impl_1/z2_voltage_experiments_wrapper.bit

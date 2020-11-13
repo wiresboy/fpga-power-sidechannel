@@ -55,7 +55,6 @@ module ring_oscillator_module
 	always_ff @(posedge clk_200MHz) begin
 		if (~rst_n) begin
 			last_ro_sum <= 0;
-			status <= 0;
 		end else begin
 			if (start_aquire) begin
 				index <= 0;

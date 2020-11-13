@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Nov 13 02:51:09 2020
+// Date        : Fri Nov 13 15:13:25 2020
 // Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_ring_oscillator_modu_0_1/z2_voltage_experiments_ring_oscillator_modu_0_1_sim_netlist.v
@@ -44,7 +44,8 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1
   output bram_we_a;
 
   wire \<const0> ;
-  wire [8:0]\^bram_addr_a ;
+  wire aquire_mode;
+  wire [16:0]\^bram_addr_a ;
   wire [9:0]\^bram_din_a ;
   wire bram_we_a;
   wire clk_200MHz;
@@ -69,15 +70,7 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1
   assign bram_addr_a[19] = \<const0> ;
   assign bram_addr_a[18] = \<const0> ;
   assign bram_addr_a[17] = \<const0> ;
-  assign bram_addr_a[16] = \<const0> ;
-  assign bram_addr_a[15] = \<const0> ;
-  assign bram_addr_a[14] = \<const0> ;
-  assign bram_addr_a[13] = \<const0> ;
-  assign bram_addr_a[12] = \<const0> ;
-  assign bram_addr_a[11] = \<const0> ;
-  assign bram_addr_a[10] = \<const0> ;
-  assign bram_addr_a[9] = \<const0> ;
-  assign bram_addr_a[8:0] = \^bram_addr_a [8:0];
+  assign bram_addr_a[16:0] = \^bram_addr_a [16:0];
   assign bram_clk_a = clk_200MHz;
   assign bram_din_a[31] = \<const0> ;
   assign bram_din_a[30] = \<const0> ;
@@ -129,7 +122,8 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1
   GND GND
        (.G(\<const0> ));
   z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module_wrap inst
-       (.bram_addr_a(\^bram_addr_a ),
+       (.aquire_mode(aquire_mode),
+        .bram_addr_a(\^bram_addr_a ),
         .bram_din_a(\^bram_din_a ),
         .bram_we_a(bram_we_a),
         .clk_200MHz(clk_200MHz),
@@ -2203,25 +2197,50 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module
     ro_rst,
     clk_200MHz,
     rst_n,
+    aquire_mode,
     start_aquire,
     num_ro_enabled);
   output [9:0]bram_din_a;
-  output [8:0]bram_addr_a;
+  output [16:0]bram_addr_a;
   output bram_we_a;
   input [15:0]cycles_per_integration;
   input ro_rst;
   input clk_200MHz;
   input rst_n;
+  input aquire_mode;
   input start_aquire;
   input [15:0]num_ro_enabled;
 
-  wire [8:0]bram_addr_a;
+  wire aquire_mode;
+  wire [16:0]bram_addr_a;
   wire [9:0]bram_din_a;
   wire bram_we_a;
+  wire bram_we_a_INST_0_i_1_n_0;
+  wire bram_we_a_INST_0_i_2_n_0;
+  wire bram_we_a_INST_0_i_3_n_0;
+  wire bram_we_a_INST_0_i_4_n_0;
   wire clk_200MHz;
   wire [15:0]cycles_per_integration;
+  wire index;
+  wire \index[16]_i_1_n_0 ;
   wire \index[3]_i_2_n_0 ;
-  wire \index[8]_i_1_n_0 ;
+  wire \index_reg[11]_i_1_n_0 ;
+  wire \index_reg[11]_i_1_n_1 ;
+  wire \index_reg[11]_i_1_n_2 ;
+  wire \index_reg[11]_i_1_n_3 ;
+  wire \index_reg[11]_i_1_n_4 ;
+  wire \index_reg[11]_i_1_n_5 ;
+  wire \index_reg[11]_i_1_n_6 ;
+  wire \index_reg[11]_i_1_n_7 ;
+  wire \index_reg[15]_i_1_n_0 ;
+  wire \index_reg[15]_i_1_n_1 ;
+  wire \index_reg[15]_i_1_n_2 ;
+  wire \index_reg[15]_i_1_n_3 ;
+  wire \index_reg[15]_i_1_n_4 ;
+  wire \index_reg[15]_i_1_n_5 ;
+  wire \index_reg[15]_i_1_n_6 ;
+  wire \index_reg[15]_i_1_n_7 ;
+  wire \index_reg[16]_i_3_n_7 ;
   wire \index_reg[3]_i_1_n_0 ;
   wire \index_reg[3]_i_1_n_1 ;
   wire \index_reg[3]_i_1_n_2 ;
@@ -2238,49 +2257,158 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module
   wire \index_reg[7]_i_1_n_5 ;
   wire \index_reg[7]_i_1_n_6 ;
   wire \index_reg[7]_i_1_n_7 ;
-  wire \index_reg[8]_i_2_n_7 ;
   wire [15:0]num_ro_enabled;
   wire ro_rst;
   wire rst_n;
   wire start_aquire;
-  wire [3:0]\NLW_index_reg[8]_i_2_CO_UNCONNECTED ;
-  wire [3:1]\NLW_index_reg[8]_i_2_O_UNCONNECTED ;
+  wire [3:0]\NLW_index_reg[16]_i_3_CO_UNCONNECTED ;
+  wire [3:1]\NLW_index_reg[16]_i_3_O_UNCONNECTED ;
 
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    bram_we_a_INST_0_i_1
+       (.I0(bram_addr_a[6]),
+        .I1(bram_addr_a[5]),
+        .I2(bram_addr_a[8]),
+        .I3(bram_addr_a[7]),
+        .O(bram_we_a_INST_0_i_1_n_0));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    bram_we_a_INST_0_i_2
+       (.I0(bram_addr_a[10]),
+        .I1(bram_addr_a[9]),
+        .I2(bram_addr_a[12]),
+        .I3(bram_addr_a[11]),
+        .O(bram_we_a_INST_0_i_2_n_0));
+  LUT6 #(
+    .INIT(64'hFFFFFFFF7FFFFFFF)) 
+    bram_we_a_INST_0_i_3
+       (.I0(bram_addr_a[15]),
+        .I1(bram_addr_a[16]),
+        .I2(bram_addr_a[13]),
+        .I3(bram_addr_a[14]),
+        .I4(bram_addr_a[0]),
+        .I5(aquire_mode),
+        .O(bram_we_a_INST_0_i_3_n_0));
+  LUT4 #(
+    .INIT(16'h7FFF)) 
+    bram_we_a_INST_0_i_4
+       (.I0(bram_addr_a[2]),
+        .I1(bram_addr_a[1]),
+        .I2(bram_addr_a[4]),
+        .I3(bram_addr_a[3]),
+        .O(bram_we_a_INST_0_i_4_n_0));
+  LUT2 #(
+    .INIT(4'h8)) 
+    \index[16]_i_1 
+       (.I0(rst_n),
+        .I1(start_aquire),
+        .O(\index[16]_i_1_n_0 ));
+  LUT5 #(
+    .INIT(32'hFFFE0000)) 
+    \index[16]_i_2 
+       (.I0(bram_we_a_INST_0_i_1_n_0),
+        .I1(bram_we_a_INST_0_i_2_n_0),
+        .I2(bram_we_a_INST_0_i_3_n_0),
+        .I3(bram_we_a_INST_0_i_4_n_0),
+        .I4(rst_n),
+        .O(index));
   LUT1 #(
     .INIT(2'h1)) 
     \index[3]_i_2 
        (.I0(bram_addr_a[0]),
         .O(\index[3]_i_2_n_0 ));
-  LUT2 #(
-    .INIT(4'h8)) 
-    \index[8]_i_1 
-       (.I0(rst_n),
-        .I1(start_aquire),
-        .O(\index[8]_i_1_n_0 ));
   FDRE \index_reg[0] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[3]_i_1_n_7 ),
         .Q(bram_addr_a[0]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
+  FDRE \index_reg[10] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[11]_i_1_n_5 ),
+        .Q(bram_addr_a[10]),
+        .R(\index[16]_i_1_n_0 ));
+  FDRE \index_reg[11] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[11]_i_1_n_4 ),
+        .Q(bram_addr_a[11]),
+        .R(\index[16]_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \index_reg[11]_i_1 
+       (.CI(\index_reg[7]_i_1_n_0 ),
+        .CO({\index_reg[11]_i_1_n_0 ,\index_reg[11]_i_1_n_1 ,\index_reg[11]_i_1_n_2 ,\index_reg[11]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\index_reg[11]_i_1_n_4 ,\index_reg[11]_i_1_n_5 ,\index_reg[11]_i_1_n_6 ,\index_reg[11]_i_1_n_7 }),
+        .S(bram_addr_a[11:8]));
+  FDRE \index_reg[12] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[15]_i_1_n_7 ),
+        .Q(bram_addr_a[12]),
+        .R(\index[16]_i_1_n_0 ));
+  FDRE \index_reg[13] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[15]_i_1_n_6 ),
+        .Q(bram_addr_a[13]),
+        .R(\index[16]_i_1_n_0 ));
+  FDRE \index_reg[14] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[15]_i_1_n_5 ),
+        .Q(bram_addr_a[14]),
+        .R(\index[16]_i_1_n_0 ));
+  FDRE \index_reg[15] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[15]_i_1_n_4 ),
+        .Q(bram_addr_a[15]),
+        .R(\index[16]_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \index_reg[15]_i_1 
+       (.CI(\index_reg[11]_i_1_n_0 ),
+        .CO({\index_reg[15]_i_1_n_0 ,\index_reg[15]_i_1_n_1 ,\index_reg[15]_i_1_n_2 ,\index_reg[15]_i_1_n_3 }),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\index_reg[15]_i_1_n_4 ,\index_reg[15]_i_1_n_5 ,\index_reg[15]_i_1_n_6 ,\index_reg[15]_i_1_n_7 }),
+        .S(bram_addr_a[15:12]));
+  FDRE \index_reg[16] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[16]_i_3_n_7 ),
+        .Q(bram_addr_a[16]),
+        .R(\index[16]_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "11" *) 
+  CARRY4 \index_reg[16]_i_3 
+       (.CI(\index_reg[15]_i_1_n_0 ),
+        .CO(\NLW_index_reg[16]_i_3_CO_UNCONNECTED [3:0]),
+        .CYINIT(1'b0),
+        .DI({1'b0,1'b0,1'b0,1'b0}),
+        .O({\NLW_index_reg[16]_i_3_O_UNCONNECTED [3:1],\index_reg[16]_i_3_n_7 }),
+        .S({1'b0,1'b0,1'b0,bram_addr_a[16]}));
   FDRE \index_reg[1] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[3]_i_1_n_6 ),
         .Q(bram_addr_a[1]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
   FDRE \index_reg[2] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[3]_i_1_n_5 ),
         .Q(bram_addr_a[2]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
   FDRE \index_reg[3] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[3]_i_1_n_4 ),
         .Q(bram_addr_a[3]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \index_reg[3]_i_1 
        (.CI(1'b0),
         .CO({\index_reg[3]_i_1_n_0 ,\index_reg[3]_i_1_n_1 ,\index_reg[3]_i_1_n_2 ,\index_reg[3]_i_1_n_3 }),
@@ -2290,28 +2418,29 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module
         .S({bram_addr_a[3:1],\index[3]_i_2_n_0 }));
   FDRE \index_reg[4] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[7]_i_1_n_7 ),
         .Q(bram_addr_a[4]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
   FDRE \index_reg[5] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[7]_i_1_n_6 ),
         .Q(bram_addr_a[5]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
   FDRE \index_reg[6] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[7]_i_1_n_5 ),
         .Q(bram_addr_a[6]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
   FDRE \index_reg[7] 
        (.C(clk_200MHz),
-        .CE(rst_n),
+        .CE(index),
         .D(\index_reg[7]_i_1_n_4 ),
         .Q(bram_addr_a[7]),
-        .R(\index[8]_i_1_n_0 ));
+        .R(\index[16]_i_1_n_0 ));
+  (* ADDER_THRESHOLD = "11" *) 
   CARRY4 \index_reg[7]_i_1 
        (.CI(\index_reg[3]_i_1_n_0 ),
         .CO({\index_reg[7]_i_1_n_0 ,\index_reg[7]_i_1_n_1 ,\index_reg[7]_i_1_n_2 ,\index_reg[7]_i_1_n_3 }),
@@ -2321,20 +2450,23 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module
         .S(bram_addr_a[7:4]));
   FDRE \index_reg[8] 
        (.C(clk_200MHz),
-        .CE(rst_n),
-        .D(\index_reg[8]_i_2_n_7 ),
+        .CE(index),
+        .D(\index_reg[11]_i_1_n_7 ),
         .Q(bram_addr_a[8]),
-        .R(\index[8]_i_1_n_0 ));
-  CARRY4 \index_reg[8]_i_2 
-       (.CI(\index_reg[7]_i_1_n_0 ),
-        .CO(\NLW_index_reg[8]_i_2_CO_UNCONNECTED [3:0]),
-        .CYINIT(1'b0),
-        .DI({1'b0,1'b0,1'b0,1'b0}),
-        .O({\NLW_index_reg[8]_i_2_O_UNCONNECTED [3:1],\index_reg[8]_i_2_n_7 }),
-        .S({1'b0,1'b0,1'b0,bram_addr_a[8]}));
+        .R(\index[16]_i_1_n_0 ));
+  FDRE \index_reg[9] 
+       (.C(clk_200MHz),
+        .CE(index),
+        .D(\index_reg[11]_i_1_n_6 ),
+        .Q(bram_addr_a[9]),
+        .R(\index[16]_i_1_n_0 ));
   z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set ros
        (.bram_din_a(bram_din_a),
         .bram_we_a(bram_we_a),
+        .bram_we_a_0(bram_we_a_INST_0_i_1_n_0),
+        .bram_we_a_1(bram_we_a_INST_0_i_2_n_0),
+        .bram_we_a_2(bram_we_a_INST_0_i_3_n_0),
+        .bram_we_a_3(bram_we_a_INST_0_i_4_n_0),
         .clk_200MHz(clk_200MHz),
         .cycles_per_integration(cycles_per_integration),
         .num_ro_enabled(num_ro_enabled),
@@ -2350,19 +2482,22 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module_wr
     ro_rst,
     clk_200MHz,
     rst_n,
+    aquire_mode,
     start_aquire,
     num_ro_enabled);
   output [9:0]bram_din_a;
-  output [8:0]bram_addr_a;
+  output [16:0]bram_addr_a;
   output bram_we_a;
   input [15:0]cycles_per_integration;
   input ro_rst;
   input clk_200MHz;
   input rst_n;
+  input aquire_mode;
   input start_aquire;
   input [15:0]num_ro_enabled;
 
-  wire [8:0]bram_addr_a;
+  wire aquire_mode;
+  wire [16:0]bram_addr_a;
   wire [9:0]bram_din_a;
   wire bram_we_a;
   wire clk_200MHz;
@@ -2373,7 +2508,8 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module_wr
   wire start_aquire;
 
   z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_module rom
-       (.bram_addr_a(bram_addr_a),
+       (.aquire_mode(aquire_mode),
+        .bram_addr_a(bram_addr_a),
         .bram_din_a(bram_din_a),
         .bram_we_a(bram_we_a),
         .clk_200MHz(clk_200MHz),
@@ -2391,17 +2527,29 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
     clk_200MHz,
     cycles_per_integration,
     ro_rst,
+    bram_we_a_0,
+    bram_we_a_1,
+    bram_we_a_2,
+    bram_we_a_3,
     num_ro_enabled);
   output bram_we_a;
   output [9:0]bram_din_a;
   input clk_200MHz;
   input [15:0]cycles_per_integration;
   input ro_rst;
+  input bram_we_a_0;
+  input bram_we_a_1;
+  input bram_we_a_2;
+  input bram_we_a_3;
   input [15:0]num_ro_enabled;
 
   wire RO_reset;
   wire [9:0]bram_din_a;
   wire bram_we_a;
+  wire bram_we_a_0;
+  wire bram_we_a_1;
+  wire bram_we_a_2;
+  wire bram_we_a_3;
   wire clk_200MHz;
   wire [7:0]\counts[0]_0 ;
   wire [7:0]\counts[1]_1 ;
@@ -2537,6 +2685,7 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
   wire [15:1]sum2;
   wire \sum[9]_i_1_n_0 ;
   wire [9:0]sum_comb;
+  wire sum_updated;
   wire sum_updated_i_1_n_0;
   wire [3:3]\NLW_cycle_count_reg[12]_i_1_CO_UNCONNECTED ;
   wire [3:0]NLW_sum0_carry_O_UNCONNECTED;
@@ -2569,12 +2718,21 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
     Inv0
        (.I0(enable),
         .O(enable_inv_delay0));
+  LUT5 #(
+    .INIT(32'hFFFE0000)) 
+    bram_we_a_INST_0
+       (.I0(bram_we_a_0),
+        .I1(bram_we_a_1),
+        .I2(bram_we_a_2),
+        .I3(bram_we_a_3),
+        .I4(sum_updated),
+        .O(bram_we_a));
   LUT3 #(
-    .INIT(8'hBA)) 
+    .INIT(8'hF4)) 
     \cycle_count[0]_i_1 
-       (.I0(ro_rst),
-        .I1(sum1_carry__1_n_1),
-        .I2(sum0_carry__0_n_2),
+       (.I0(sum1_carry__1_n_1),
+        .I1(sum0_carry__0_n_2),
+        .I2(ro_rst),
         .O(\cycle_count[0]_i_1_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
@@ -2788,52 +2946,52 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum0_carry__0_i_2
-       (.I0(cycle_count_reg[12]),
-        .I1(cycles_per_integration[12]),
-        .I2(cycles_per_integration[14]),
-        .I3(cycle_count_reg[14]),
-        .I4(cycles_per_integration[13]),
-        .I5(cycle_count_reg[13]),
+       (.I0(cycles_per_integration[14]),
+        .I1(cycle_count_reg[14]),
+        .I2(cycles_per_integration[13]),
+        .I3(cycle_count_reg[13]),
+        .I4(cycle_count_reg[12]),
+        .I5(cycles_per_integration[12]),
         .O(sum0_carry__0_i_2_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum0_carry_i_1
-       (.I0(cycle_count_reg[9]),
-        .I1(cycles_per_integration[9]),
-        .I2(cycles_per_integration[11]),
-        .I3(cycle_count_reg[11]),
-        .I4(cycles_per_integration[10]),
-        .I5(cycle_count_reg[10]),
+       (.I0(cycles_per_integration[11]),
+        .I1(cycle_count_reg[11]),
+        .I2(cycles_per_integration[10]),
+        .I3(cycle_count_reg[10]),
+        .I4(cycle_count_reg[9]),
+        .I5(cycles_per_integration[9]),
         .O(sum0_carry_i_1_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum0_carry_i_2
-       (.I0(cycle_count_reg[6]),
-        .I1(cycles_per_integration[6]),
-        .I2(cycles_per_integration[8]),
-        .I3(cycle_count_reg[8]),
-        .I4(cycles_per_integration[7]),
-        .I5(cycle_count_reg[7]),
+       (.I0(cycles_per_integration[8]),
+        .I1(cycle_count_reg[8]),
+        .I2(cycles_per_integration[7]),
+        .I3(cycle_count_reg[7]),
+        .I4(cycle_count_reg[6]),
+        .I5(cycles_per_integration[6]),
         .O(sum0_carry_i_2_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum0_carry_i_3
-       (.I0(cycle_count_reg[3]),
-        .I1(cycles_per_integration[3]),
-        .I2(cycles_per_integration[5]),
-        .I3(cycle_count_reg[5]),
-        .I4(cycles_per_integration[4]),
-        .I5(cycle_count_reg[4]),
+       (.I0(cycles_per_integration[5]),
+        .I1(cycle_count_reg[5]),
+        .I2(cycles_per_integration[4]),
+        .I3(cycle_count_reg[4]),
+        .I4(cycle_count_reg[3]),
+        .I5(cycles_per_integration[3]),
         .O(sum0_carry_i_3_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum0_carry_i_4
-       (.I0(cycle_count_reg[0]),
-        .I1(cycles_per_integration[0]),
-        .I2(cycles_per_integration[2]),
-        .I3(cycle_count_reg[2]),
-        .I4(cycles_per_integration[1]),
-        .I5(cycle_count_reg[1]),
+       (.I0(cycles_per_integration[2]),
+        .I1(cycle_count_reg[2]),
+        .I2(cycles_per_integration[1]),
+        .I3(cycle_count_reg[1]),
+        .I4(cycle_count_reg[0]),
+        .I5(cycles_per_integration[0]),
         .O(sum0_carry_i_4_n_0));
   CARRY4 \sum0_inferred__0/i___2_carry 
        (.CI(1'b0),
@@ -2878,21 +3036,21 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
         .O({NLW_sum1_carry__0_i_1_O_UNCONNECTED[3],sum2[15:13]}),
         .S({1'b1,sum1_carry__0_i_4_n_0,sum1_carry__0_i_5_n_0,sum1_carry__0_i_6_n_0}));
   LUT3 #(
-    .INIT(8'h90)) 
+    .INIT(8'h82)) 
     sum1_carry__0_i_2
-       (.I0(cycle_count_reg[15]),
+       (.I0(sum1_carry__0_i_1_n_0),
         .I1(sum2[15]),
-        .I2(sum1_carry__0_i_1_n_0),
+        .I2(cycle_count_reg[15]),
         .O(sum1_carry__0_i_2_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum1_carry__0_i_3
-       (.I0(cycle_count_reg[12]),
-        .I1(sum2[12]),
-        .I2(sum2[14]),
-        .I3(cycle_count_reg[14]),
-        .I4(sum2[13]),
-        .I5(cycle_count_reg[13]),
+       (.I0(sum2[14]),
+        .I1(cycle_count_reg[14]),
+        .I2(sum2[13]),
+        .I3(cycle_count_reg[13]),
+        .I4(cycle_count_reg[12]),
+        .I5(sum2[12]),
         .O(sum1_carry__0_i_3_n_0));
   LUT1 #(
     .INIT(2'h1)) 
@@ -2919,12 +3077,12 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum1_carry_i_1
-       (.I0(cycle_count_reg[9]),
-        .I1(sum2[9]),
-        .I2(sum2[11]),
-        .I3(cycle_count_reg[11]),
-        .I4(sum2[10]),
-        .I5(cycle_count_reg[10]),
+       (.I0(sum2[11]),
+        .I1(cycle_count_reg[11]),
+        .I2(sum2[10]),
+        .I3(cycle_count_reg[10]),
+        .I4(cycle_count_reg[9]),
+        .I5(sum2[9]),
         .O(sum1_carry_i_1_n_0));
   LUT1 #(
     .INIT(2'h1)) 
@@ -2979,32 +3137,32 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum1_carry_i_2
-       (.I0(cycle_count_reg[6]),
-        .I1(sum2[6]),
-        .I2(sum2[8]),
-        .I3(cycle_count_reg[8]),
-        .I4(sum2[7]),
-        .I5(cycle_count_reg[7]),
+       (.I0(sum2[8]),
+        .I1(cycle_count_reg[8]),
+        .I2(sum2[7]),
+        .I3(cycle_count_reg[7]),
+        .I4(cycle_count_reg[6]),
+        .I5(sum2[6]),
         .O(sum1_carry_i_2_n_0));
   LUT6 #(
     .INIT(64'h9009000000009009)) 
     sum1_carry_i_3
-       (.I0(cycle_count_reg[3]),
-        .I1(sum2[3]),
-        .I2(sum2[5]),
-        .I3(cycle_count_reg[5]),
-        .I4(sum2[4]),
-        .I5(cycle_count_reg[4]),
+       (.I0(sum2[5]),
+        .I1(cycle_count_reg[5]),
+        .I2(sum2[4]),
+        .I3(cycle_count_reg[4]),
+        .I4(cycle_count_reg[3]),
+        .I5(sum2[3]),
         .O(sum1_carry_i_3_n_0));
   LUT6 #(
-    .INIT(64'h6006000000006006)) 
+    .INIT(64'h0000900990090000)) 
     sum1_carry_i_4
-       (.I0(cycles_per_integration[0]),
-        .I1(cycle_count_reg[0]),
-        .I2(sum2[2]),
-        .I3(cycle_count_reg[2]),
-        .I4(sum2[1]),
-        .I5(cycle_count_reg[1]),
+       (.I0(sum2[2]),
+        .I1(cycle_count_reg[2]),
+        .I2(sum2[1]),
+        .I3(cycle_count_reg[1]),
+        .I4(cycle_count_reg[0]),
+        .I5(cycles_per_integration[0]),
         .O(sum1_carry_i_4_n_0));
   CARRY4 sum1_carry_i_5
        (.CI(sum1_carry_i_6_n_0),
@@ -3115,7 +3273,7 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1_ring_oscillator_set
        (.C(clk_200MHz),
         .CE(1'b1),
         .D(sum_updated_i_1_n_0),
-        .Q(bram_we_a),
+        .Q(sum_updated),
         .R(1'b0));
 endmodule
 `ifndef GLBL

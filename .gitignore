@@ -40,3 +40,4 @@ __pycache__/
 ######################
 GNUmakefile
 user.props
+pynq_z2_experiments/pynq_z2_experiments.runs/*

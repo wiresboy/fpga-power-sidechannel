@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.889691",
-   "Default View_TopLeft":"-500,-241",
+   "Default View_ScaleFactor":"0.830769",
+   "Default View_TopLeft":"-573,-308",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
 #  -string -flagsOSRD
@@ -11,9 +11,9 @@ preplace port S00_ARESETN_0 -pg 1 -lvl 0 -x -20 -y 210 -defaultsOSRD
 preplace inst axi_bram_ctrl_0 -pg 1 -lvl 2 -x 610 -y 600 -defaultsOSRD
 preplace inst blk_mem_gen_0 -pg 1 -lvl 3 -x 1180 -y 450 -defaultsOSRD
 preplace inst axi_interconnect_0 -pg 1 -lvl 1 -x 180 -y 250 -defaultsOSRD
-preplace inst axi_ro_control_0 -pg 1 -lvl 2 -x 610 -y -200 -defaultsOSRD
 preplace inst xlconstant_0 -pg 1 -lvl 2 -x 610 -y 430 -defaultsOSRD
 preplace inst xlconstant_1 -pg 1 -lvl 2 -x 610 -y 330 -defaultsOSRD
+preplace inst axi_ro_control_0 -pg 1 -lvl 2 -x 610 -y -200 -defaultsOSRD
 preplace inst ring_oscillator_modu_0 -pg 1 -lvl 2 -x 610 -y 20 -defaultsOSRD
 preplace netloc clk_200MHz_1 1 0 2 10 110 340
 preplace netloc S00_ARESETN_0_1 1 0 2 0 100 350

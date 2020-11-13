@@ -41,7 +41,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .write_bitstream.begin.rst
-EAStep vivado -log ring_oscillator_set_wrap.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ring_oscillator_set_wrap.tcl -notrace
+/bin/touch .init_design.begin.rst
+EAStep vivado -log z2_voltage_experiments_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source z2_voltage_experiments_wrapper.tcl -notrace
 
 

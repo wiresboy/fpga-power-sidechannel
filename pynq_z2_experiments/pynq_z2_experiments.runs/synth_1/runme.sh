@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log ring_oscillator_set_wrap.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ring_oscillator_set_wrap.tcl
+EAStep vivado -log z2_voltage_experiments_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source z2_voltage_experiments_wrapper.tcl

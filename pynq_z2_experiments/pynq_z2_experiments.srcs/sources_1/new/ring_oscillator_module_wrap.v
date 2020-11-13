@@ -35,8 +35,7 @@ module ring_oscillator_module_wrap
 		.aquire_mode(aquire_mode),
 		.ro_rst(ro_rst),
 		.start_aquire(start_aquire),
-		.sum(sum),
-		.sum_updated(sum_updated),
+		.last_ro_sum(last_ro_sum),
 		
 		.bram_addr_a(bram_addr_a[16:0]),
 		.bram_clk_a(bram_clk_a),

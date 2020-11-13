@@ -6,4 +6,4 @@ REM          to be invoked for Vivado to track run status.
 REM Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 REM
 
-vivado -log ring_oscillator_set_wrap.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ring_oscillator_set_wrap.tcl -notrace
+vivado -log z2_voltage_experiments_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source z2_voltage_experiments_wrapper.tcl -notrace

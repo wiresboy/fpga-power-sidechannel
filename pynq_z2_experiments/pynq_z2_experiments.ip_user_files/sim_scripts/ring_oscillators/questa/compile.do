@@ -63,8 +63,8 @@ vlog -work axi_crossbar_v2_1_22  "+incdir+../../../../pynq_z2_experiments.srcs/s
 
 vlog -work xil_defaultlib  "+incdir+../../../../pynq_z2_experiments.srcs/sources_1/bd/ring_oscillators/ipshared/ec67/hdl" \
 "../../../bd/ring_oscillators/ip/ring_oscillators_xbar_0/sim/ring_oscillators_xbar_0.v" \
-"../../../bd/ring_oscillators/ipshared/5a2d/hdl/axi_ro_v1_0_S00_AXI.v" \
-"../../../bd/ring_oscillators/ipshared/5a2d/hdl/axi_ro_v1_0.v" \
+"../../../bd/ring_oscillators/ipshared/9f7c/hdl/axi_ro_v1_0_S00_AXI.v" \
+"../../../bd/ring_oscillators/ipshared/9f7c/hdl/axi_ro_v1_0.v" \
 "../../../bd/ring_oscillators/ip/ring_oscillators_axi_ro_control_0_0/sim/ring_oscillators_axi_ro_control_0_0.v" \
 "../../../bd/ring_oscillators/ip/ring_oscillators_ring_oscillator_modu_0_0/sim/ring_oscillators_ring_oscillator_modu_0_0.v" \
 
@@ -74,13 +74,13 @@ vlog -work xlconstant_v1_1_7  "+incdir+../../../../pynq_z2_experiments.srcs/sour
 vlog -work xil_defaultlib  "+incdir+../../../../pynq_z2_experiments.srcs/sources_1/bd/ring_oscillators/ipshared/ec67/hdl" \
 "../../../bd/ring_oscillators/ip/ring_oscillators_xlconstant_0_0/sim/ring_oscillators_xlconstant_0_0.v" \
 "../../../bd/ring_oscillators/ip/ring_oscillators_xlconstant_0_1/sim/ring_oscillators_xlconstant_0_1.v" \
+"../../../bd/ring_oscillators/sim/ring_oscillators.v" \
 
 vlog -work axi_protocol_converter_v2_1_21  "+incdir+../../../../pynq_z2_experiments.srcs/sources_1/bd/ring_oscillators/ipshared/ec67/hdl" \
 "../../../../pynq_z2_experiments.srcs/sources_1/bd/ring_oscillators/ipshared/8dfa/hdl/axi_protocol_converter_v2_1_vl_rfs.v" \
 
 vlog -work xil_defaultlib  "+incdir+../../../../pynq_z2_experiments.srcs/sources_1/bd/ring_oscillators/ipshared/ec67/hdl" \
 "../../../bd/ring_oscillators/ip/ring_oscillators_auto_pc_0/sim/ring_oscillators_auto_pc_0.v" \
-"../../../bd/ring_oscillators/sim/ring_oscillators.v" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

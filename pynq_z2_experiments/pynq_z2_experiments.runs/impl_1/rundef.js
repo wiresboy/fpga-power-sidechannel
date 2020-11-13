@@ -23,9 +23,9 @@ eval( EAInclude(ISEJScriptLib) );
 
 
 // pre-commands:
-ISETouchFile( "write_bitstream", "begin" );
+ISETouchFile( "init_design", "begin" );
 ISEStep( "vivado",
-         "-log ring_oscillator_set_wrap.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source ring_oscillator_set_wrap.tcl -notrace" );
+         "-log z2_voltage_experiments_wrapper.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source z2_voltage_experiments_wrapper.tcl -notrace" );
 
 
 

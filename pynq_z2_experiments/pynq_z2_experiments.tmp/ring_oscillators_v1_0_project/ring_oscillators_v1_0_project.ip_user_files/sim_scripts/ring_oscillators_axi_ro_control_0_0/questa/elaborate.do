@@ -1,1 +1,0 @@
-vopt +acc -l elaborate.log -L xpm -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -work xil_defaultlib xil_defaultlib.ring_oscillators_axi_ro_control_0_0 xil_defaultlib.glbl -o ring_oscillators_axi_ro_control_0_0_opt

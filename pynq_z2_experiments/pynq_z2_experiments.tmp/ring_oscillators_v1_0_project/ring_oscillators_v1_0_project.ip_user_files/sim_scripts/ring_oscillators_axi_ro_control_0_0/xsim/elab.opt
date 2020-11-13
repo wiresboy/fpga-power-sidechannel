@@ -1,1 +1,0 @@
---relax --debug typical --mt auto -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot ring_oscillators_axi_ro_control_0_0 xil_defaultlib.ring_oscillators_axi_ro_control_0_0 xil_defaultlib.glbl -log elaborate.log

@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Nov 13 02:43:31 2020
+-- Date        : Fri Nov 13 02:43:30 2020
 -- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_xbar_1/z2_voltage_experiments_xbar_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top z2_voltage_experiments_xbar_1 -prefix
+--               z2_voltage_experiments_xbar_1_ z2_voltage_experiments_xbar_1_sim_netlist.vhdl
 -- Design      : z2_voltage_experiments_xbar_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -69,8 +69,6 @@ entity z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_addr_arbiter_sasd is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_addr_arbiter_sasd : entity is "axi_crossbar_v2_1_22_addr_arbiter_sasd";
 end z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_addr_arbiter_sasd;
 
 architecture STRUCTURE of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_addr_arbiter_sasd is
@@ -1432,8 +1430,6 @@ entity z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_decerr_slave is
     \gen_axilite.s_axi_awready_i_reg_0\ : in STD_LOGIC;
     m_ready_d : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_decerr_slave : entity is "axi_crossbar_v2_1_22_decerr_slave";
 end z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_decerr_slave;
 
 architecture STRUCTURE of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_decerr_slave is
@@ -1606,8 +1602,6 @@ entity z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_splitter is
     m_ready_d0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_splitter : entity is "axi_crossbar_v2_1_22_splitter";
 end z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_splitter;
 
 architecture STRUCTURE of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_splitter is
@@ -1793,8 +1787,6 @@ entity z2_voltage_experiments_xbar_1_axi_register_slice_v2_1_21_axic_register_sl
     \m_axi_rready[1]\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     SR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xbar_1_axi_register_slice_v2_1_21_axic_register_slice : entity is "axi_register_slice_v2_1_21_axic_register_slice";
 end z2_voltage_experiments_xbar_1_axi_register_slice_v2_1_21_axic_register_slice;
 
 architecture STRUCTURE of z2_voltage_experiments_xbar_1_axi_register_slice_v2_1_21_axic_register_slice is
@@ -3000,8 +2992,6 @@ entity z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_crossbar_sasd is
     s_axi_araddr : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axi_awaddr : in STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_crossbar_sasd : entity is "axi_crossbar_v2_1_22_crossbar_sasd";
 end z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_crossbar_sasd;
 
 architecture STRUCTURE of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_crossbar_sasd is
@@ -3409,8 +3399,6 @@ entity z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_axi_crossbar is
   attribute C_S_AXI_WRITE_ACCEPTANCE of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_axi_crossbar : entity is 1;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_axi_crossbar : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_axi_crossbar : entity is "axi_crossbar_v2_1_22_axi_crossbar";
   attribute P_ADDR_DECODE : integer;
   attribute P_ADDR_DECODE of z2_voltage_experiments_xbar_1_axi_crossbar_v2_1_22_axi_crossbar : entity is 1;
   attribute P_AXI3 : integer;

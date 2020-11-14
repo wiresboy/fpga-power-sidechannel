@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Nov 13 02:32:53 2020
+// Date        : Fri Nov 13 21:09:44 2020
 // Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_axi_ro_control_0_0/z2_voltage_experiments_axi_ro_control_0_0_sim_netlist.v
@@ -688,7 +688,7 @@ module z2_voltage_experiments_axi_ro_control_0_0_axi_ro_v1_0_S00_AXI
         .I5(Q[14]),
         .O(\axi_rdata[14]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'h30BB3088)) 
+    .INIT(32'hFCBBFC88)) 
     \axi_rdata[14]_i_3 
        (.I0(slv_reg6[14]),
         .I1(sel0[1]),
@@ -1205,7 +1205,7 @@ module z2_voltage_experiments_axi_ro_control_0_0_axi_ro_v1_0_S00_AXI
         .I5(Q[9]),
         .O(\axi_rdata[9]_i_2_n_0 ));
   LUT5 #(
-    .INIT(32'h30BB3088)) 
+    .INIT(32'hFCBBFC88)) 
     \axi_rdata[9]_i_3 
        (.I0(slv_reg6[9]),
         .I1(sel0[1]),

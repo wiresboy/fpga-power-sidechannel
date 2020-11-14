@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Nov 13 02:33:36 2020
+// Date        : Fri Nov 13 02:33:35 2020
 // Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_blk_mem_gen_0_0/z2_voltage_experiments_blk_mem_gen_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top z2_voltage_experiments_blk_mem_gen_0_0 -prefix
+//               z2_voltage_experiments_blk_mem_gen_0_0_ z2_voltage_experiments_blk_mem_gen_0_0_sim_netlist.v
 // Design      : z2_voltage_experiments_blk_mem_gen_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -221,7 +221,6 @@ module z2_voltage_experiments_blk_mem_gen_0_0
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_generic_cstr" *) 
 module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_generic_cstr
    (douta,
     doutb,
@@ -509,7 +508,6 @@ module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_generic_cstr
         .web(web[2]));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_width" *) 
 module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_width
    (douta,
     doutb,
@@ -1517,7 +1515,6 @@ module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_width__parameteri
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_prim_wrapper" *) 
 module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_wrapper
    (douta,
     doutb,
@@ -5821,7 +5818,6 @@ module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_wrapper__paramete
         .WEBWE({1'b0,1'b0,1'b0,1'b0,web,web,web,web}));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_top" *) 
 module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_top
    (douta,
     doutb,
@@ -5909,7 +5905,7 @@ endmodule
 (* C_WEA_WIDTH = "4" *) (* C_WEB_WIDTH = "4" *) (* C_WRITE_DEPTH_A = "16384" *) 
 (* C_WRITE_DEPTH_B = "16384" *) (* C_WRITE_MODE_A = "WRITE_FIRST" *) (* C_WRITE_MODE_B = "WRITE_FIRST" *) 
 (* C_WRITE_WIDTH_A = "32" *) (* C_WRITE_WIDTH_B = "32" *) (* C_XDEVICEFAMILY = "zynq" *) 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4" *) (* downgradeipidentifiedwarnings = "yes" *) 
+(* downgradeipidentifiedwarnings = "yes" *) 
 module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4
    (clka,
     rsta,
@@ -6193,7 +6189,6 @@ module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4
         .web(web));
 endmodule
 
-(* ORIG_REF_NAME = "blk_mem_gen_v8_4_4_synth" *) 
 module z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4_synth
    (douta,
     doutb,

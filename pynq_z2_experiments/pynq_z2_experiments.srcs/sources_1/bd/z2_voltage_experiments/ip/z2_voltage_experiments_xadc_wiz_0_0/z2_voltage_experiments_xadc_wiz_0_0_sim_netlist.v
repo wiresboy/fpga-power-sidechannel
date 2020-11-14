@@ -1,10 +1,10 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-// Date        : Fri Nov 13 02:33:02 2020
+// Date        : Fri Nov 13 02:33:01 2020
 // Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_xadc_wiz_0_0/z2_voltage_experiments_xadc_wiz_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top z2_voltage_experiments_xadc_wiz_0_0 -prefix
+//               z2_voltage_experiments_xadc_wiz_0_0_ z2_voltage_experiments_xadc_wiz_0_0_sim_netlist.v
 // Design      : z2_voltage_experiments_xadc_wiz_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -137,7 +137,6 @@ module z2_voltage_experiments_xadc_wiz_0_0
         .vp_in(vp_in));
 endmodule
 
-(* ORIG_REF_NAME = "z2_voltage_experiments_xadc_wiz_0_0_address_decoder" *) 
 module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_address_decoder
    (\GEN_BKEND_CE_REGISTERS[24].ce_out_i_reg[24]_0 ,
     Bus_RNW_reg_reg_0,
@@ -1655,7 +1654,6 @@ module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_a
         .O(sw_rst_cond));
 endmodule
 
-(* ORIG_REF_NAME = "z2_voltage_experiments_xadc_wiz_0_0_axi_lite_ipif" *) 
 module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_lite_ipif
    (\GEN_BKEND_CE_REGISTERS[24].ce_out_i_reg[24] ,
     bus2ip_reset_active_high,
@@ -2079,8 +2077,7 @@ endmodule
 
 (* C_FAMILY = "virtex7" *) (* C_INCLUDE_INTR = "1" *) (* C_INSTANCE = "z2_voltage_experiments_xadc_wiz_0_0_axi_xadc" *) 
 (* C_SIM_MONITOR_FILE = "design.txt" *) (* C_S_AXI_ADDR_WIDTH = "11" *) (* C_S_AXI_DATA_WIDTH = "32" *) 
-(* ORIG_REF_NAME = "z2_voltage_experiments_xadc_wiz_0_0_axi_xadc" *) (* hdl = "VHDL" *) (* ip_group = "LOGICORE" *) 
-(* iptype = "PERIPHERAL" *) 
+(* hdl = "VHDL" *) (* ip_group = "LOGICORE" *) (* iptype = "PERIPHERAL" *) 
 module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_xadc
    (s_axi_aclk,
     s_axi_aresetn,
@@ -2754,7 +2751,6 @@ module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_a
         .R(reset2ip_reset));
 endmodule
 
-(* ORIG_REF_NAME = "z2_voltage_experiments_xadc_wiz_0_0_interrupt_control" *) 
 module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_interrupt_control
    (irpt_wrack_d1,
     \GEN_IP_IRPT_STATUS_REG[0].GEN_REG_STATUS.ip_irpt_status_reg_reg[0]_0 ,
@@ -3596,7 +3592,6 @@ module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_i
         .R(reset2ip_reset));
 endmodule
 
-(* ORIG_REF_NAME = "z2_voltage_experiments_xadc_wiz_0_0_slave_attachment" *) 
 module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_slave_attachment
    (\GEN_BKEND_CE_REGISTERS[24].ce_out_i_reg[24] ,
     SR,
@@ -4486,7 +4481,6 @@ module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_s
         .O(s_axi_awready));
 endmodule
 
-(* ORIG_REF_NAME = "z2_voltage_experiments_xadc_wiz_0_0_soft_reset" *) 
 module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_soft_reset
    (sw_rst_cond_d1,
     wrack,
@@ -4916,7 +4910,6 @@ module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_s
         .R(bus2ip_reset_active_high));
 endmodule
 
-(* ORIG_REF_NAME = "z2_voltage_experiments_xadc_wiz_0_0_xadc_core_drp" *) 
 module z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_xadc_core_drp
    (D,
     eoc_out,

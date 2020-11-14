@@ -7,16 +7,16 @@
 
 
 module ring_oscillator_module_wrap
-	#(parameter WIDTH = 8,
+	#(parameter WIDTH = 10,
 	  parameter LOG_NUM_RO = 2)
 	 (
 		input clk_200MHz,
 		input rst_n,
 		input [15:0] cycles_per_integration,
 		input [15:0] num_ro_enabled,
-		input aquire_mode,
-		input ro_rst,
-		input start_aquire,
+		input acquire_mode,
+		input ros_rst,
+		input start_acquire,
 		output wire [7:0] status,
 		output wire [15:0] last_ro_sum,
 		
@@ -32,9 +32,9 @@ module ring_oscillator_module_wrap
 		.rst_n(rst_n),
 		.cycles_per_integration(cycles_per_integration),
 		.num_ro_enabled(num_ro_enabled),
-		.aquire_mode(aquire_mode),
-		.ro_rst(ro_rst),
-		.start_aquire(start_aquire),
+		.acquire_mode(acquire_mode),
+		.ros_rst(ros_rst),
+		.start_acquire(start_acquire),
 		.last_ro_sum(last_ro_sum),
 		
 		.bram_addr_a(bram_addr_a[16:0]),

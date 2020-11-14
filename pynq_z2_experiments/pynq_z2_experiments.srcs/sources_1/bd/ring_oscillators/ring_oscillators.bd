@@ -610,7 +610,7 @@
         }
       },
       "axi_ro_control_0": {
-        "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.0.1",
+        "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.0.2",
         "xci_name": "ring_oscillators_axi_ro_control_0_0"
       },
       "ring_oscillator_modu_0": {
@@ -642,7 +642,7 @@
           "aquire_mode": {
             "direction": "I"
           },
-          "ro_rst": {
+          "ros_rst": {
             "type": "rst",
             "direction": "I"
           },
@@ -762,7 +762,7 @@
       "axi_ro_control_0_ro_rst": {
         "ports": [
           "axi_ro_control_0/ro_rst",
-          "ring_oscillator_modu_0/ro_rst"
+          "ring_oscillator_modu_0/ros_rst"
         ]
       },
       "axi_ro_control_0_start_aquire": {

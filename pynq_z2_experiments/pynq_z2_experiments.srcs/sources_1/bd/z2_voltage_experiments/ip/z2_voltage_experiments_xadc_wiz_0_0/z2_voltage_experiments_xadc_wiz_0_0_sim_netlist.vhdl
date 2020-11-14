@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Nov 13 02:33:02 2020
+-- Date        : Fri Nov 13 02:33:01 2020
 -- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_xadc_wiz_0_0/z2_voltage_experiments_xadc_wiz_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top z2_voltage_experiments_xadc_wiz_0_0 -prefix
+--               z2_voltage_experiments_xadc_wiz_0_0_ z2_voltage_experiments_xadc_wiz_0_0_sim_netlist.vhdl
 -- Design      : z2_voltage_experiments_xadc_wiz_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -110,8 +110,6 @@ entity z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_a
     s_axi_wdata : in STD_LOGIC_VECTOR ( 1 downto 0 );
     hard_macro_rst_reg : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_address_decoder : entity is "z2_voltage_experiments_xadc_wiz_0_0_address_decoder";
 end z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_address_decoder;
 
 architecture STRUCTURE of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_address_decoder is
@@ -1784,8 +1782,6 @@ entity z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_i
     s_axi_wstrb : in STD_LOGIC_VECTOR ( 0 to 0 );
     E : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_interrupt_control : entity is "z2_voltage_experiments_xadc_wiz_0_0_interrupt_control";
 end z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_interrupt_control;
 
 architecture STRUCTURE of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_interrupt_control is
@@ -2773,8 +2769,6 @@ entity z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_s
     s_axi_arvalid : in STD_LOGIC;
     s_axi_wdata : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_soft_reset : entity is "z2_voltage_experiments_xadc_wiz_0_0_soft_reset";
 end z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_soft_reset;
 
 architecture STRUCTURE of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_soft_reset is
@@ -3337,8 +3331,6 @@ entity z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_x
     rst_ip2bus_rdack : in STD_LOGIC;
     dummy_intr_reg_rdack : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_xadc_core_drp : entity is "z2_voltage_experiments_xadc_wiz_0_0_xadc_core_drp";
 end z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_xadc_core_drp;
 
 architecture STRUCTURE of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_xadc_core_drp is
@@ -4261,8 +4253,6 @@ entity z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_s
     hard_macro_rst_reg : in STD_LOGIC;
     \s_axi_rdata_i_reg[31]_0\ : in STD_LOGIC_VECTOR ( 18 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_slave_attachment : entity is "z2_voltage_experiments_xadc_wiz_0_0_slave_attachment";
 end z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_slave_attachment;
 
 architecture STRUCTURE of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_slave_attachment is
@@ -5128,8 +5118,6 @@ entity z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_a
     hard_macro_rst_reg : in STD_LOGIC;
     \s_axi_rdata_i_reg[31]\ : in STD_LOGIC_VECTOR ( 18 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_lite_ipif : entity is "z2_voltage_experiments_xadc_wiz_0_0_axi_lite_ipif";
 end z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_lite_ipif;
 
 architecture STRUCTURE of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_lite_ipif is
@@ -5291,8 +5279,6 @@ entity z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_a
   attribute C_S_AXI_ADDR_WIDTH of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_xadc : entity is 11;
   attribute C_S_AXI_DATA_WIDTH : integer;
   attribute C_S_AXI_DATA_WIDTH of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_xadc : entity is 32;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_xadc : entity is "z2_voltage_experiments_xadc_wiz_0_0_axi_xadc";
   attribute hdl : string;
   attribute hdl of z2_voltage_experiments_xadc_wiz_0_0_z2_voltage_experiments_xadc_wiz_0_0_axi_xadc : entity is "VHDL";
   attribute ip_group : string;

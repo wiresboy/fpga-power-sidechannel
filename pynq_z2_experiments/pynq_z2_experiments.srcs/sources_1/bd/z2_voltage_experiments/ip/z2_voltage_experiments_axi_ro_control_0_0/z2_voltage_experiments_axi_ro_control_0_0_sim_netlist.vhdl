@@ -1,7 +1,7 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Nov 13 02:32:53 2020
+-- Date        : Fri Nov 13 21:09:44 2020
 -- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 -- Command     : write_vhdl -force -mode funcsim
 --               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_axi_ro_control_0_0/z2_voltage_experiments_axi_ro_control_0_0_sim_netlist.vhdl
@@ -528,7 +528,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
     );
 \axi_rdata[14]_i_3\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"30BB3088"
+      INIT => X"FCBBFC88"
     )
         port map (
       I0 => slv_reg6(14),
@@ -1201,7 +1201,7 @@ axi_bvalid_reg: unisim.vcomponents.FDRE
     );
 \axi_rdata[9]_i_3\: unisim.vcomponents.LUT5
     generic map(
-      INIT => X"30BB3088"
+      INIT => X"FCBBFC88"
     )
         port map (
       I0 => slv_reg6(9),

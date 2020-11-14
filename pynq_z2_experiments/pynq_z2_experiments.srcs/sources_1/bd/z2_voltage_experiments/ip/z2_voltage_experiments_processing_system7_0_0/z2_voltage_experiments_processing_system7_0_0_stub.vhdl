@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Nov 13 02:33:08 2020
+-- Date        : Fri Nov 13 02:33:07 2020
 -- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_processing_system7_0_0/z2_voltage_experiments_processing_system7_0_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top z2_voltage_experiments_processing_system7_0_0 -prefix
+--               z2_voltage_experiments_processing_system7_0_0_ z2_voltage_experiments_processing_system7_0_0_stub.vhdl
 -- Design      : z2_voltage_experiments_processing_system7_0_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-1

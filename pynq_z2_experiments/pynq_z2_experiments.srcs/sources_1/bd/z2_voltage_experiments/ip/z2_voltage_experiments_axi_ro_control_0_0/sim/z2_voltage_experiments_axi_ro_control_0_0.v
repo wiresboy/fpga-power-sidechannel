@@ -47,8 +47,8 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: wiresboy.github.io:Brandon:axi_ro_control:1.0.1
-// IP Revision: 7
+// IP VLNV: wiresboy.github.io:Brandon:axi_ro_control:1.0.2
+// IP Revision: 10
 
 `timescale 1ns/1ps
 

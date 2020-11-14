@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
--- Date        : Fri Nov 13 02:33:37 2020
+-- Date        : Fri Nov 13 02:33:35 2020
 -- Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               d:/Github/fpga-power-sidechannel/pynq_z2_experiments/pynq_z2_experiments.srcs/sources_1/bd/z2_voltage_experiments/ip/z2_voltage_experiments_blk_mem_gen_0_0/z2_voltage_experiments_blk_mem_gen_0_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top z2_voltage_experiments_blk_mem_gen_0_0 -prefix
+--               z2_voltage_experiments_blk_mem_gen_0_0_ z2_voltage_experiments_blk_mem_gen_0_0_sim_netlist.vhdl
 -- Design      : z2_voltage_experiments_blk_mem_gen_0_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -31,8 +31,6 @@ entity z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_wrapper is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     web : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_wrapper is
@@ -4335,8 +4333,6 @@ entity z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_width is
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     web : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_prim_width is
@@ -5055,8 +5051,6 @@ entity z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_generic_cstr is
     wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
     web : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_generic_cstr is
@@ -5355,8 +5349,6 @@ entity z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_top is
     wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
     web : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_top;
 
 architecture STRUCTURE of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_top is
@@ -5400,8 +5392,6 @@ entity z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4_synth is
     wea : in STD_LOGIC_VECTOR ( 3 downto 0 );
     web : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4_synth : entity is "blk_mem_gen_v8_4_4_synth";
 end z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4_synth;
 
 architecture STRUCTURE of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4_synth is
@@ -5644,8 +5634,6 @@ entity z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4 is
   attribute C_WRITE_WIDTH_B of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4 : entity is 32;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4 : entity is "zynq";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4 : entity is "blk_mem_gen_v8_4_4";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4 : entity is "yes";
 end z2_voltage_experiments_blk_mem_gen_0_0_blk_mem_gen_v8_4_4;

@@ -132,12 +132,13 @@ set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
 xilinx.com:ip:axi_bram_ctrl:4.1\
-wiresboy.github.io:Brandon:axi_ro_control:1.0.1\
+wiresboy.github.io:Brandon:axi_ro_control:1.0.2\
 xilinx.com:ip:blk_mem_gen:8.4\
 xilinx.com:ip:processing_system7:5.5\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:xadc_wiz:3.3\
 xilinx.com:ip:xlconstant:1.1\
+xilinx.com:ip:xlslice:1.0\
 "
 
    set list_ips_missing ""
@@ -232,6 +233,8 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
+  set leds_4bits_tri_o [ create_bd_port -dir O -from 3 -to 0 -type data leds_4bits_tri_o ]
+  set rgbleds_6bits_tri_o [ create_bd_port -dir O -from 5 -to 0 -type data rgbleds_6bits_tri_o ]
 
   # Create instance: axi_bram_ctrl_0, and set properties
   set axi_bram_ctrl_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0 ]
@@ -249,7 +252,7 @@ proc create_root_design { parentCell } {
   set axi_interconnect_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 axi_interconnect_0 ]
 
   # Create instance: axi_ro_control_0, and set properties
-  set axi_ro_control_0 [ create_bd_cell -type ip -vlnv wiresboy.github.io:Brandon:axi_ro_control:1.0.1 axi_ro_control_0 ]
+  set axi_ro_control_0 [ create_bd_cell -type ip -vlnv wiresboy.github.io:Brandon:axi_ro_control:1.0.2 axi_ro_control_0 ]
 
   # Create instance: blk_mem_gen_0, and set properties
   set blk_mem_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 blk_mem_gen_0 ]
@@ -1108,6 +1111,23 @@ proc create_root_design { parentCell } {
    CONFIG.CONST_VAL {1} \
  ] $xlconstant_1
 
+  # Create instance: xlslice_0, and set properties
+  set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {6} \
+   CONFIG.DIN_TO {3} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {4} \
+ ] $xlslice_0
+
+  # Create instance: xlslice_1, and set properties
+  set xlslice_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_1 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {5} \
+   CONFIG.DIN_WIDTH {16} \
+   CONFIG.DOUT_WIDTH {6} \
+ ] $xlslice_1
+
   # Create interface connections
   connect_bd_intf_net -intf_net S00_AXI_0_1 [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins ps7_0_axi_periph/M01_AXI]
   connect_bd_intf_net -intf_net axi_bram_ctrl_0_BRAM_PORTA [get_bd_intf_pins axi_bram_ctrl_0/BRAM_PORTA] [get_bd_intf_pins blk_mem_gen_0/BRAM_PORTB]
@@ -1121,6 +1141,7 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net axi_ro_control_0_aquire_mode [get_bd_pins axi_ro_control_0/aquire_mode] [get_bd_pins ring_oscillator_modu_0/aquire_mode]
   connect_bd_net -net axi_ro_control_0_cycles_per_integration [get_bd_pins axi_ro_control_0/cycles_per_integration] [get_bd_pins ring_oscillator_modu_0/cycles_per_integration]
+  connect_bd_net -net axi_ro_control_0_num_power_virus_enabled [get_bd_pins axi_ro_control_0/num_power_virus_enabled] [get_bd_pins xlslice_1/Din]
   connect_bd_net -net axi_ro_control_0_num_ro_enabled [get_bd_pins axi_ro_control_0/num_ro_enabled] [get_bd_pins ring_oscillator_modu_0/num_ro_enabled]
   connect_bd_net -net axi_ro_control_0_ro_rst [get_bd_pins axi_ro_control_0/ro_rst] [get_bd_pins ring_oscillator_modu_0/ro_rst]
   connect_bd_net -net axi_ro_control_0_start_aquire [get_bd_pins axi_ro_control_0/start_aquire] [get_bd_pins ring_oscillator_modu_0/start_aquire]
@@ -1131,12 +1152,14 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ring_oscillator_modu_0_bram_clk_a [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins ring_oscillator_modu_0/bram_clk_a]
   connect_bd_net -net ring_oscillator_modu_0_bram_din_a [get_bd_pins blk_mem_gen_0/dina] [get_bd_pins ring_oscillator_modu_0/bram_din_a]
   connect_bd_net -net ring_oscillator_modu_0_bram_we_a [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins ring_oscillator_modu_0/bram_we_a]
-  connect_bd_net -net ring_oscillator_modu_0_last_ro_sum [get_bd_pins axi_ro_control_0/last_ro_sum] [get_bd_pins ring_oscillator_modu_0/last_ro_sum]
+  connect_bd_net -net ring_oscillator_modu_0_last_ro_sum [get_bd_pins axi_ro_control_0/last_ro_sum] [get_bd_pins ring_oscillator_modu_0/last_ro_sum] [get_bd_pins xlslice_0/Din]
   connect_bd_net -net ring_oscillator_modu_0_status [get_bd_pins axi_ro_control_0/ext_status] [get_bd_pins ring_oscillator_modu_0/status]
   connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn] [get_bd_pins xadc_wiz_0/s_axi_aresetn]
   connect_bd_net -net rst_ps7_0_200M_peripheral_aresetn [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axi_interconnect_0/ARESETN] [get_bd_pins axi_interconnect_0/M00_ARESETN] [get_bd_pins axi_interconnect_0/M01_ARESETN] [get_bd_pins axi_interconnect_0/S00_ARESETN] [get_bd_pins axi_ro_control_0/s00_axi_aresetn] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ring_oscillator_modu_0/rst_n] [get_bd_pins rst_ps7_0_200M/peripheral_aresetn]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins blk_mem_gen_0/rsta] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins blk_mem_gen_0/ena] [get_bd_pins xlconstant_1/dout]
+  connect_bd_net -net xlslice_0_Dout [get_bd_ports leds_4bits_tri_o] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_ports rgbleds_6bits_tri_o] [get_bd_pins xlslice_1/Dout]
 
   # Create address segments
   assign_bd_address -offset 0x40000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_bram_ctrl_0/S_AXI/Mem0] -force

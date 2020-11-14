@@ -47,8 +47,8 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: wiresboy.github.io:Brandon:axi_ro_control:1.0.1
-// IP Revision: 7
+// IP VLNV: wiresboy.github.io:Brandon:axi_ro_control:1.0.2
+// IP Revision: 10
 
 (* X_CORE_INFO = "axi_ro_v1_0,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "z2_voltage_experiments_axi_ro_control_0_0,axi_ro_v1_0,{}" *)

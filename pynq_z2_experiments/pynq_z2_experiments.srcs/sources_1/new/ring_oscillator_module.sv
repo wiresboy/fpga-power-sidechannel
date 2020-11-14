@@ -5,16 +5,16 @@
 
 
 module ring_oscillator_module
-	#(parameter WIDTH = 8,
+	#(parameter WIDTH = 10,
 	  parameter LOG_NUM_RO = 2)
 	 (
 		input clk_200MHz,
 		input rst_n,
 		input [15:0] cycles_per_integration,
 		input [15:0] num_ro_enabled,
-		input aquire_mode,
-		input ro_rst,
-		input start_aquire,
+		input acquire_mode,
+		input ros_rst,
+		input start_acquire,
 		output logic [7:0] status,
 		output logic [15:0] last_ro_sum,
 		
@@ -30,7 +30,7 @@ module ring_oscillator_module
 	logic sum_updated;
 	
 	ring_oscillator_set #(.WIDTH(WIDTH), .LOG_NUM_RO(LOG_NUM_RO)) ros (
-		.rst(ro_rst),
+		.rst(ros_rst),
 		.ref_clk(clk_200MHz),
 		.cycles_per_integration(cycles_per_integration),
 		.num_ro_enabled(num_ro_enabled),
@@ -42,7 +42,7 @@ module ring_oscillator_module
 	logic [16:0] index;
 	logic currently_recording;
 	
-	assign currently_recording = (aquire_mode || index != INDEX_MAX);
+	assign currently_recording = (acquire_mode || index != INDEX_MAX);
 	
 	assign bram_we_a = sum_updated & currently_recording;
 	assign bram_addr_a = index;
@@ -55,11 +55,13 @@ module ring_oscillator_module
 	always_ff @(posedge clk_200MHz) begin
 		if (~rst_n) begin
 			last_ro_sum <= 0;
+			index <= 0;
 		end else begin
-			if (start_aquire) begin
+			last_ro_sum <= sum;
+			if (start_acquire) begin
 				index <= 0;
-			end else if (currently_recording) begin
-				index <= index + 1; //Can loop around in case of aquire_mode = 1 -> record until end.
+			end else if (currently_recording & sum_updated) begin
+				index <= index + 1; //Can loop around in case of acquire_mode = 1 -> record until end.
 			end
 		end
 	

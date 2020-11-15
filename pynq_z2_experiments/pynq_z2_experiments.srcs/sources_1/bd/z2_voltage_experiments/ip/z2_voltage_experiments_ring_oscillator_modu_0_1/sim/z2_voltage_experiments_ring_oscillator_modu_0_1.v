@@ -47,27 +47,63 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:ip:xlslice:1.0
-// IP Revision: 2
+// IP VLNV: xilinx.com:module_ref:ring_oscillator_module_wrap:1.0
+// IP Revision: 1
 
-(* X_CORE_INFO = "xlslice_v1_0_2_xlslice,Vivado 2020.1" *)
-(* CHECK_LICENSE_TYPE = "z2_voltage_experiments_xlslice_0_0,xlslice_v1_0_2_xlslice,{}" *)
-(* CORE_GENERATION_INFO = "z2_voltage_experiments_xlslice_0_0,xlslice_v1_0_2_xlslice,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=ip,x_ipName=xlslice,x_ipVersion=1.0,x_ipCoreRevision=2,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,DIN_WIDTH=32,DIN_FROM=7,DIN_TO=4}" *)
+`timescale 1ns/1ps
+
+(* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module z2_voltage_experiments_xlslice_0_0 (
-  Din,
-  Dout
+module z2_voltage_experiments_ring_oscillator_modu_0_1 (
+  clk_200MHz,
+  rst_n,
+  cycles_per_integration,
+  num_ro_enabled,
+  acquire_mode,
+  ros_rst,
+  start_acquire,
+  status,
+  last_ro_sum,
+  bram_addr_a,
+  bram_clk_a,
+  bram_din_a,
+  bram_we_a
 );
 
-input wire [31 : 0] Din;
-output wire [3 : 0] Dout;
+input wire clk_200MHz;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME rst_n, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 rst_n RST" *)
+input wire rst_n;
+input wire [15 : 0] cycles_per_integration;
+input wire [15 : 0] num_ro_enabled;
+input wire acquire_mode;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ros_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ros_rst RST" *)
+input wire ros_rst;
+input wire start_acquire;
+output wire [7 : 0] status;
+output wire [31 : 0] last_ro_sum;
+output wire [31 : 0] bram_addr_a;
+output wire bram_clk_a;
+output wire [31 : 0] bram_din_a;
+output wire bram_we_a;
 
-  xlslice_v1_0_2_xlslice #(
-    .DIN_WIDTH(32),
-    .DIN_FROM(7),
-    .DIN_TO(4)
+  ring_oscillator_module_wrap #(
+    .WIDTH(20),
+    .LOG_NUM_RO(2)
   ) inst (
-    .Din(Din),
-    .Dout(Dout)
+    .clk_200MHz(clk_200MHz),
+    .rst_n(rst_n),
+    .cycles_per_integration(cycles_per_integration),
+    .num_ro_enabled(num_ro_enabled),
+    .acquire_mode(acquire_mode),
+    .ros_rst(ros_rst),
+    .start_acquire(start_acquire),
+    .status(status),
+    .last_ro_sum(last_ro_sum),
+    .bram_addr_a(bram_addr_a),
+    .bram_clk_a(bram_clk_a),
+    .bram_din_a(bram_din_a),
+    .bram_we_a(bram_we_a)
   );
 endmodule

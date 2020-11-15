@@ -7,7 +7,7 @@
 
 
 module ring_oscillator_module_wrap
-	#(parameter WIDTH = 10,
+	#(parameter WIDTH = 8,
 	  parameter LOG_NUM_RO = 2)
 	 (
 		input clk_200MHz,
@@ -18,7 +18,7 @@ module ring_oscillator_module_wrap
 		input ros_rst,
 		input start_acquire,
 		output wire [7:0] status,
-		output wire [15:0] last_ro_sum,
+		output wire [31:0] last_ro_sum,
 		
 		//BRAM
 		output wire [31:0] bram_addr_a,  //16:0
@@ -39,11 +39,10 @@ module ring_oscillator_module_wrap
 		
 		.bram_addr_a(bram_addr_a[16:0]),
 		.bram_clk_a(bram_clk_a),
-		.bram_din_a(bram_din_a[15:0]),
+		.bram_din_a(bram_din_a[31:0]),
 		.bram_we_a(bram_we_a)
 	);
 	
 	assign bram_addr_a[31:17] = 0;
-	assign bram_din_a[31:16] = 0;
 	
 endmodule

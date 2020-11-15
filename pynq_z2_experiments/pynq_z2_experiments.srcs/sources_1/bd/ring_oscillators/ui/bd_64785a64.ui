@@ -17,23 +17,23 @@ preplace inst axi_ro_control_0 -pg 1 -lvl 2 -x 610 -y -200 -defaultsOSRD
 preplace inst ring_oscillator_modu_0 -pg 1 -lvl 2 -x 610 -y 20 -defaultsOSRD
 preplace netloc clk_200MHz_1 1 0 2 10 110 340
 preplace netloc S00_ARESETN_0_1 1 0 2 0 100 350
-preplace netloc ring_oscillator_modu_0_last_ro_sum 1 1 2 370 190 810
-preplace netloc ring_oscillator_modu_0_status 1 1 2 360 200 840
-preplace netloc axi_ro_control_0_cycles_per_integration 1 1 2 380 150 860
-preplace netloc axi_ro_control_0_num_ro_enabled 1 1 2 390 160 850
-preplace netloc axi_ro_control_0_aquire_mode 1 1 2 420 140 800
-preplace netloc axi_ro_control_0_ro_rst 1 1 2 400 170 830
-preplace netloc axi_ro_control_0_start_aquire 1 1 2 410 180 820
-preplace netloc ring_oscillator_modu_0_bram_addr_a 1 2 1 900 10n
-preplace netloc ring_oscillator_modu_0_bram_clk_a 1 2 1 890 30n
-preplace netloc ring_oscillator_modu_0_bram_din_a 1 2 1 880 50n
-preplace netloc ring_oscillator_modu_0_bram_we_a 1 2 1 870 70n
-preplace netloc xlconstant_0_dout 1 2 1 900 420n
-preplace netloc xlconstant_1_dout 1 2 1 810 330n
-preplace netloc S00_AXI_0_1 1 0 1 NJ 170
-preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 2 1 850 460n
+preplace netloc ring_oscillator_modu_0_last_ro_sum 1 1 2 370 160 800
+preplace netloc ring_oscillator_modu_0_status 1 1 2 360 170 810
+preplace netloc axi_ro_control_0_cycles_per_integration 1 1 2 390 140 830
+preplace netloc axi_ro_control_0_num_ro_enabled 1 1 2 400 150 820
+preplace netloc axi_ro_control_0_aquire_mode 1 2 1 N -190
+preplace netloc axi_ro_control_0_ro_rst 1 1 2 380 180 840
+preplace netloc axi_ro_control_0_start_aquire 1 2 1 N -150
+preplace netloc ring_oscillator_modu_0_bram_addr_a 1 2 1 890 10n
+preplace netloc ring_oscillator_modu_0_bram_clk_a 1 2 1 880 30n
+preplace netloc ring_oscillator_modu_0_bram_din_a 1 2 1 870 50n
+preplace netloc ring_oscillator_modu_0_bram_we_a 1 2 1 850 70n
+preplace netloc xlconstant_0_dout 1 2 1 810 430n
+preplace netloc xlconstant_1_dout 1 2 1 860 330n
 preplace netloc axi_interconnect_0_M01_AXI 1 1 1 330 260n
 preplace netloc axi_interconnect_0_M00_AXI 1 1 1 330 -240n
+preplace netloc S00_AXI_0_1 1 0 1 NJ 170
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 2 1 840 520n
 levelinfo -pg 1 -20 180 610 1180 1290
 pagesize -pg 1 -db -bbox -sgen -190 -310 1290 740
 "

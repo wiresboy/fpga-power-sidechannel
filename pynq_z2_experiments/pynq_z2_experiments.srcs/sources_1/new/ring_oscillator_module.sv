@@ -5,7 +5,7 @@
 
 
 module ring_oscillator_module
-	#(parameter WIDTH = 10,
+	#(parameter WIDTH = 8,
 	  parameter LOG_NUM_RO = 2)
 	 (
 		input clk_200MHz,
@@ -16,12 +16,12 @@ module ring_oscillator_module
 		input ros_rst,
 		input start_acquire,
 		output logic [7:0] status,
-		output logic [15:0] last_ro_sum,
+		output logic [31:0] last_ro_sum,
 		
 		//BRAM:
 		output logic [16:0] bram_addr_a,
 		output logic bram_clk_a,
-		output logic [15:0] bram_din_a,
+		output logic [31:0] bram_din_a,
 		output logic bram_we_a
 	);
 	localparam INDEX_MAX = 17'h1FFFF;

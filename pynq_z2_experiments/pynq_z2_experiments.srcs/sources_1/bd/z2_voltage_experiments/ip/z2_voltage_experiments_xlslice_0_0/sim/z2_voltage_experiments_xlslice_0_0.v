@@ -58,13 +58,13 @@ module z2_voltage_experiments_xlslice_0_0 (
   Dout
 );
 
-input wire [15 : 0] Din;
+input wire [31 : 0] Din;
 output wire [3 : 0] Dout;
 
   xlslice_v1_0_2_xlslice #(
-    .DIN_WIDTH(16),
-    .DIN_FROM(6),
-    .DIN_TO(3)
+    .DIN_WIDTH(32),
+    .DIN_FROM(9),
+    .DIN_TO(6)
   ) inst (
     .Din(Din),
     .Dout(Dout)

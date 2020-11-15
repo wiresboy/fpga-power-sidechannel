@@ -44,6 +44,8 @@ pynq_z2_experiments/pynq_z2_experiments.runs/*
 pynq_z2_experiments/pynq_z2_experiments.cache/*
 pynq_z2_experiments/pynq_z2_experiments.tmp/*
 
+pynq_z2_experiments/pynq_z2_experiments.sim/*
+
 ip_repo/edit_axi_ro_v1_0.cache/*
 ip_repo/edit_axi_ro_v1_0.runs/*
 ip_repo/edit_axi_ro_v1_0.tmp/*

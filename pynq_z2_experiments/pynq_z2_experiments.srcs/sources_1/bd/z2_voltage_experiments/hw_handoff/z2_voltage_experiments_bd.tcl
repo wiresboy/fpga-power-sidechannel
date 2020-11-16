@@ -1021,7 +1021,8 @@ proc create_root_design { parentCell } {
      return 1
    }
     set_property -dict [ list \
-   CONFIG.WIDTH {20} \
+   CONFIG.LOG_NUM_RO {8} \
+   CONFIG.WIDTH {16} \
  ] $ring_oscillator_modu_0
 
   # Create instance: rst_ps7_0_100M, and set properties

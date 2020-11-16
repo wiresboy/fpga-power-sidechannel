@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 15 19:55:51 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 15 20:40:08 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="z2_voltage_experiments" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -4503,8 +4503,8 @@
     <MODULE COREREVISION="1" FULLNAME="/ring_oscillator_modu_0" HWVERSION="1.0" INSTANCE="ring_oscillator_modu_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="ring_oscillator_module_wrap" VLNV="xilinx.com:module_ref:ring_oscillator_module_wrap:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="WIDTH" VALUE="20"/>
-        <PARAMETER NAME="LOG_NUM_RO" VALUE="2"/>
+        <PARAMETER NAME="WIDTH" VALUE="16"/>
+        <PARAMETER NAME="LOG_NUM_RO" VALUE="8"/>
         <PARAMETER NAME="Component_Name" VALUE="z2_voltage_experiments_ring_oscillator_modu_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>

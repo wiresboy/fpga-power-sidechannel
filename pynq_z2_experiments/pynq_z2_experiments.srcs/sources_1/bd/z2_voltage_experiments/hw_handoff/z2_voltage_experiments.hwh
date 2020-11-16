@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov 14 22:27:48 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Nov 15 19:55:51 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="z2_voltage_experiments" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -117,6 +117,11 @@
     <PORT DIR="O" LEFT="5" NAME="rgbleds_6bits_tri_o" RIGHT="0" SIGIS="data" SIGNAME="xlslice_1_Dout">
       <CONNECTIONS>
         <CONNECTION INSTANCE="xlslice_1" PORT="Dout"/>
+      </CONNECTIONS>
+    </PORT>
+    <PORT DIR="O" LEFT="0" NAME="arduino_gpio_tri_io" RIGHT="0" SIGIS="data" SIGNAME="power_virus_wrap_0_dummy">
+      <CONNECTIONS>
+        <CONNECTION INSTANCE="power_virus_wrap_0" PORT="dummy"/>
       </CONNECTIONS>
     </PORT>
   </EXTERNALPORTS>
@@ -1660,6 +1665,7 @@
         <PORT DIR="O" LEFT="15" NAME="num_power_virus_enabled" RIGHT="0" SIGIS="undef" SIGNAME="axi_ro_control_0_num_power_virus_enabled">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlslice_1" PORT="Din"/>
+            <CONNECTION INSTANCE="power_virus_wrap_0" PORT="num_power_virus_enabled"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="aquire_mode" SIGIS="undef" SIGNAME="axi_ro_control_0_aquire_mode">
@@ -2110,6 +2116,33 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
+    </MODULE>
+    <MODULE COREREVISION="1" FULLNAME="/power_virus_wrap_0" HWVERSION="1.0" INSTANCE="power_virus_wrap_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="power_virus_wrap" VLNV="xilinx.com:module_ref:power_virus_wrap:1.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="LOG_NUM_PV_INSTANCES" VALUE="15"/>
+        <PARAMETER NAME="PV_TYPE" VALUE="0"/>
+        <PARAMETER NAME="Component_Name" VALUE="z2_voltage_experiments_power_virus_wrap_0_0"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" NAME="clk_200MHz" SIGIS="undef" SIGNAME="processing_system7_0_FCLK_CLK1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" LEFT="15" NAME="num_power_virus_enabled" RIGHT="0" SIGIS="undef" SIGNAME="axi_ro_control_0_num_power_virus_enabled">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="axi_ro_control_0" PORT="num_power_virus_enabled"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="dummy" SIGIS="undef" SIGNAME="power_virus_wrap_0_dummy">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="External_Ports" PORT="arduino_gpio_tri_io"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
     </MODULE>
     <MODULE CONFIGURABLE="TRUE" COREREVISION="6" FULLNAME="/processing_system7_0" HWVERSION="5.5" INSTANCE="processing_system7_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" IS_PL="FALSE" MODTYPE="processing_system7" VLNV="xilinx.com:ip:processing_system7:5.5">
       <DOCUMENTS>
@@ -3269,6 +3302,7 @@
             <CONNECTION INSTANCE="axi_interconnect_0" PORT="S00_ACLK"/>
             <CONNECTION INSTANCE="axi_ro_control_0" PORT="s00_axi_aclk"/>
             <CONNECTION INSTANCE="ring_oscillator_modu_0" PORT="clk_200MHz"/>
+            <CONNECTION INSTANCE="power_virus_wrap_0" PORT="clk_200MHz"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">

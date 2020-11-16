@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Sat Nov 14 22:27:47 2020
+//Date        : Sun Nov 15 19:55:49 2020
 //Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 //Command     : generate_target z2_voltage_experiments_wrapper.bd
 //Design      : z2_voltage_experiments_wrapper
@@ -31,6 +31,7 @@ module z2_voltage_experiments_wrapper
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    arduino_gpio_tri_io,
     leds_4bits_tri_o,
     rgbleds_6bits_tri_o);
   inout [14:0]DDR_addr;
@@ -54,6 +55,7 @@ module z2_voltage_experiments_wrapper
   inout FIXED_IO_ps_clk;
   inout FIXED_IO_ps_porb;
   inout FIXED_IO_ps_srstb;
+  output [0:0]arduino_gpio_tri_io;
   output [3:0]leds_4bits_tri_o;
   output [5:0]rgbleds_6bits_tri_o;
 
@@ -78,6 +80,7 @@ module z2_voltage_experiments_wrapper
   wire FIXED_IO_ps_clk;
   wire FIXED_IO_ps_porb;
   wire FIXED_IO_ps_srstb;
+  wire [0:0]arduino_gpio_tri_io;
   wire [3:0]leds_4bits_tri_o;
   wire [5:0]rgbleds_6bits_tri_o;
 
@@ -103,6 +106,7 @@ module z2_voltage_experiments_wrapper
         .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
         .FIXED_IO_ps_porb(FIXED_IO_ps_porb),
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
+        .arduino_gpio_tri_io(arduino_gpio_tri_io),
         .leds_4bits_tri_o(leds_4bits_tri_o),
         .rgbleds_6bits_tri_o(rgbleds_6bits_tri_o));
 endmodule

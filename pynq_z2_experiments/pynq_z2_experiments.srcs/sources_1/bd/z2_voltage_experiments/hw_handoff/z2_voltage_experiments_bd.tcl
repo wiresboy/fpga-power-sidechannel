@@ -40,7 +40,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # The design that will be created by this Tcl script contains the following 
 # module references:
-# ring_oscillator_module_wrap
+# power_virus_wrap, ring_oscillator_module_wrap
 
 # Please add the sources of those modules before sourcing this Tcl script.
 
@@ -169,6 +169,7 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
+  set arduino_gpio_tri_io [ create_bd_port -dir O -from 0 -to 0 -type data arduino_gpio_tri_io ]
   set leds_4bits_tri_o [ create_bd_port -dir O -from 3 -to 0 -type data leds_4bits_tri_o ]
   set rgbleds_6bits_tri_o [ create_bd_port -dir O -from 5 -to 0 -type data rgbleds_6bits_tri_o ]
 
@@ -214,6 +215,21 @@ proc create_root_design { parentCell } {
    CONFIG.Write_Width_B {32} \
    CONFIG.use_bram_block {BRAM_Controller} \
  ] $blk_mem_gen_0
+
+  # Create instance: power_virus_wrap_0, and set properties
+  set block_name power_virus_wrap
+  set block_cell_name power_virus_wrap_0
+  if { [catch {set power_virus_wrap_0 [create_bd_cell -type module -reference $block_name $block_cell_name] } errmsg] } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2095 -severity "ERROR" "Unable to add referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   } elseif { $power_virus_wrap_0 eq "" } {
+     catch {common::send_gid_msg -ssname BD::TCL -id 2096 -severity "ERROR" "Unable to referenced block <$block_name>. Please add the files for ${block_name}'s definition into the project."}
+     return 1
+   }
+    set_property -dict [ list \
+   CONFIG.LOG_NUM_PV_INSTANCES {15} \
+   CONFIG.PV_TYPE {0} \
+ ] $power_virus_wrap_0
 
   # Create instance: processing_system7_0, and set properties
   set processing_system7_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:processing_system7:5.5 processing_system7_0 ]
@@ -1089,12 +1105,13 @@ proc create_root_design { parentCell } {
   # Create port connections
   connect_bd_net -net axi_ro_control_0_aquire_mode [get_bd_pins axi_ro_control_0/aquire_mode] [get_bd_pins ring_oscillator_modu_0/acquire_mode]
   connect_bd_net -net axi_ro_control_0_cycles_per_integration [get_bd_pins axi_ro_control_0/cycles_per_integration] [get_bd_pins ring_oscillator_modu_0/cycles_per_integration]
-  connect_bd_net -net axi_ro_control_0_num_power_virus_enabled [get_bd_pins axi_ro_control_0/num_power_virus_enabled] [get_bd_pins xlslice_1/Din]
+  connect_bd_net -net axi_ro_control_0_num_power_virus_enabled [get_bd_pins axi_ro_control_0/num_power_virus_enabled] [get_bd_pins power_virus_wrap_0/num_power_virus_enabled] [get_bd_pins xlslice_1/Din]
   connect_bd_net -net axi_ro_control_0_num_ro_enabled [get_bd_pins axi_ro_control_0/num_ro_enabled] [get_bd_pins ring_oscillator_modu_0/num_ro_enabled]
   connect_bd_net -net axi_ro_control_0_ro_rst [get_bd_pins axi_ro_control_0/ro_rst] [get_bd_pins ring_oscillator_modu_0/ros_rst]
   connect_bd_net -net axi_ro_control_0_start_aquire [get_bd_pins axi_ro_control_0/start_aquire] [get_bd_pins ring_oscillator_modu_0/start_acquire]
+  connect_bd_net -net power_virus_wrap_0_dummy [get_bd_ports arduino_gpio_tri_io] [get_bd_pins power_virus_wrap_0/dummy]
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins xadc_wiz_0/s_axi_aclk]
-  connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_ro_control_0/s00_axi_aclk] [get_bd_pins processing_system7_0/FCLK_CLK1] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ring_oscillator_modu_0/clk_200MHz] [get_bd_pins rst_ps7_0_200M/slowest_sync_clk]
+  connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_interconnect_0/ACLK] [get_bd_pins axi_interconnect_0/M00_ACLK] [get_bd_pins axi_interconnect_0/M01_ACLK] [get_bd_pins axi_interconnect_0/S00_ACLK] [get_bd_pins axi_ro_control_0/s00_axi_aclk] [get_bd_pins power_virus_wrap_0/clk_200MHz] [get_bd_pins processing_system7_0/FCLK_CLK1] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ring_oscillator_modu_0/clk_200MHz] [get_bd_pins rst_ps7_0_200M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_RESET0_N [get_bd_pins processing_system7_0/FCLK_RESET0_N] [get_bd_pins rst_ps7_0_100M/ext_reset_in] [get_bd_pins rst_ps7_0_200M/ext_reset_in]
   connect_bd_net -net ring_oscillator_modu_0_bram_addr_a [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins ring_oscillator_modu_0/bram_addr_a]
   connect_bd_net -net ring_oscillator_modu_0_bram_clk_a [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins ring_oscillator_modu_0/bram_clk_a]

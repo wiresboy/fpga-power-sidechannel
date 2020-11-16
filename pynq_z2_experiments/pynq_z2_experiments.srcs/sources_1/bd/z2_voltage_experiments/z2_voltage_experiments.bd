@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xEAAC854913AB69D1",
+      "boundary_crc": "0x283484C7530E38DF",
       "device": "xc7z020clg400-1",
       "name": "z2_voltage_experiments",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -38,7 +38,8 @@
       "xlslice_0": "",
       "xlslice_1": "",
       "xlslice_2": "",
-      "ring_oscillator_modu_0": ""
+      "ring_oscillator_modu_0": "",
+      "power_virus_wrap_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -123,6 +124,18 @@
         "type": "data",
         "direction": "O",
         "left": "5",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "arduino_gpio_tri_io": {
+        "type": "data",
+        "direction": "O",
+        "left": "0",
         "right": "0",
         "parameters": {
           "LAYERED_METADATA": {
@@ -2116,16 +2129,16 @@
               }
             },
             "interface_nets": {
-              "m01_couplers_to_auto_cc": {
-                "interface_ports": [
-                  "S_AXI",
-                  "auto_cc/S_AXI"
-                ]
-              },
               "auto_cc_to_m01_couplers": {
                 "interface_ports": [
                   "M_AXI",
                   "auto_cc/M_AXI"
+                ]
+              },
+              "m01_couplers_to_auto_cc": {
+                "interface_ports": [
+                  "S_AXI",
+                  "auto_cc/S_AXI"
                 ]
               }
             },
@@ -2158,12 +2171,6 @@
           }
         },
         "interface_nets": {
-          "m00_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
-            ]
-          },
           "ps7_0_axi_periph_to_s00_couplers": {
             "interface_ports": [
               "S00_AXI",
@@ -2176,10 +2183,10 @@
               "xbar/S00_AXI"
             ]
           },
-          "xbar_to_m01_couplers": {
+          "m00_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
+              "M00_AXI",
+              "m00_couplers/M_AXI"
             ]
           },
           "xbar_to_m00_couplers": {
@@ -2192,6 +2199,12 @@
             "interface_ports": [
               "M01_AXI",
               "m01_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m01_couplers": {
+            "interface_ports": [
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           }
         },
@@ -2559,24 +2572,6 @@
           }
         },
         "interface_nets": {
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
-            ]
-          },
-          "m01_couplers_to_axi_interconnect_0": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m01_couplers": {
-            "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
-            ]
-          },
           "s00_couplers_to_xbar": {
             "interface_ports": [
               "s00_couplers/M_AXI",
@@ -2593,6 +2588,24 @@
             "interface_ports": [
               "M00_AXI",
               "m00_couplers/M_AXI"
+            ]
+          },
+          "m01_couplers_to_axi_interconnect_0": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m01_couplers": {
+            "interface_ports": [
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           }
         },
@@ -2841,6 +2854,56 @@
             "direction": "O"
           }
         }
+      },
+      "power_virus_wrap_0": {
+        "vlnv": "xilinx.com:module_ref:power_virus_wrap:1.0",
+        "xci_name": "z2_voltage_experiments_power_virus_wrap_0_0",
+        "parameters": {
+          "LOG_NUM_PV_INSTANCES": {
+            "value": "15"
+          },
+          "PV_TYPE": {
+            "value": "0"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "power_virus_wrap",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_200MHz": {
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "z2_voltage_experiments_processing_system7_0_0_FCLK_CLK1",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "200000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "num_power_virus_enabled": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "dummy": {
+            "direction": "O",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "",
+                "value_src": "weak"
+              }
+            }
+          }
+        }
       }
     },
     "interface_nets": {
@@ -2932,7 +2995,8 @@
           "axi_interconnect_0/M00_ACLK",
           "axi_interconnect_0/S00_ACLK",
           "axi_ro_control_0/s00_axi_aclk",
-          "ring_oscillator_modu_0/clk_200MHz"
+          "ring_oscillator_modu_0/clk_200MHz",
+          "power_virus_wrap_0/clk_200MHz"
         ]
       },
       "rst_ps7_0_200M_peripheral_aresetn": {
@@ -3036,7 +3100,8 @@
       "axi_ro_control_0_num_power_virus_enabled": {
         "ports": [
           "axi_ro_control_0/num_power_virus_enabled",
-          "xlslice_1/Din"
+          "xlslice_1/Din",
+          "power_virus_wrap_0/num_power_virus_enabled"
         ]
       },
       "xlslice_1_Dout": {
@@ -3049,6 +3114,12 @@
         "ports": [
           "xlslice_2/Dout",
           "axi_ro_control_0/last_ro_sum"
+        ]
+      },
+      "power_virus_wrap_0_dummy": {
+        "ports": [
+          "power_virus_wrap_0/dummy",
+          "arduino_gpio_tri_io"
         ]
       }
     },

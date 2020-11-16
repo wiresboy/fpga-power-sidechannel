@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Sat Nov 14 22:27:47 2020
+//Date        : Sun Nov 15 19:55:49 2020
 //Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 //Command     : generate_target z2_voltage_experiments.bd
 //Design      : z2_voltage_experiments
@@ -1100,7 +1100,7 @@ module s00_couplers_imp_C2PBLM
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "z2_voltage_experiments,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=z2_voltage_experiments,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=25,numReposBlks=17,numNonXlnxBlks=1,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "z2_voltage_experiments.hwdef" *) 
+(* CORE_GENERATION_INFO = "z2_voltage_experiments,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=z2_voltage_experiments,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=26,numReposBlks=18,numNonXlnxBlks=1,numHierBlks=8,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=OOC_per_IP}" *) (* HW_HANDOFF = "z2_voltage_experiments.hwdef" *) 
 module z2_voltage_experiments
    (DDR_addr,
     DDR_ba,
@@ -1123,6 +1123,7 @@ module z2_voltage_experiments
     FIXED_IO_ps_clk,
     FIXED_IO_ps_porb,
     FIXED_IO_ps_srstb,
+    arduino_gpio_tri_io,
     leds_4bits_tri_o,
     rgbleds_6bits_tri_o);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]DDR_addr;
@@ -1146,6 +1147,7 @@ module z2_voltage_experiments
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *) inout FIXED_IO_ps_clk;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB" *) inout FIXED_IO_ps_porb;
   (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *) inout FIXED_IO_ps_srstb;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.ARDUINO_GPIO_TRI_IO DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.ARDUINO_GPIO_TRI_IO, LAYERED_METADATA undef" *) output [0:0]arduino_gpio_tri_io;
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.LEDS_4BITS_TRI_O DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.LEDS_4BITS_TRI_O, LAYERED_METADATA undef" *) output [3:0]leds_4bits_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.RGBLEDS_6BITS_TRI_O DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.RGBLEDS_6BITS_TRI_O, LAYERED_METADATA undef" *) output [5:0]rgbleds_6bits_tri_o;
 
@@ -1219,6 +1221,7 @@ module z2_voltage_experiments
   wire [15:0]axi_ro_control_0_num_ro_enabled;
   wire axi_ro_control_0_ro_rst;
   wire axi_ro_control_0_start_aquire;
+  wire power_virus_wrap_0_dummy;
   wire [14:0]processing_system7_0_DDR_ADDR;
   wire [2:0]processing_system7_0_DDR_BA;
   wire processing_system7_0_DDR_CAS_N;
@@ -1312,6 +1315,7 @@ module z2_voltage_experiments
   wire [5:0]xlslice_1_Dout;
   wire [15:0]xlslice_2_Dout;
 
+  assign arduino_gpio_tri_io[0] = power_virus_wrap_0_dummy;
   assign leds_4bits_tri_o[3:0] = xlslice_0_Dout;
   assign rgbleds_6bits_tri_o[5:0] = xlslice_1_Dout;
   (* BMM_INFO_ADDRESS_SPACE = "byte  0x40000000 32 > z2_voltage_experiments blk_mem_gen_0" *) 
@@ -1455,6 +1459,10 @@ module z2_voltage_experiments
         .rstb(axi_bram_ctrl_0_BRAM_PORTA_RST),
         .wea({ring_oscillator_modu_0_bram_we_a,ring_oscillator_modu_0_bram_we_a,ring_oscillator_modu_0_bram_we_a,ring_oscillator_modu_0_bram_we_a}),
         .web(axi_bram_ctrl_0_BRAM_PORTA_WE));
+  z2_voltage_experiments_power_virus_wrap_0_0 power_virus_wrap_0
+       (.clk_200MHz(processing_system7_0_FCLK_CLK1),
+        .dummy(power_virus_wrap_0_dummy),
+        .num_power_virus_enabled(axi_ro_control_0_num_power_virus_enabled));
   (* BMM_INFO_PROCESSOR = "arm > z2_voltage_experiments axi_bram_ctrl_0" *) 
   (* KEEP_HIERARCHY = "yes" *) 
   z2_voltage_experiments_processing_system7_0_0 processing_system7_0

@@ -59,24 +59,48 @@ module power_virus #(parameter LOG_NUM_PV_INSTANCES = 13,
     
     assign dummy = num_power_virus_enabled_latched[1];
     
-    
-    generate
-    	genvar i; //log(group_size)
-    	for (i=0; i<=LOG_NUM_PV_INSTANCES; i = i+1) begin: gen_size
-    		genvar j;
-    		for (j=0; j<(i**2); j=j+1) begin: gen_index
-    			if (PV_TYPE==0) begin
-    				(* DONT_TOUCH = "TRUE" *)
-    					power_virus_single_RO pvsRO (
-    						.enable(num_power_virus_enabled_latched[i]));
-    					
-    			end else if (PV_TYPE == 1) begin
-    				(* DONT_TOUCH = "TRUE" *)
-    					power_virus_single_clock pvsc (
-    						.enable(num_power_virus_enabled_latched[i]), 
-    						.clk(clk_200MHz));
-    			end
-    		end
-    	end
-    endgenerate
+	/* Binary module
+	generate
+		genvar i; //log(group_size)
+		for (i=0; i<=LOG_NUM_PV_INSTANCES; i = i+1) begin: gen_size
+			genvar j;
+			for (j=0; j<(i**2); j=j+1) begin: gen_index
+				if (PV_TYPE==0) begin
+					(* DONT_TOUCH = "TRUE" *)
+						power_virus_single_RO pvsRO (
+							.enable(num_power_virus_enabled_latched[i]));
+						
+				end else if (PV_TYPE == 1) begin
+					(* DONT_TOUCH = "TRUE" *)
+						power_virus_single_clock pvsc (
+							.enable(num_power_virus_enabled_latched[i]), 
+							.clk(clk_200MHz));
+				end
+			end
+		end
+	endgenerate
+	*/
+	
+	//Constant PV per bit:
+	generate
+		genvar i; //log(group_size)
+		for (i=0; i<=LOG_NUM_PV_INSTANCES; i = i+1) begin: gen_size
+			genvar j;
+			for (j=0; j<1000; j=j+1) begin: gen_index
+				if (PV_TYPE==0) begin
+					(* DONT_TOUCH = "TRUE" *)
+						power_virus_single_RO pvsRO (
+							.enable(num_power_virus_enabled_latched[i]));
+						
+				end else if (PV_TYPE == 1) begin
+					(* DONT_TOUCH = "TRUE" *)
+						power_virus_single_clock pvsc (
+							.enable(num_power_virus_enabled_latched[i]), 
+							.clk(clk_200MHz));
+				end
+			end
+		end
+	endgenerate
+	
+	
 endmodule

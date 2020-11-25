@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="z2_voltage_experiments" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1605494408"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1605494408"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1605494408"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1605494408"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1606279330"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1606279330"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1606279330"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1606279330"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="ip\z2_voltage_experiments_processing_system7_0_0\z2_voltage_experiments_processing_system7_0_0.xci" Type="IP">
         <Instance HierarchyPath="processing_system7_0"/>
@@ -58,22 +58,6 @@
       <File Name="ip\z2_voltage_experiments_axi_bram_ctrl_0_0\z2_voltage_experiments_axi_bram_ctrl_0_0.xci" Type="IP">
         <Instance HierarchyPath="axi_bram_ctrl_0"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\z2_voltage_experiments_xbar_1\z2_voltage_experiments_xbar_1.xci" Type="IP">
-        <Instance HierarchyPath="axi_interconnect_0/xbar"/>
-        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
-        <Library Name="xil_defaultlib"/>
-        <UsedIn Val="SYNTHESIS"/>
-        <UsedIn Val="IMPLEMENTATION"/>
-        <UsedIn Val="SIMULATION"/>
-      </File>
-      <File Name="ip\z2_voltage_experiments_axi_interconnect_0_0\z2_voltage_experiments_axi_interconnect_0_0.xci" Type="IP">
-        <Instance HierarchyPath="axi_interconnect_0"/>
-        <Properties IsEditable="false" IsVisible="false" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>
         <UsedIn Val="IMPLEMENTATION"/>
@@ -151,6 +135,14 @@
         <UsedIn Val="IMPLEMENTATION"/>
         <UsedIn Val="SIMULATION"/>
       </File>
+      <File Name="ip\z2_voltage_experiments_power_virus_fsm_wrap_0_0\z2_voltage_experiments_power_virus_fsm_wrap_0_0.xci" Type="IP">
+        <Instance HierarchyPath="power_virus_fsm_wrap_0"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
       <File Name="synth\z2_voltage_experiments.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>
         <Library Name="xil_defaultlib"/>
@@ -172,6 +164,14 @@
       </File>
       <File Name="ip\z2_voltage_experiments_auto_cc_0\z2_voltage_experiments_auto_cc_0.xci" Type="IP">
         <Instance HierarchyPath="ps7_0_axi_periph/m01_couplers/auto_cc"/>
+        <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
+        <Library Name="xil_defaultlib"/>
+        <UsedIn Val="SYNTHESIS"/>
+        <UsedIn Val="IMPLEMENTATION"/>
+        <UsedIn Val="SIMULATION"/>
+      </File>
+      <File Name="ip\z2_voltage_experiments_auto_cc_1\z2_voltage_experiments_auto_cc_1.xci" Type="IP">
+        <Instance HierarchyPath="ps7_0_axi_periph/m02_couplers/auto_cc"/>
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="true" IsStatusTracked="true"/>
         <Library Name="xil_defaultlib"/>
         <UsedIn Val="SYNTHESIS"/>

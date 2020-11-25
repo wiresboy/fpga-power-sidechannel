@@ -59,9 +59,9 @@ module z2_voltage_experiments_ring_oscillator_modu_0_1 (
   rst_n,
   cycles_per_integration,
   num_ro_enabled,
-  aquire_mode,
-  ro_rst,
-  start_aquire,
+  acquire_mode,
+  ros_rst,
+  start_acquire,
   status,
   last_ro_sum,
   bram_addr_a,
@@ -76,29 +76,29 @@ input wire clk_200MHz;
 input wire rst_n;
 input wire [15 : 0] cycles_per_integration;
 input wire [15 : 0] num_ro_enabled;
-input wire aquire_mode;
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ro_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
-(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ro_rst RST" *)
-input wire ro_rst;
-input wire start_aquire;
+input wire acquire_mode;
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ros_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ros_rst RST" *)
+input wire ros_rst;
+input wire start_acquire;
 output wire [7 : 0] status;
-output wire [15 : 0] last_ro_sum;
+output wire [31 : 0] last_ro_sum;
 output wire [31 : 0] bram_addr_a;
 output wire bram_clk_a;
 output wire [31 : 0] bram_din_a;
 output wire bram_we_a;
 
   ring_oscillator_module_wrap #(
-    .WIDTH(8),
-    .LOG_NUM_RO(2)
+    .WIDTH(16),
+    .LOG_NUM_RO(8)
   ) inst (
     .clk_200MHz(clk_200MHz),
     .rst_n(rst_n),
     .cycles_per_integration(cycles_per_integration),
     .num_ro_enabled(num_ro_enabled),
-    .aquire_mode(aquire_mode),
-    .ro_rst(ro_rst),
-    .start_aquire(start_aquire),
+    .acquire_mode(acquire_mode),
+    .ros_rst(ros_rst),
+    .start_acquire(start_acquire),
     .status(status),
     .last_ro_sum(last_ro_sum),
     .bram_addr_a(bram_addr_a),

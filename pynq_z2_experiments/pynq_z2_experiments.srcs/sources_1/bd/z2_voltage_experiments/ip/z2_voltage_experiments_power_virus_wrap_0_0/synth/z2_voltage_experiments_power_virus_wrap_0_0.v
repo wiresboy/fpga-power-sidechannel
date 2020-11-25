@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "power_virus_wrap,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "z2_voltage_experiments_power_virus_wrap_0_0,power_virus_wrap,{}" *)
-(* CORE_GENERATION_INFO = "z2_voltage_experiments_power_virus_wrap_0_0,power_virus_wrap,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=power_virus_wrap,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,LOG_NUM_PV_INSTANCES=15,PV_TYPE=0}" *)
+(* CORE_GENERATION_INFO = "z2_voltage_experiments_power_virus_wrap_0_0,power_virus_wrap,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=power_virus_wrap,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,LOG_NUM_PV_INSTANCES=16,PV_TYPE=0}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module z2_voltage_experiments_power_virus_wrap_0_0 (
@@ -66,7 +66,7 @@ input wire [15 : 0] num_power_virus_enabled;
 output wire dummy;
 
   power_virus_wrap #(
-    .LOG_NUM_PV_INSTANCES(15),
+    .LOG_NUM_PV_INSTANCES(16),
     .PV_TYPE(0)
   ) inst (
     .clk_200MHz(clk_200MHz),

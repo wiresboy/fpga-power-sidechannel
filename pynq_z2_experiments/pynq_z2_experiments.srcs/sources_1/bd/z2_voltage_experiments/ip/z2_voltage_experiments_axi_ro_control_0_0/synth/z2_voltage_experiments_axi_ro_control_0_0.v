@@ -47,8 +47,8 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: wiresboy.github.io:Brandon:axi_ro_control:1.0.2
-// IP Revision: 10
+// IP VLNV: wiresboy.github.io:Brandon:axi_ro_control:1.1.1
+// IP Revision: 13
 
 (* X_CORE_INFO = "axi_ro_v1_0,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "z2_voltage_experiments_axi_ro_control_0_0,axi_ro_v1_0,{}" *)
@@ -56,7 +56,8 @@
 module z2_voltage_experiments_axi_ro_control_0_0 (
   cycles_per_integration,
   num_ro_enabled,
-  num_power_virus_enabled,
+  num_power_virus_enabled_states_packed,
+  num_power_virus_duration_states_packed,
   aquire_mode,
   ro_rst,
   start_aquire,
@@ -87,7 +88,8 @@ module z2_voltage_experiments_axi_ro_control_0_0 (
 
 output wire [15 : 0] cycles_per_integration;
 output wire [15 : 0] num_ro_enabled;
-output wire [15 : 0] num_power_virus_enabled;
+output wire [63 : 0] num_power_virus_enabled_states_packed;
+output wire [63 : 0] num_power_virus_duration_states_packed;
 output wire aquire_mode;
 (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME ro_rst, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 ro_rst RST" *)
@@ -148,7 +150,8 @@ input wire s00_axi_rready;
   ) inst (
     .cycles_per_integration(cycles_per_integration),
     .num_ro_enabled(num_ro_enabled),
-    .num_power_virus_enabled(num_power_virus_enabled),
+    .num_power_virus_enabled_states_packed(num_power_virus_enabled_states_packed),
+    .num_power_virus_duration_states_packed(num_power_virus_duration_states_packed),
     .aquire_mode(aquire_mode),
     .ro_rst(ro_rst),
     .start_aquire(start_aquire),

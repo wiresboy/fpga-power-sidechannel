@@ -3,7 +3,7 @@
   <spirit:vendor>wiresboy.github.io</spirit:vendor>
   <spirit:library>Brandon</spirit:library>
   <spirit:name>axi_ro_control</spirit:name>
-  <spirit:version>1.0.2</spirit:version>
+  <spirit:version>1.1.1</spirit:version>
   <spirit:busInterfaces>
     <spirit:busInterface>
       <spirit:name>S00_AXI</spirit:name>
@@ -286,20 +286,38 @@
           </spirit:parameters>
         </spirit:register>
         <spirit:register>
-          <spirit:name>Power_Virus_Control</spirit:name>
-          <spirit:addressOffset>0x004</spirit:addressOffset>
-          <spirit:size spirit:format="long">4</spirit:size>
-          <spirit:volatile>true</spirit:volatile>
-        </spirit:register>
-        <spirit:register>
           <spirit:name>Mode</spirit:name>
-          <spirit:addressOffset>0x008</spirit:addressOffset>
+          <spirit:addressOffset>0x004</spirit:addressOffset>
           <spirit:size spirit:format="long">4</spirit:size>
           <spirit:volatile>true</spirit:volatile>
         </spirit:register>
         <spirit:register>
           <spirit:name>Control</spirit:name>
           <spirit:addressOffset>0x01C</spirit:addressOffset>
+          <spirit:size spirit:format="long">4</spirit:size>
+          <spirit:volatile>true</spirit:volatile>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>Power_Virus_Level_01</spirit:name>
+          <spirit:addressOffset>0x008</spirit:addressOffset>
+          <spirit:size spirit:format="long">4</spirit:size>
+          <spirit:volatile>true</spirit:volatile>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>Power_Virus_Level_23</spirit:name>
+          <spirit:addressOffset>0x00C</spirit:addressOffset>
+          <spirit:size spirit:format="long">4</spirit:size>
+          <spirit:volatile>true</spirit:volatile>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>Power_Virus_Cycles_01</spirit:name>
+          <spirit:addressOffset>0x010</spirit:addressOffset>
+          <spirit:size spirit:format="long">4</spirit:size>
+          <spirit:volatile>true</spirit:volatile>
+        </spirit:register>
+        <spirit:register>
+          <spirit:name>Power_Virus_Cycles_23</spirit:name>
+          <spirit:addressOffset>0x014</spirit:addressOffset>
           <spirit:size spirit:format="long">4</spirit:size>
           <spirit:volatile>true</spirit:volatile>
         </spirit:register>
@@ -320,7 +338,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1355c97c</spirit:value>
+            <spirit:value>faeb4c4d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -336,7 +354,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>viewChecksum</spirit:name>
-            <spirit:value>1355c97c</spirit:value>
+            <spirit:value>faeb4c4d</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -405,11 +423,28 @@
         </spirit:wire>
       </spirit:port>
       <spirit:port>
-        <spirit:name>num_power_virus_enabled</spirit:name>
+        <spirit:name>num_power_virus_enabled_states_packed</spirit:name>
         <spirit:wire>
           <spirit:direction>out</spirit:direction>
           <spirit:vector>
-            <spirit:left spirit:format="long">15</spirit:left>
+            <spirit:left spirit:format="long">63</spirit:left>
+            <spirit:right spirit:format="long">0</spirit:right>
+          </spirit:vector>
+          <spirit:wireTypeDefs>
+            <spirit:wireTypeDef>
+              <spirit:typeName>wire</spirit:typeName>
+              <spirit:viewNameRef>xilinx_verilogsynthesis</spirit:viewNameRef>
+              <spirit:viewNameRef>xilinx_verilogbehavioralsimulation</spirit:viewNameRef>
+            </spirit:wireTypeDef>
+          </spirit:wireTypeDefs>
+        </spirit:wire>
+      </spirit:port>
+      <spirit:port>
+        <spirit:name>num_power_virus_duration_states_packed</spirit:name>
+        <spirit:wire>
+          <spirit:direction>out</spirit:direction>
+          <spirit:vector>
+            <spirit:left spirit:format="long">63</spirit:left>
             <spirit:right spirit:format="long">0</spirit:right>
           </spirit:vector>
           <spirit:wireTypeDefs>
@@ -845,7 +880,7 @@
       <spirit:file>
         <spirit:name>hdl/axi_ro_v1_0.v</spirit:name>
         <spirit:fileType>verilogSource</spirit:fileType>
-        <spirit:userFileType>CHECKSUM_83d4013d</spirit:userFileType>
+        <spirit:userFileType>CHECKSUM_aa10114e</spirit:userFileType>
       </spirit:file>
     </spirit:fileSet>
     <spirit:fileSet>
@@ -862,7 +897,7 @@
     <spirit:fileSet>
       <spirit:name>xilinx_xpgui_view_fileset</spirit:name>
       <spirit:file>
-        <spirit:name>xgui/axi_ro_control_v1_0_2.tcl</spirit:name>
+        <spirit:name>xgui/axi_ro_control_v1_1_1.tcl</spirit:name>
         <spirit:fileType>tclSource</spirit:fileType>
         <spirit:userFileType>CHECKSUM_0e5443b4</spirit:userFileType>
         <spirit:userFileType>XGUI_VERSION_2</spirit:userFileType>
@@ -930,7 +965,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Component_Name</spirit:name>
-      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">axi_ro_control_v1_0_2</spirit:value>
+      <spirit:value spirit:resolve="user" spirit:id="PARAM_VALUE.Component_Name" spirit:order="1">axi_ro_control_v1_1_1</spirit:value>
     </spirit:parameter>
   </spirit:parameters>
   <spirit:vendorExtensions>
@@ -941,9 +976,9 @@
       <xilinx:taxonomies>
         <xilinx:taxonomy>/AXI_Peripheral</xilinx:taxonomy>
       </xilinx:taxonomies>
-      <xilinx:displayName>axi_ro_control_v1.0</xilinx:displayName>
-      <xilinx:coreRevision>10</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2020-11-14T03:05:41Z</xilinx:coreCreationDateTime>
+      <xilinx:displayName>axi_ro_control_v1</xilinx:displayName>
+      <xilinx:coreRevision>13</xilinx:coreRevision>
+      <xilinx:coreCreationDateTime>2020-11-25T04:06:27Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@138aad16_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@3a9768f6_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
@@ -1148,16 +1183,78 @@
         <xilinx:tag xilinx:name="ui.data.coregen.dd@19f3871b_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@43b19680_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.dd@38c1d0d8_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6409b3e2_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4727f098_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@81e3c3f_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@298dad08_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1aed7f1_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4e5970f8_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@834387d_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@28ed822c_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@3eba6233_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@55e3d02e_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4866f56d_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@604686d0_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7aa7d050_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@10666510_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1963ead1_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4cf210a9_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2573dc5e_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@626b7b0c_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7ed3d0e2_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c663619_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@13d3b3c9_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@38217f83_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@242a29b_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ab205a0_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ae6aa94_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@431f3be_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@52e5cc15_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@440fb297_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5604e707_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7d898e5d_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@17ff8f27_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1cffdb78_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1638e2c0_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@2621847_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@787f4626_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@254e93d0_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@42228337_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4d4d530d_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@41d1e5e1_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4c9eda42_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@21d31c52_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@76da165_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@33deeca0_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@79343fe4_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@776155_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5d32fd8_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@bf9ad59_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@44fbb5d3_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5fb0e4b1_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@15d58eb6_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@b1298ce_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@49055e78_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@5073dcab_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@166ab286_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@4f334a25_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1c3a481_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7c5e506_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1238d15f_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@1dbfceac_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@6ca0e408_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@393cb164_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.dd@7a0bb14c_ARCHIVE_LOCATION">d:/Github/fpga-power-sidechannel/ip_repo/axi_ro_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>
       <xilinx:xilinxVersion>2020.1</xilinx:xilinxVersion>
       <xilinx:checksum xilinx:scope="busInterfaces" xilinx:value="73dee1bd"/>
-      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="a7773e0d"/>
-      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="962d5faa"/>
-      <xilinx:checksum xilinx:scope="ports" xilinx:value="20159456"/>
+      <xilinx:checksum xilinx:scope="memoryMaps" xilinx:value="3050a9ad"/>
+      <xilinx:checksum xilinx:scope="fileGroups" xilinx:value="c97e31c9"/>
+      <xilinx:checksum xilinx:scope="ports" xilinx:value="ef94930c"/>
       <xilinx:checksum xilinx:scope="hdlParameters" xilinx:value="9dd65654"/>
-      <xilinx:checksum xilinx:scope="parameters" xilinx:value="c153d01a"/>
+      <xilinx:checksum xilinx:scope="parameters" xilinx:value="abf1e35b"/>
     </xilinx:packagingInfo>
   </spirit:vendorExtensions>
 </spirit:component>

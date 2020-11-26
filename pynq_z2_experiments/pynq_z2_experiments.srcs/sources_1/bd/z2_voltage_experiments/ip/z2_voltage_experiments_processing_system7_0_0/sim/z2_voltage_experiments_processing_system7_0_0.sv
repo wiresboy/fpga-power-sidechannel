@@ -1069,7 +1069,7 @@ output bit M_AXI_GP0_RREADY
      FCLK_CLK1 = 1'b0;
   end
 
-  always #(2.5) FCLK_CLK1 <= ~FCLK_CLK1;
+  always #(4.0) FCLK_CLK1 <= ~FCLK_CLK1;
 
   always@(posedge FCLK_CLK1)
   begin

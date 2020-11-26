@@ -36,8 +36,8 @@
       "xlslice_2": "",
       "ring_oscillator_modu_0": "",
       "power_virus_wrap_0": "",
-      "power_virus_fsm_wrap_0": "",
-      "axi_ro_control_0": ""
+      "axi_ro_control_0": "",
+      "power_virus_fsm_wrap_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -173,7 +173,7 @@
             "value": "100.000000"
           },
           "PCW_ACT_FPGA1_PERIPHERAL_FREQMHZ": {
-            "value": "200.000000"
+            "value": "125.000000"
           },
           "PCW_ACT_FPGA2_PERIPHERAL_FREQMHZ": {
             "value": "10.000000"
@@ -257,7 +257,7 @@
             "value": "100000000"
           },
           "PCW_CLK1_FREQ": {
-            "value": "200000000"
+            "value": "125000000"
           },
           "PCW_CLK2_FREQ": {
             "value": "10000000"
@@ -560,7 +560,7 @@
             "value": "100"
           },
           "PCW_FPGA1_PERIPHERAL_FREQMHZ": {
-            "value": "200"
+            "value": "125"
           },
           "PCW_FPGA2_PERIPHERAL_FREQMHZ": {
             "value": "50"
@@ -2004,16 +2004,16 @@
               }
             },
             "interface_nets": {
-              "auto_pc_to_s00_couplers": {
-                "interface_ports": [
-                  "M_AXI",
-                  "auto_pc/M_AXI"
-                ]
-              },
               "s00_couplers_to_auto_pc": {
                 "interface_ports": [
                   "S_AXI",
                   "auto_pc/S_AXI"
+                ]
+              },
+              "auto_pc_to_s00_couplers": {
+                "interface_ports": [
+                  "M_AXI",
+                  "auto_pc/M_AXI"
                 ]
               }
             },
@@ -2298,16 +2298,16 @@
               "s00_couplers/S_AXI"
             ]
           },
-          "m00_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
-            ]
-          },
           "s00_couplers_to_xbar": {
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
+            ]
+          },
+          "m00_couplers_to_ps7_0_axi_periph": {
+            "interface_ports": [
+              "M00_AXI",
+              "m00_couplers/M_AXI"
             ]
           },
           "xbar_to_m00_couplers": {
@@ -2328,16 +2328,16 @@
               "m02_couplers/M_AXI"
             ]
           },
-          "xbar_to_m01_couplers": {
-            "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
-            ]
-          },
           "xbar_to_m02_couplers": {
             "interface_ports": [
               "xbar/M02_AXI",
               "m02_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m01_couplers": {
+            "interface_ports": [
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           }
         },
@@ -2579,10 +2579,10 @@
         "xci_name": "z2_voltage_experiments_ring_oscillator_modu_0_1",
         "parameters": {
           "LOG_NUM_RO": {
-            "value": "8"
+            "value": "9"
           },
           "WIDTH": {
-            "value": "16"
+            "value": "10"
           }
         },
         "reference_info": {
@@ -2599,7 +2599,7 @@
                 "value_src": "default_prop"
               },
               "FREQ_HZ": {
-                "value": "200000000",
+                "value": "125000000",
                 "value_src": "user_prop"
               },
               "PHASE": {
@@ -2691,7 +2691,7 @@
                 "value_src": "default_prop"
               },
               "FREQ_HZ": {
-                "value": "200000000",
+                "value": "125000000",
                 "value_src": "user_prop"
               },
               "PHASE": {
@@ -2716,6 +2716,10 @@
           }
         }
       },
+      "axi_ro_control_0": {
+        "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.1.1",
+        "xci_name": "z2_voltage_experiments_axi_ro_control_0_0"
+      },
       "power_virus_fsm_wrap_0": {
         "vlnv": "xilinx.com:module_ref:power_virus_fsm_wrap:1.0",
         "xci_name": "z2_voltage_experiments_power_virus_fsm_wrap_0_0",
@@ -2738,7 +2742,7 @@
                 "value_src": "default_prop"
               },
               "FREQ_HZ": {
-                "value": "200000000",
+                "value": "125000000",
                 "value_src": "user_prop"
               }
             }
@@ -2763,10 +2767,6 @@
             "right": "0"
           }
         }
-      },
-      "axi_ro_control_0": {
-        "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.1.1",
-        "xci_name": "z2_voltage_experiments_axi_ro_control_0_0"
       }
     },
     "interface_nets": {
@@ -2849,9 +2849,9 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "ring_oscillator_modu_0/clk_200MHz",
           "power_virus_wrap_0/clk_200MHz",
-          "power_virus_fsm_wrap_0/clk",
           "axi_ro_control_0/s00_axi_aclk",
-          "ps7_0_axi_periph/M02_ACLK"
+          "ps7_0_axi_periph/M02_ACLK",
+          "power_virus_fsm_wrap_0/clk"
         ]
       },
       "rst_ps7_0_200M_peripheral_aresetn": {

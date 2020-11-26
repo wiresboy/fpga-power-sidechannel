@@ -14,6 +14,7 @@ module power_virus_fsm(
 	
 	logic [1:0] state;
 	logic [15:0] count;
+	logic [15:0] target_duration;
 	
 	logic [15:0] enable_values [3:0];
 	assign enable_values[0] = num_power_virus_enabled_states_packed[15:0];

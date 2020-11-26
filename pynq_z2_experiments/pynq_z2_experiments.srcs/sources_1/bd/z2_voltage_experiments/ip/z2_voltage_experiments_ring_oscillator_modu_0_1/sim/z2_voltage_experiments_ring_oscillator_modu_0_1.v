@@ -89,8 +89,8 @@ output wire [31 : 0] bram_din_a;
 output wire bram_we_a;
 
   ring_oscillator_module_wrap #(
-    .WIDTH(16),
-    .LOG_NUM_RO(8)
+    .WIDTH(10),
+    .LOG_NUM_RO(9)
   ) inst (
     .clk_200MHz(clk_200MHz),
     .rst_n(rst_n),

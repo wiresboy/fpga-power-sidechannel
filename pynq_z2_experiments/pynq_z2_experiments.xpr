@@ -82,7 +82,7 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PSRCDIR/sources_1/new/ring_oscillator_set.sv">
+      <File Path="$PSRCDIR/sources_1/new/ring_oscillator_quad_8.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -133,6 +133,14 @@
       </File>
       <File Path="$PSRCDIR/sources_1/bd/z2_voltage_experiments/hdl/z2_voltage_experiments_wrapper.v">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/new/ring_oscillator_set.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -209,7 +217,7 @@
       <File Path="$PSRCDIR/utils_1/imports/synth_1/z2_voltage_experiments_wrapper.dcp">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PRUNDIR/synth_1/z2_voltage_experiments_wrapper.dcp"/>
-          <Attr Name="ImportTime" Val="1606369489"/>
+          <Attr Name="ImportTime" Val="1606554856"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedInSteps" Val="synth_1"/>
@@ -219,7 +227,7 @@
       <File Path="$PSRCDIR/utils_1/imports/impl_1/z2_voltage_experiments_wrapper_routed.dcp">
         <FileInfo>
           <Attr Name="ImportPath" Val="$PRUNDIR/impl_1/z2_voltage_experiments_wrapper_routed.dcp"/>
-          <Attr Name="ImportTime" Val="1606365072"/>
+          <Attr Name="ImportTime" Val="1606554856"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedInSteps" Val="impl_1"/>

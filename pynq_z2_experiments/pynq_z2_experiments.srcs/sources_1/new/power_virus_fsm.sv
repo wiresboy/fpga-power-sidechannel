@@ -13,7 +13,7 @@ module power_virus_fsm(
 	);
 	
 	logic [1:0] state;
-	logic [15:0] count;
+	logic [16:0] count;
 	logic [15:0] target_duration;
 	
 	logic [15:0] enable_values [3:0];
@@ -37,7 +37,7 @@ module power_virus_fsm(
 			state <= 0;
 			count <= 0;
 		end else begin
-			if (target_duration == count) begin
+			if (target_duration == count[16:1]) begin
 				state <= state + 1;
 				count <= 0;
 			end else begin

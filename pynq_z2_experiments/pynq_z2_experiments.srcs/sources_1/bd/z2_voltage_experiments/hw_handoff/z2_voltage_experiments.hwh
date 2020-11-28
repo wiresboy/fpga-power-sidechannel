@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Nov 25 23:45:02 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sat Nov 28 02:37:46 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="z2_voltage_experiments" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -2490,10 +2490,10 @@
             <CONNECTION INSTANCE="rst_ps7_0_200M" PORT="slowest_sync_clk"/>
             <CONNECTION INSTANCE="axi_bram_ctrl_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="ring_oscillator_modu_0" PORT="clk_200MHz"/>
-            <CONNECTION INSTANCE="power_virus_wrap_0" PORT="clk_200MHz"/>
             <CONNECTION INSTANCE="axi_ro_control_0" PORT="s00_axi_aclk"/>
             <CONNECTION INSTANCE="ps7_0_axi_periph" PORT="M02_ACLK"/>
             <CONNECTION INSTANCE="power_virus_fsm_wrap_0" PORT="clk"/>
+            <CONNECTION INSTANCE="power_virus_wrap_0" PORT="clk_200MHz"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">

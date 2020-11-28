@@ -35,9 +35,9 @@
       "xlslice_1": "",
       "xlslice_2": "",
       "ring_oscillator_modu_0": "",
-      "power_virus_wrap_0": "",
       "axi_ro_control_0": "",
-      "power_virus_fsm_wrap_0": ""
+      "power_virus_fsm_wrap_0": "",
+      "power_virus_wrap_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -2292,22 +2292,16 @@
           }
         },
         "interface_nets": {
-          "ps7_0_axi_periph_to_s00_couplers": {
-            "interface_ports": [
-              "S00_AXI",
-              "s00_couplers/S_AXI"
-            ]
-          },
           "s00_couplers_to_xbar": {
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
             ]
           },
-          "m00_couplers_to_ps7_0_axi_periph": {
+          "m01_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
+              "M01_AXI",
+              "m01_couplers/M_AXI"
             ]
           },
           "xbar_to_m00_couplers": {
@@ -2316,10 +2310,16 @@
               "m00_couplers/S_AXI"
             ]
           },
-          "m01_couplers_to_ps7_0_axi_periph": {
+          "m00_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
+              "M00_AXI",
+              "m00_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m01_couplers": {
+            "interface_ports": [
+              "xbar/M01_AXI",
+              "m01_couplers/S_AXI"
             ]
           },
           "m02_couplers_to_ps7_0_axi_periph": {
@@ -2334,10 +2334,10 @@
               "m02_couplers/S_AXI"
             ]
           },
-          "xbar_to_m01_couplers": {
+          "ps7_0_axi_periph_to_s00_couplers": {
             "interface_ports": [
-              "xbar/M01_AXI",
-              "m01_couplers/S_AXI"
+              "S00_AXI",
+              "s00_couplers/S_AXI"
             ]
           }
         },
@@ -2666,56 +2666,6 @@
           }
         }
       },
-      "power_virus_wrap_0": {
-        "vlnv": "xilinx.com:module_ref:power_virus_wrap:1.0",
-        "xci_name": "z2_voltage_experiments_power_virus_wrap_0_0",
-        "parameters": {
-          "LOG_NUM_PV_INSTANCES": {
-            "value": "16"
-          },
-          "PV_TYPE": {
-            "value": "0"
-          }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "power_virus_wrap",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk_200MHz": {
-            "direction": "I",
-            "parameters": {
-              "CLK_DOMAIN": {
-                "value": "z2_voltage_experiments_processing_system7_0_0_FCLK_CLK1",
-                "value_src": "default_prop"
-              },
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "user_prop"
-              },
-              "PHASE": {
-                "value": "0.000",
-                "value_src": "default_prop"
-              }
-            }
-          },
-          "num_power_virus_enabled": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "dummy": {
-            "direction": "O",
-            "parameters": {
-              "LAYERED_METADATA": {
-                "value": "",
-                "value_src": "weak"
-              }
-            }
-          }
-        }
-      },
       "axi_ro_control_0": {
         "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.1.1",
         "xci_name": "z2_voltage_experiments_axi_ro_control_0_0"
@@ -2765,6 +2715,56 @@
             "direction": "O",
             "left": "15",
             "right": "0"
+          }
+        }
+      },
+      "power_virus_wrap_0": {
+        "vlnv": "xilinx.com:module_ref:power_virus_wrap:1.0",
+        "xci_name": "z2_voltage_experiments_power_virus_wrap_0_0",
+        "parameters": {
+          "LOG_NUM_PV_INSTANCES": {
+            "value": "16"
+          },
+          "PV_TYPE": {
+            "value": "0"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "power_virus_wrap",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_200MHz": {
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "z2_voltage_experiments_processing_system7_0_0_FCLK_CLK1",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "num_power_virus_enabled": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "dummy": {
+            "direction": "O",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "",
+                "value_src": "weak"
+              }
+            }
           }
         }
       }
@@ -2848,10 +2848,10 @@
           "rst_ps7_0_200M/slowest_sync_clk",
           "axi_bram_ctrl_0/s_axi_aclk",
           "ring_oscillator_modu_0/clk_200MHz",
-          "power_virus_wrap_0/clk_200MHz",
           "axi_ro_control_0/s00_axi_aclk",
           "ps7_0_axi_periph/M02_ACLK",
-          "power_virus_fsm_wrap_0/clk"
+          "power_virus_fsm_wrap_0/clk",
+          "power_virus_wrap_0/clk_200MHz"
         ]
       },
       "rst_ps7_0_200M_peripheral_aresetn": {

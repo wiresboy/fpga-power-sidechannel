@@ -15,7 +15,7 @@ module ring_oscillator_quad_8
 		input [15:0] cycles_per_integration,  // Minimum 2
 		input [15:0] num_ro_enabled,
 		
-		output logic [LOG_NUM_RO+WIDTH-1:0] sum,
+		output logic [31:0] sum,
 		output logic sum_updated
 	);
 	parameter WIDTH = 8;

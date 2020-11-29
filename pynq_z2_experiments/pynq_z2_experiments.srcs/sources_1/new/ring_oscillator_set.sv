@@ -28,7 +28,7 @@ module ring_oscillator_set
 	generate
 		genvar i;
 		for (i=0; i<(2**LOG_NUM_RO); i=i+1) begin : gen1
-			ring_oscillator #(.WIDTH(WIDTH)) ro
+			ring_oscillator_advanced #(.WIDTH(WIDTH)) ro
 			(
 				.rst(RO_reset), //reset counters.
 				.enable(enable & (i<num_ro_enabled)),
@@ -40,7 +40,7 @@ module ring_oscillator_set
 	logic [LOG_NUM_RO+WIDTH-1:0] sum_comb;
 	
 	always_comb begin
-		sum_comb = 1; //For testing.
+		sum_comb = 0;
 		for (integer i=0; i<(2**LOG_NUM_RO); i=i+1) begin
 			sum_comb = sum_comb + counts[i];
 		end

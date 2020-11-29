@@ -61,10 +61,10 @@ module ring_oscillator_module_tb();
 	// clk has 50% duty cycle, 5ns period
 	always #10 clk_200MHz = ~clk_200MHz;
 	
-	always #1 force rom.ros.gen1[0].ro.RO_pulse = ~rom.ros.gen1[0].ro.RO_pulse;
+	always #1 force rom.ros.gen1[0].ro.ro_base.RO_pulse = ~rom.ros.gen1[0].ro.ro_base.RO_pulse;
 	
 	initial begin
-		force rom.ros.gen1[0].ro.RO_pulse = 0;
+		force rom.ros.gen1[0].ro.ro_base.RO_pulse = 0;
 		#2
 		clk_200MHz = 0;
 		rst_n = 0;

@@ -30,8 +30,8 @@ module ring_oscillator_module
 	//logic [LOG_NUM_RO+WIDTH-1:0] sum;
 	logic sum_updated;
 	
-	//ring_oscillator_set #(.WIDTH(WIDTH), .LOG_NUM_RO(LOG_NUM_RO)) ros (
-	ring_oscillator_quad_8 ros (
+	ring_oscillator_set #(.WIDTH(WIDTH), .LOG_NUM_RO(LOG_NUM_RO)) ros (
+	//ring_oscillator_quad_8 ros (
 		.rst(ros_rst),
 		.ref_clk(clk_200MHz),
 		.cycles_per_integration(cycles_per_integration),

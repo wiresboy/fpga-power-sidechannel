@@ -31,7 +31,7 @@ module ring_oscillator_quad_8
 	generate
 		genvar i;
 		for (i=0; i<(2**LOG_NUM_RO); i=i+1) begin : gen1
-			ring_oscillator #(.WIDTH(WIDTH)) ro
+			ring_oscillator_advanced #(.WIDTH(WIDTH)) ro
 			(
 				.rst(RO_reset), //reset counters.
 				.enable(enable),

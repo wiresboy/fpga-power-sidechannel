@@ -1,5 +1,5 @@
 #Need to allow the combinatorial loops for the Ring Oscillators - its what they are!
-set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets {z2_voltage_experiments_i/ring_oscillator_modu_0/inst/rom/ros/gen1[*].ro/RO_pulse}]
+set_property ALLOW_COMBINATORIAL_LOOPS true [get_nets {z2_voltage_experiments_i/ring_oscillator_modu_0/inst/rom/ros/gen1[*].ro/ro_base/RO_pulse}]
 #Same thing, but disable timing on the 4x specific loops.
 
 #Timing on setting # of cycles/integration sometimes fails.

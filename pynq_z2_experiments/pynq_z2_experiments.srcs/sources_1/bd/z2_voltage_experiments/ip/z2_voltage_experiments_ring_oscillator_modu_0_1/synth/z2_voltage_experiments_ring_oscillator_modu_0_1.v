@@ -52,7 +52,7 @@
 
 (* X_CORE_INFO = "ring_oscillator_module_wrap,Vivado 2020.1" *)
 (* CHECK_LICENSE_TYPE = "z2_voltage_experiments_ring_oscillator_modu_0_1,ring_oscillator_module_wrap,{}" *)
-(* CORE_GENERATION_INFO = "z2_voltage_experiments_ring_oscillator_modu_0_1,ring_oscillator_module_wrap,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ring_oscillator_module_wrap,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,WIDTH=10,LOG_NUM_RO=9}" *)
+(* CORE_GENERATION_INFO = "z2_voltage_experiments_ring_oscillator_modu_0_1,ring_oscillator_module_wrap,{x_ipProduct=Vivado 2020.1,x_ipVendor=xilinx.com,x_ipLibrary=module_ref,x_ipName=ring_oscillator_module_wrap,x_ipVersion=1.0,x_ipCoreRevision=1,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,WIDTH=10,LOG_NUM_RO=10}" *)
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module z2_voltage_experiments_ring_oscillator_modu_0_1 (
@@ -91,7 +91,7 @@ output wire bram_we_a;
 
   ring_oscillator_module_wrap #(
     .WIDTH(10),
-    .LOG_NUM_RO(9)
+    .LOG_NUM_RO(10)
   ) inst (
     .clk_200MHz(clk_200MHz),
     .rst_n(rst_n),

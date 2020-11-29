@@ -1029,7 +1029,7 @@ proc create_root_design { parentCell } {
      return 1
    }
     set_property -dict [ list \
-   CONFIG.LOG_NUM_RO {9} \
+   CONFIG.LOG_NUM_RO {10} \
    CONFIG.WIDTH {10} \
  ] $ring_oscillator_modu_0
 

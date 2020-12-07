@@ -172,6 +172,7 @@ proc create_root_design { parentCell } {
   set arduino_gpio_tri_io [ create_bd_port -dir O -from 0 -to 0 -type data arduino_gpio_tri_io ]
   set leds_4bits_tri_o [ create_bd_port -dir O -from 3 -to 0 -type data leds_4bits_tri_o ]
   set rgbleds_6bits_tri_o [ create_bd_port -dir O -from 5 -to 0 -type data rgbleds_6bits_tri_o ]
+  set rpi_gpio_tri_io [ create_bd_port -dir O -from 7 -to 0 -type data rpi_gpio_tri_io ]
 
   # Create instance: axi_bram_ctrl_0, and set properties
   set axi_bram_ctrl_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0 ]
@@ -1029,7 +1030,7 @@ proc create_root_design { parentCell } {
      return 1
    }
     set_property -dict [ list \
-   CONFIG.LOG_NUM_RO {10} \
+   CONFIG.LOG_NUM_RO {9} \
    CONFIG.WIDTH {10} \
  ] $ring_oscillator_modu_0
 
@@ -1063,6 +1064,16 @@ proc create_root_design { parentCell } {
    CONFIG.XADC_STARUP_SELECTION {channel_sequencer} \
  ] $xadc_wiz_0
 
+  # Create instance: xlconcat_0, and set properties
+  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {1} \
+   CONFIG.IN1_WIDTH {1} \
+   CONFIG.IN2_WIDTH {1} \
+   CONFIG.IN3_WIDTH {5} \
+   CONFIG.NUM_PORTS {4} \
+ ] $xlconcat_0
+
   # Create instance: xlconstant_0, and set properties
   set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
   set_property -dict [ list \
@@ -1074,6 +1085,13 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.CONST_VAL {1} \
  ] $xlconstant_1
+
+  # Create instance: xlconstant_2, and set properties
+  set xlconstant_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_2 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {5} \
+   CONFIG.CONST_WIDTH {5} \
+ ] $xlconstant_2
 
   # Create instance: xlslice_0, and set properties
   set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
@@ -1101,6 +1119,15 @@ proc create_root_design { parentCell } {
    CONFIG.DOUT_WIDTH {16} \
  ] $xlslice_2
 
+  # Create instance: xlslice_3, and set properties
+  set xlslice_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_3 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {63} \
+   CONFIG.DIN_TO {63} \
+   CONFIG.DIN_WIDTH {64} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $xlslice_3
+
   # Create interface connections
   connect_bd_intf_net -intf_net axi_bram_ctrl_0_BRAM_PORTA [get_bd_intf_pins axi_bram_ctrl_0/BRAM_PORTA] [get_bd_intf_pins blk_mem_gen_0/BRAM_PORTB]
   connect_bd_intf_net -intf_net processing_system7_0_DDR [get_bd_intf_ports DDR] [get_bd_intf_pins processing_system7_0/DDR]
@@ -1115,10 +1142,10 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_ro_control_0_cycles_per_integration [get_bd_pins axi_ro_control_0/cycles_per_integration] [get_bd_pins ring_oscillator_modu_0/cycles_per_integration]
   connect_bd_net -net axi_ro_control_0_num_power_virus_duration_states_packed [get_bd_pins axi_ro_control_0/num_power_virus_duration_states_packed] [get_bd_pins power_virus_fsm_wrap_0/num_power_virus_duration_states_packed]
   connect_bd_net -net axi_ro_control_0_num_power_virus_enabled [get_bd_pins power_virus_fsm_wrap_0/num_power_virus_enabled] [get_bd_pins power_virus_wrap_0/num_power_virus_enabled] [get_bd_pins xlslice_1/Din]
-  connect_bd_net -net axi_ro_control_0_num_power_virus_enabled_states_packed [get_bd_pins axi_ro_control_0/num_power_virus_enabled_states_packed] [get_bd_pins power_virus_fsm_wrap_0/num_power_virus_enabled_states_packed]
+  connect_bd_net -net axi_ro_control_0_num_power_virus_enabled_states_packed [get_bd_pins axi_ro_control_0/num_power_virus_enabled_states_packed] [get_bd_pins power_virus_fsm_wrap_0/num_power_virus_enabled_states_packed] [get_bd_pins xlslice_3/Din]
   connect_bd_net -net axi_ro_control_0_num_ro_enabled [get_bd_pins axi_ro_control_0/num_ro_enabled] [get_bd_pins ring_oscillator_modu_0/num_ro_enabled]
   connect_bd_net -net axi_ro_control_0_ro_rst [get_bd_pins axi_ro_control_0/ro_rst] [get_bd_pins power_virus_fsm_wrap_0/rst] [get_bd_pins ring_oscillator_modu_0/ros_rst]
-  connect_bd_net -net axi_ro_control_0_start_aquire [get_bd_pins axi_ro_control_0/start_aquire] [get_bd_pins ring_oscillator_modu_0/start_acquire]
+  connect_bd_net -net axi_ro_control_0_start_aquire [get_bd_pins axi_ro_control_0/start_aquire] [get_bd_pins ring_oscillator_modu_0/start_acquire] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net power_virus_wrap_0_dummy [get_bd_ports arduino_gpio_tri_io] [get_bd_pins power_virus_wrap_0/dummy]
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins processing_system7_0/FCLK_CLK0] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins ps7_0_axi_periph/ACLK] [get_bd_pins ps7_0_axi_periph/M00_ACLK] [get_bd_pins ps7_0_axi_periph/S00_ACLK] [get_bd_pins rst_ps7_0_100M/slowest_sync_clk] [get_bd_pins xadc_wiz_0/s_axi_aclk]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_ro_control_0/s00_axi_aclk] [get_bd_pins power_virus_fsm_wrap_0/clk] [get_bd_pins power_virus_wrap_0/clk_200MHz] [get_bd_pins processing_system7_0/FCLK_CLK1] [get_bd_pins ps7_0_axi_periph/M01_ACLK] [get_bd_pins ps7_0_axi_periph/M02_ACLK] [get_bd_pins ring_oscillator_modu_0/clk_200MHz] [get_bd_pins rst_ps7_0_200M/slowest_sync_clk]
@@ -1126,19 +1153,22 @@ proc create_root_design { parentCell } {
   connect_bd_net -net ring_oscillator_modu_0_bram_addr_a [get_bd_pins blk_mem_gen_0/addra] [get_bd_pins ring_oscillator_modu_0/bram_addr_a]
   connect_bd_net -net ring_oscillator_modu_0_bram_clk_a [get_bd_pins blk_mem_gen_0/clka] [get_bd_pins ring_oscillator_modu_0/bram_clk_a]
   connect_bd_net -net ring_oscillator_modu_0_bram_din_a [get_bd_pins blk_mem_gen_0/dina] [get_bd_pins ring_oscillator_modu_0/bram_din_a]
-  connect_bd_net -net ring_oscillator_modu_0_bram_we_a [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins ring_oscillator_modu_0/bram_we_a]
+  connect_bd_net -net ring_oscillator_modu_0_bram_we_a [get_bd_pins blk_mem_gen_0/wea] [get_bd_pins ring_oscillator_modu_0/bram_we_a] [get_bd_pins xlconcat_0/In2]
   connect_bd_net -net ring_oscillator_modu_0_last_ro_sum [get_bd_pins ring_oscillator_modu_0/last_ro_sum] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_2/Din]
   connect_bd_net -net ring_oscillator_modu_0_status [get_bd_pins axi_ro_control_0/ext_status] [get_bd_pins ring_oscillator_modu_0/status]
   connect_bd_net -net rst_ps7_0_100M_peripheral_aresetn [get_bd_pins ps7_0_axi_periph/ARESETN] [get_bd_pins ps7_0_axi_periph/M00_ARESETN] [get_bd_pins ps7_0_axi_periph/S00_ARESETN] [get_bd_pins rst_ps7_0_100M/peripheral_aresetn] [get_bd_pins xadc_wiz_0/s_axi_aresetn]
   connect_bd_net -net rst_ps7_0_200M_peripheral_aresetn [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axi_ro_control_0/s00_axi_aresetn] [get_bd_pins ps7_0_axi_periph/M01_ARESETN] [get_bd_pins ps7_0_axi_periph/M02_ARESETN] [get_bd_pins ring_oscillator_modu_0/rst_n] [get_bd_pins rst_ps7_0_200M/peripheral_aresetn]
+  connect_bd_net -net xlconcat_0_dout [get_bd_ports rpi_gpio_tri_io] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins blk_mem_gen_0/rsta] [get_bd_pins xlconstant_0/dout]
   connect_bd_net -net xlconstant_1_dout [get_bd_pins blk_mem_gen_0/ena] [get_bd_pins xlconstant_1/dout]
+  connect_bd_net -net xlconstant_2_dout [get_bd_pins xlconcat_0/In3] [get_bd_pins xlconstant_2/dout]
   connect_bd_net -net xlslice_0_Dout [get_bd_ports leds_4bits_tri_o] [get_bd_pins xlslice_0/Dout]
   connect_bd_net -net xlslice_1_Dout [get_bd_ports rgbleds_6bits_tri_o] [get_bd_pins xlslice_1/Dout]
   connect_bd_net -net xlslice_2_Dout [get_bd_pins axi_ro_control_0/last_ro_sum] [get_bd_pins xlslice_2/Dout]
+  connect_bd_net -net xlslice_3_Dout [get_bd_pins xlconcat_0/In1] [get_bd_pins xlslice_3/Dout]
 
   # Create address segments
-  assign_bd_address -offset 0x40000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_bram_ctrl_0/S_AXI/Mem0] -force
+  assign_bd_address -offset 0x40000000 -range 0x00080000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_bram_ctrl_0/S_AXI/Mem0] -force
   assign_bd_address -offset 0x43C10000 -range 0x00001000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs axi_ro_control_0/S00_AXI/S00_AXI_reg] -force
   assign_bd_address -offset 0x43C00000 -range 0x00010000 -target_address_space [get_bd_addr_spaces processing_system7_0/Data] [get_bd_addr_segs xadc_wiz_0/s_axi_lite/Reg] -force
 

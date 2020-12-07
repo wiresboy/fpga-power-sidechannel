@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Sat Nov 28 21:50:11 2020
+//Date        : Sun Dec  6 23:03:01 2020
 //Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 //Command     : generate_target z2_voltage_experiments_wrapper.bd
 //Design      : z2_voltage_experiments_wrapper
@@ -33,7 +33,8 @@ module z2_voltage_experiments_wrapper
     FIXED_IO_ps_srstb,
     arduino_gpio_tri_io,
     leds_4bits_tri_o,
-    rgbleds_6bits_tri_o);
+    rgbleds_6bits_tri_o,
+    rpi_gpio_tri_io);
   inout [14:0]DDR_addr;
   inout [2:0]DDR_ba;
   inout DDR_cas_n;
@@ -58,6 +59,7 @@ module z2_voltage_experiments_wrapper
   output [0:0]arduino_gpio_tri_io;
   output [3:0]leds_4bits_tri_o;
   output [5:0]rgbleds_6bits_tri_o;
+  output [7:0]rpi_gpio_tri_io;
 
   wire [14:0]DDR_addr;
   wire [2:0]DDR_ba;
@@ -83,6 +85,7 @@ module z2_voltage_experiments_wrapper
   wire [0:0]arduino_gpio_tri_io;
   wire [3:0]leds_4bits_tri_o;
   wire [5:0]rgbleds_6bits_tri_o;
+  wire [7:0]rpi_gpio_tri_io;
 
   z2_voltage_experiments z2_voltage_experiments_i
        (.DDR_addr(DDR_addr),
@@ -108,5 +111,6 @@ module z2_voltage_experiments_wrapper
         .FIXED_IO_ps_srstb(FIXED_IO_ps_srstb),
         .arduino_gpio_tri_io(arduino_gpio_tri_io),
         .leds_4bits_tri_o(leds_4bits_tri_o),
-        .rgbleds_6bits_tri_o(rgbleds_6bits_tri_o));
+        .rgbleds_6bits_tri_o(rgbleds_6bits_tri_o),
+        .rpi_gpio_tri_io(rpi_gpio_tri_io));
 endmodule

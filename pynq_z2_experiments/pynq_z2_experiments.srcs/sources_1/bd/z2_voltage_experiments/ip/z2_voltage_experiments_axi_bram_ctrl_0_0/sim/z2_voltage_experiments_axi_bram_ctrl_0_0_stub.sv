@@ -67,7 +67,7 @@ typedef bit bit_as_bool;
 module z2_voltage_experiments_axi_bram_ctrl_0_0 (
   input bit_as_bool s_axi_aclk,
   input bit_as_bool s_axi_aresetn,
-  input bit [15 : 0] s_axi_awaddr,
+  input bit [18 : 0] s_axi_awaddr,
   input bit [2 : 0] s_axi_awprot,
   input bit_as_bool s_axi_awvalid,
   output bit_as_bool s_axi_awready,
@@ -78,7 +78,7 @@ module z2_voltage_experiments_axi_bram_ctrl_0_0 (
   output bit [1 : 0] s_axi_bresp,
   output bit_as_bool s_axi_bvalid,
   input bit_as_bool s_axi_bready,
-  input bit [15 : 0] s_axi_araddr,
+  input bit [18 : 0] s_axi_araddr,
   input bit [2 : 0] s_axi_arprot,
   input bit_as_bool s_axi_arvalid,
   output bit_as_bool s_axi_arready,
@@ -90,7 +90,7 @@ module z2_voltage_experiments_axi_bram_ctrl_0_0 (
   output bit_as_bool bram_clk_a,
   output bit_as_bool bram_en_a,
   output bit [3 : 0] bram_we_a,
-  output bit [15 : 0] bram_addr_a,
+  output bit [18 : 0] bram_addr_a,
   output bit [31 : 0] bram_wrdata_a,
   input bit [31 : 0] bram_rddata_a
 );
@@ -104,7 +104,7 @@ module z2_voltage_experiments_axi_bram_ctrl_0_0 (s_axi_aclk,s_axi_aresetn,s_axi_
 *);
   input bit s_axi_aclk;
   input bit s_axi_aresetn;
-  input bit [15 : 0] s_axi_awaddr;
+  input bit [18 : 0] s_axi_awaddr;
   input bit [2 : 0] s_axi_awprot;
   input bit s_axi_awvalid;
   output wire s_axi_awready;
@@ -115,7 +115,7 @@ module z2_voltage_experiments_axi_bram_ctrl_0_0 (s_axi_aclk,s_axi_aresetn,s_axi_
   output wire [1 : 0] s_axi_bresp;
   output wire s_axi_bvalid;
   input bit s_axi_bready;
-  input bit [15 : 0] s_axi_araddr;
+  input bit [18 : 0] s_axi_araddr;
   input bit [2 : 0] s_axi_arprot;
   input bit s_axi_arvalid;
   output wire s_axi_arready;
@@ -127,7 +127,7 @@ module z2_voltage_experiments_axi_bram_ctrl_0_0 (s_axi_aclk,s_axi_aresetn,s_axi_
   output wire bram_clk_a;
   output wire bram_en_a;
   output wire [3 : 0] bram_we_a;
-  output wire [15 : 0] bram_addr_a;
+  output wire [18 : 0] bram_addr_a;
   output wire [31 : 0] bram_wrdata_a;
   input bit [31 : 0] bram_rddata_a;
 endmodule
@@ -138,7 +138,7 @@ endmodule
 module z2_voltage_experiments_axi_bram_ctrl_0_0 (s_axi_aclk,s_axi_aresetn,s_axi_awaddr,s_axi_awprot,s_axi_awvalid,s_axi_awready,s_axi_wdata,s_axi_wstrb,s_axi_wvalid,s_axi_wready,s_axi_bresp,s_axi_bvalid,s_axi_bready,s_axi_araddr,s_axi_arprot,s_axi_arvalid,s_axi_arready,s_axi_rdata,s_axi_rresp,s_axi_rvalid,s_axi_rready,bram_rst_a,bram_clk_a,bram_en_a,bram_we_a,bram_addr_a,bram_wrdata_a,bram_rddata_a)
   input bit s_axi_aclk;
   input bit s_axi_aresetn;
-  input bit [15 : 0] s_axi_awaddr;
+  input bit [18 : 0] s_axi_awaddr;
   input bit [2 : 0] s_axi_awprot;
   input bit s_axi_awvalid;
   output wire s_axi_awready;
@@ -149,7 +149,7 @@ module z2_voltage_experiments_axi_bram_ctrl_0_0 (s_axi_aclk,s_axi_aresetn,s_axi_
   output wire [1 : 0] s_axi_bresp;
   output wire s_axi_bvalid;
   input bit s_axi_bready;
-  input bit [15 : 0] s_axi_araddr;
+  input bit [18 : 0] s_axi_araddr;
   input bit [2 : 0] s_axi_arprot;
   input bit s_axi_arvalid;
   output wire s_axi_arready;
@@ -161,7 +161,7 @@ module z2_voltage_experiments_axi_bram_ctrl_0_0 (s_axi_aclk,s_axi_aresetn,s_axi_
   output wire bram_clk_a;
   output wire bram_en_a;
   output wire [3 : 0] bram_we_a;
-  output wire [15 : 0] bram_addr_a;
+  output wire [18 : 0] bram_addr_a;
   output wire [31 : 0] bram_wrdata_a;
   input bit [31 : 0] bram_rddata_a;
 endmodule

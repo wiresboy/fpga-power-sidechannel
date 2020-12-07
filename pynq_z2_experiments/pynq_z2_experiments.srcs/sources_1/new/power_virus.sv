@@ -86,7 +86,7 @@ module power_virus #(parameter LOG_NUM_PV_INSTANCES = 13,
 		genvar i; //log(group_size)
 		for (i=0; i<=LOG_NUM_PV_INSTANCES; i = i+1) begin: gen_size
 			genvar j;
-			for (j=0; j<1000; j=j+1) begin: gen_index
+			for (j=0; j<250; j=j+1) begin: gen_index
 				if (PV_TYPE==0) begin
 					(* DONT_TOUCH = "TRUE" *)
 						power_virus_single_RO pvsRO (

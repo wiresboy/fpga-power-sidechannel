@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x283484C7530E38DF",
+      "boundary_crc": "0xFD39C48D7C9478FD",
       "device": "xc7z020clg400-1",
       "name": "z2_voltage_experiments",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
@@ -35,9 +35,12 @@
       "xlslice_1": "",
       "xlslice_2": "",
       "axi_ro_control_0": "",
-      "power_virus_fsm_wrap_0": "",
+      "xlconcat_0": "",
+      "xlslice_3": "",
+      "xlconstant_2": "",
+      "ring_oscillator_modu_0": "",
       "power_virus_wrap_0": "",
-      "ring_oscillator_modu_0": ""
+      "power_virus_fsm_wrap_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -138,6 +141,22 @@
         "parameters": {
           "LAYERED_METADATA": {
             "value": "undef",
+            "value_src": "default"
+          }
+        }
+      },
+      "rpi_gpio_tri_io": {
+        "type": "data",
+        "direction": "O",
+        "left": "7",
+        "right": "0",
+        "parameters": {
+          "LAYERED_METADATA": {
+            "value": "undef",
+            "value_src": "default"
+          },
+          "PortWidth": {
+            "value": "8",
             "value_src": "default"
           }
         }
@@ -2148,16 +2167,16 @@
               }
             },
             "interface_nets": {
-              "m01_couplers_to_auto_cc": {
-                "interface_ports": [
-                  "S_AXI",
-                  "auto_cc/S_AXI"
-                ]
-              },
               "auto_cc_to_m01_couplers": {
                 "interface_ports": [
                   "M_AXI",
                   "auto_cc/M_AXI"
+                ]
+              },
+              "m01_couplers_to_auto_cc": {
+                "interface_ports": [
+                  "S_AXI",
+                  "auto_cc/S_AXI"
                 ]
               }
             },
@@ -2292,6 +2311,24 @@
           }
         },
         "interface_nets": {
+          "m01_couplers_to_ps7_0_axi_periph": {
+            "interface_ports": [
+              "M01_AXI",
+              "m01_couplers/M_AXI"
+            ]
+          },
+          "xbar_to_m00_couplers": {
+            "interface_ports": [
+              "xbar/M00_AXI",
+              "m00_couplers/S_AXI"
+            ]
+          },
+          "xbar_to_m02_couplers": {
+            "interface_ports": [
+              "xbar/M02_AXI",
+              "m02_couplers/S_AXI"
+            ]
+          },
           "m02_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
               "M02_AXI",
@@ -2304,10 +2341,10 @@
               "m01_couplers/S_AXI"
             ]
           },
-          "xbar_to_m02_couplers": {
+          "m00_couplers_to_ps7_0_axi_periph": {
             "interface_ports": [
-              "xbar/M02_AXI",
-              "m02_couplers/S_AXI"
+              "M00_AXI",
+              "m00_couplers/M_AXI"
             ]
           },
           "ps7_0_axi_periph_to_s00_couplers": {
@@ -2316,28 +2353,10 @@
               "s00_couplers/S_AXI"
             ]
           },
-          "m00_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M00_AXI",
-              "m00_couplers/M_AXI"
-            ]
-          },
           "s00_couplers_to_xbar": {
             "interface_ports": [
               "s00_couplers/M_AXI",
               "xbar/S00_AXI"
-            ]
-          },
-          "m01_couplers_to_ps7_0_axi_periph": {
-            "interface_ports": [
-              "M01_AXI",
-              "m01_couplers/M_AXI"
-            ]
-          },
-          "xbar_to_m00_couplers": {
-            "interface_ports": [
-              "xbar/M00_AXI",
-              "m00_couplers/S_AXI"
             ]
           }
         },
@@ -2578,101 +2597,54 @@
         "vlnv": "wiresboy.github.io:Brandon:axi_ro_control:1.1.1",
         "xci_name": "z2_voltage_experiments_axi_ro_control_0_0"
       },
-      "power_virus_fsm_wrap_0": {
-        "vlnv": "xilinx.com:module_ref:power_virus_fsm_wrap:1.0",
-        "xci_name": "z2_voltage_experiments_power_virus_fsm_wrap_0_0",
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "power_virus_fsm_wrap",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk": {
-            "type": "clk",
-            "direction": "I",
-            "parameters": {
-              "ASSOCIATED_RESET": {
-                "value": "rst",
-                "value_src": "constant"
-              },
-              "CLK_DOMAIN": {
-                "value": "z2_voltage_experiments_processing_system7_0_0_FCLK_CLK1",
-                "value_src": "default_prop"
-              },
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "user_prop"
-              }
-            }
+      "xlconcat_0": {
+        "vlnv": "xilinx.com:ip:xlconcat:2.1",
+        "xci_name": "z2_voltage_experiments_xlconcat_0_0",
+        "parameters": {
+          "IN0_WIDTH": {
+            "value": "1"
           },
-          "rst": {
-            "type": "rst",
-            "direction": "I"
+          "IN1_WIDTH": {
+            "value": "1"
           },
-          "num_power_virus_enabled_states_packed": {
-            "direction": "I",
-            "left": "63",
-            "right": "0"
+          "IN2_WIDTH": {
+            "value": "1"
           },
-          "num_power_virus_duration_states_packed": {
-            "direction": "I",
-            "left": "63",
-            "right": "0"
+          "IN3_WIDTH": {
+            "value": "5"
           },
-          "num_power_virus_enabled": {
-            "direction": "O",
-            "left": "15",
-            "right": "0"
+          "NUM_PORTS": {
+            "value": "4"
           }
         }
       },
-      "power_virus_wrap_0": {
-        "vlnv": "xilinx.com:module_ref:power_virus_wrap:1.0",
-        "xci_name": "z2_voltage_experiments_power_virus_wrap_0_0",
+      "xlslice_3": {
+        "vlnv": "xilinx.com:ip:xlslice:1.0",
+        "xci_name": "z2_voltage_experiments_xlslice_3_0",
         "parameters": {
-          "LOG_NUM_PV_INSTANCES": {
-            "value": "16"
+          "DIN_FROM": {
+            "value": "63"
           },
-          "PV_TYPE": {
-            "value": "0"
+          "DIN_TO": {
+            "value": "63"
+          },
+          "DIN_WIDTH": {
+            "value": "64"
+          },
+          "DOUT_WIDTH": {
+            "value": "1"
           }
-        },
-        "reference_info": {
-          "ref_type": "hdl",
-          "ref_name": "power_virus_wrap",
-          "boundary_crc": "0x0"
-        },
-        "ports": {
-          "clk_200MHz": {
-            "direction": "I",
-            "parameters": {
-              "CLK_DOMAIN": {
-                "value": "z2_voltage_experiments_processing_system7_0_0_FCLK_CLK1",
-                "value_src": "default_prop"
-              },
-              "FREQ_HZ": {
-                "value": "125000000",
-                "value_src": "user_prop"
-              },
-              "PHASE": {
-                "value": "0.000",
-                "value_src": "default_prop"
-              }
-            }
+        }
+      },
+      "xlconstant_2": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "z2_voltage_experiments_xlconstant_2_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "5"
           },
-          "num_power_virus_enabled": {
-            "direction": "I",
-            "left": "15",
-            "right": "0"
-          },
-          "dummy": {
-            "direction": "O",
-            "parameters": {
-              "LAYERED_METADATA": {
-                "value": "",
-                "value_src": "weak"
-              }
-            }
+          "CONST_WIDTH": {
+            "value": "5"
           }
         }
       },
@@ -2681,7 +2653,7 @@
         "xci_name": "z2_voltage_experiments_ring_oscillator_modu_0_1",
         "parameters": {
           "LOG_NUM_RO": {
-            "value": "10"
+            "value": "9"
           },
           "WIDTH": {
             "value": "10"
@@ -2767,37 +2739,111 @@
             "direction": "O"
           }
         }
+      },
+      "power_virus_wrap_0": {
+        "vlnv": "xilinx.com:module_ref:power_virus_wrap:1.0",
+        "xci_name": "z2_voltage_experiments_power_virus_wrap_0_0",
+        "parameters": {
+          "LOG_NUM_PV_INSTANCES": {
+            "value": "16"
+          },
+          "PV_TYPE": {
+            "value": "0"
+          }
+        },
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "power_virus_wrap",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk_200MHz": {
+            "direction": "I",
+            "parameters": {
+              "CLK_DOMAIN": {
+                "value": "z2_voltage_experiments_processing_system7_0_0_FCLK_CLK1",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "user_prop"
+              },
+              "PHASE": {
+                "value": "0.000",
+                "value_src": "default_prop"
+              }
+            }
+          },
+          "num_power_virus_enabled": {
+            "direction": "I",
+            "left": "15",
+            "right": "0"
+          },
+          "dummy": {
+            "direction": "O",
+            "parameters": {
+              "LAYERED_METADATA": {
+                "value": "",
+                "value_src": "weak"
+              }
+            }
+          }
+        }
+      },
+      "power_virus_fsm_wrap_0": {
+        "vlnv": "xilinx.com:module_ref:power_virus_fsm_wrap:1.0",
+        "xci_name": "z2_voltage_experiments_power_virus_fsm_wrap_0_0",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "power_virus_fsm_wrap",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              },
+              "CLK_DOMAIN": {
+                "value": "z2_voltage_experiments_processing_system7_0_0_FCLK_CLK1",
+                "value_src": "default_prop"
+              },
+              "FREQ_HZ": {
+                "value": "125000000",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "num_power_virus_enabled_states_packed": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "num_power_virus_duration_states_packed": {
+            "direction": "I",
+            "left": "63",
+            "right": "0"
+          },
+          "num_power_virus_enabled": {
+            "direction": "O",
+            "left": "15",
+            "right": "0"
+          }
+        }
       }
     },
     "interface_nets": {
-      "ps7_0_axi_periph_M02_AXI": {
+      "ps7_0_axi_periph_M01_AXI": {
         "interface_ports": [
-          "axi_ro_control_0/S00_AXI",
-          "ps7_0_axi_periph/M02_AXI"
-        ]
-      },
-      "processing_system7_0_FIXED_IO": {
-        "interface_ports": [
-          "FIXED_IO",
-          "processing_system7_0/FIXED_IO"
-        ]
-      },
-      "axi_bram_ctrl_0_BRAM_PORTA": {
-        "interface_ports": [
-          "axi_bram_ctrl_0/BRAM_PORTA",
-          "blk_mem_gen_0/BRAM_PORTB"
-        ]
-      },
-      "processing_system7_0_M_AXI_GP0": {
-        "interface_ports": [
-          "processing_system7_0/M_AXI_GP0",
-          "ps7_0_axi_periph/S00_AXI"
-        ]
-      },
-      "ps7_0_axi_periph_M00_AXI": {
-        "interface_ports": [
-          "ps7_0_axi_periph/M00_AXI",
-          "xadc_wiz_0/s_axi_lite"
+          "ps7_0_axi_periph/M01_AXI",
+          "axi_bram_ctrl_0/S_AXI"
         ]
       },
       "processing_system7_0_DDR": {
@@ -2806,10 +2852,34 @@
           "processing_system7_0/DDR"
         ]
       },
-      "ps7_0_axi_periph_M01_AXI": {
+      "ps7_0_axi_periph_M00_AXI": {
         "interface_ports": [
-          "ps7_0_axi_periph/M01_AXI",
-          "axi_bram_ctrl_0/S_AXI"
+          "ps7_0_axi_periph/M00_AXI",
+          "xadc_wiz_0/s_axi_lite"
+        ]
+      },
+      "processing_system7_0_FIXED_IO": {
+        "interface_ports": [
+          "FIXED_IO",
+          "processing_system7_0/FIXED_IO"
+        ]
+      },
+      "processing_system7_0_M_AXI_GP0": {
+        "interface_ports": [
+          "processing_system7_0/M_AXI_GP0",
+          "ps7_0_axi_periph/S00_AXI"
+        ]
+      },
+      "axi_bram_ctrl_0_BRAM_PORTA": {
+        "interface_ports": [
+          "axi_bram_ctrl_0/BRAM_PORTA",
+          "blk_mem_gen_0/BRAM_PORTB"
+        ]
+      },
+      "ps7_0_axi_periph_M02_AXI": {
+        "interface_ports": [
+          "axi_ro_control_0/S00_AXI",
+          "ps7_0_axi_periph/M02_AXI"
         ]
       }
     },
@@ -2849,9 +2919,9 @@
           "axi_bram_ctrl_0/s_axi_aclk",
           "axi_ro_control_0/s00_axi_aclk",
           "ps7_0_axi_periph/M02_ACLK",
-          "power_virus_fsm_wrap_0/clk",
+          "ring_oscillator_modu_0/clk_200MHz",
           "power_virus_wrap_0/clk_200MHz",
-          "ring_oscillator_modu_0/clk_200MHz"
+          "power_virus_fsm_wrap_0/clk"
         ]
       },
       "rst_ps7_0_200M_peripheral_aresetn": {
@@ -2885,13 +2955,14 @@
       "axi_ro_control_0_ro_rst": {
         "ports": [
           "axi_ro_control_0/ro_rst",
-          "power_virus_fsm_wrap_0/rst",
-          "ring_oscillator_modu_0/ros_rst"
+          "ring_oscillator_modu_0/ros_rst",
+          "power_virus_fsm_wrap_0/rst"
         ]
       },
       "axi_ro_control_0_start_aquire": {
         "ports": [
           "axi_ro_control_0/start_aquire",
+          "xlconcat_0/In0",
           "ring_oscillator_modu_0/start_acquire"
         ]
       },
@@ -2916,7 +2987,8 @@
       "ring_oscillator_modu_0_bram_we_a": {
         "ports": [
           "ring_oscillator_modu_0/bram_we_a",
-          "blk_mem_gen_0/wea"
+          "blk_mem_gen_0/wea",
+          "xlconcat_0/In2"
         ]
       },
       "ring_oscillator_modu_0_last_ro_sum": {
@@ -2978,6 +3050,7 @@
       "axi_ro_control_0_num_power_virus_enabled_states_packed": {
         "ports": [
           "axi_ro_control_0/num_power_virus_enabled_states_packed",
+          "xlslice_3/Din",
           "power_virus_fsm_wrap_0/num_power_virus_enabled_states_packed"
         ]
       },
@@ -2985,6 +3058,24 @@
         "ports": [
           "axi_ro_control_0/num_power_virus_duration_states_packed",
           "power_virus_fsm_wrap_0/num_power_virus_duration_states_packed"
+        ]
+      },
+      "xlslice_3_Dout": {
+        "ports": [
+          "xlslice_3/Dout",
+          "xlconcat_0/In1"
+        ]
+      },
+      "xlconstant_2_dout": {
+        "ports": [
+          "xlconstant_2/dout",
+          "xlconcat_0/In3"
+        ]
+      },
+      "xlconcat_0_dout": {
+        "ports": [
+          "xlconcat_0/dout",
+          "rpi_gpio_tri_io"
         ]
       }
     },
@@ -2998,7 +3089,7 @@
               "SEG_axi_bram_ctrl_0_Mem0": {
                 "address_block": "/axi_bram_ctrl_0/S_AXI/Mem0",
                 "offset": "0x40000000",
-                "range": "64K"
+                "range": "512K"
               },
               "SEG_axi_ro_control_0_S00_AXI_reg": {
                 "address_block": "/axi_ro_control_0/S00_AXI/S00_AXI_reg",

@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Sat Nov 28 21:50:10 2020
+//Date        : Sun Dec  6 23:03:00 2020
 //Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 //Command     : generate_target z2_voltage_experiments.bd
 //Design      : z2_voltage_experiments
@@ -186,11 +186,11 @@ module m01_couplers_imp_1OWS2WM
     S_AXI_wvalid);
   input M_ACLK;
   input M_ARESETN;
-  output [15:0]M_AXI_araddr;
+  output [18:0]M_AXI_araddr;
   output [2:0]M_AXI_arprot;
   input M_AXI_arready;
   output M_AXI_arvalid;
-  output [15:0]M_AXI_awaddr;
+  output [18:0]M_AXI_awaddr;
   output [2:0]M_AXI_awprot;
   input M_AXI_awready;
   output M_AXI_awvalid;
@@ -231,11 +231,11 @@ module m01_couplers_imp_1OWS2WM
   wire M_ARESETN_1;
   wire S_ACLK_1;
   wire S_ARESETN_1;
-  wire [15:0]auto_cc_to_m01_couplers_ARADDR;
+  wire [18:0]auto_cc_to_m01_couplers_ARADDR;
   wire [2:0]auto_cc_to_m01_couplers_ARPROT;
   wire auto_cc_to_m01_couplers_ARREADY;
   wire auto_cc_to_m01_couplers_ARVALID;
-  wire [15:0]auto_cc_to_m01_couplers_AWADDR;
+  wire [18:0]auto_cc_to_m01_couplers_AWADDR;
   wire [2:0]auto_cc_to_m01_couplers_AWPROT;
   wire auto_cc_to_m01_couplers_AWREADY;
   wire auto_cc_to_m01_couplers_AWVALID;
@@ -272,10 +272,10 @@ module m01_couplers_imp_1OWS2WM
 
   assign M_ACLK_1 = M_ACLK;
   assign M_ARESETN_1 = M_ARESETN;
-  assign M_AXI_araddr[15:0] = auto_cc_to_m01_couplers_ARADDR;
+  assign M_AXI_araddr[18:0] = auto_cc_to_m01_couplers_ARADDR;
   assign M_AXI_arprot[2:0] = auto_cc_to_m01_couplers_ARPROT;
   assign M_AXI_arvalid = auto_cc_to_m01_couplers_ARVALID;
-  assign M_AXI_awaddr[15:0] = auto_cc_to_m01_couplers_AWADDR;
+  assign M_AXI_awaddr[18:0] = auto_cc_to_m01_couplers_AWADDR;
   assign M_AXI_awprot[2:0] = auto_cc_to_m01_couplers_AWPROT;
   assign M_AXI_awvalid = auto_cc_to_m01_couplers_AWVALID;
   assign M_AXI_bready = auto_cc_to_m01_couplers_BREADY;
@@ -335,12 +335,12 @@ module m01_couplers_imp_1OWS2WM
         .m_axi_wstrb(auto_cc_to_m01_couplers_WSTRB),
         .m_axi_wvalid(auto_cc_to_m01_couplers_WVALID),
         .s_axi_aclk(S_ACLK_1),
-        .s_axi_araddr(m01_couplers_to_auto_cc_ARADDR[15:0]),
+        .s_axi_araddr(m01_couplers_to_auto_cc_ARADDR[18:0]),
         .s_axi_aresetn(S_ARESETN_1),
         .s_axi_arprot(m01_couplers_to_auto_cc_ARPROT),
         .s_axi_arready(m01_couplers_to_auto_cc_ARREADY),
         .s_axi_arvalid(m01_couplers_to_auto_cc_ARVALID),
-        .s_axi_awaddr(m01_couplers_to_auto_cc_AWADDR[15:0]),
+        .s_axi_awaddr(m01_couplers_to_auto_cc_AWADDR[18:0]),
         .s_axi_awprot(m01_couplers_to_auto_cc_AWPROT),
         .s_axi_awready(m01_couplers_to_auto_cc_AWREADY),
         .s_axi_awvalid(m01_couplers_to_auto_cc_AWVALID),
@@ -878,7 +878,7 @@ module s00_couplers_imp_C2PBLM
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "z2_voltage_experiments,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=z2_voltage_experiments,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=24,numReposBlks=19,numNonXlnxBlks=1,numHierBlks=5,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "z2_voltage_experiments.hwdef" *) 
+(* CORE_GENERATION_INFO = "z2_voltage_experiments,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=z2_voltage_experiments,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=27,numReposBlks=22,numNonXlnxBlks=1,numHierBlks=5,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "z2_voltage_experiments.hwdef" *) 
 module z2_voltage_experiments
    (DDR_addr,
     DDR_ba,
@@ -903,7 +903,8 @@ module z2_voltage_experiments
     FIXED_IO_ps_srstb,
     arduino_gpio_tri_io,
     leds_4bits_tri_o,
-    rgbleds_6bits_tri_o);
+    rgbleds_6bits_tri_o,
+    rpi_gpio_tri_io);
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250" *) inout [14:0]DDR_addr;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR BA" *) inout [2:0]DDR_ba;
   (* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CAS_N" *) inout DDR_cas_n;
@@ -928,8 +929,9 @@ module z2_voltage_experiments
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.ARDUINO_GPIO_TRI_IO DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.ARDUINO_GPIO_TRI_IO, LAYERED_METADATA undef" *) output [0:0]arduino_gpio_tri_io;
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.LEDS_4BITS_TRI_O DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.LEDS_4BITS_TRI_O, LAYERED_METADATA undef" *) output [3:0]leds_4bits_tri_o;
   (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.RGBLEDS_6BITS_TRI_O DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.RGBLEDS_6BITS_TRI_O, LAYERED_METADATA undef" *) output [5:0]rgbleds_6bits_tri_o;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:data:1.0 DATA.RPI_GPIO_TRI_IO DATA" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME DATA.RPI_GPIO_TRI_IO, LAYERED_METADATA undef, PortWidth 8" *) output [7:0]rpi_gpio_tri_io;
 
-  wire [15:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
+  wire [18:0]axi_bram_ctrl_0_BRAM_PORTA_ADDR;
   wire axi_bram_ctrl_0_BRAM_PORTA_CLK;
   wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DIN;
   wire [31:0]axi_bram_ctrl_0_BRAM_PORTA_DOUT;
@@ -1024,25 +1026,25 @@ module z2_voltage_experiments
   wire ps7_0_axi_periph_M00_AXI_WREADY;
   wire [3:0]ps7_0_axi_periph_M00_AXI_WSTRB;
   wire [0:0]ps7_0_axi_periph_M00_AXI_WVALID;
-  wire [15:0]ps7_0_axi_periph_M01_AXI_ARADDR;
+  wire [18:0]ps7_0_axi_periph_M01_AXI_ARADDR;
   wire [2:0]ps7_0_axi_periph_M01_AXI_ARPROT;
   wire ps7_0_axi_periph_M01_AXI_ARREADY;
-  wire [0:0]ps7_0_axi_periph_M01_AXI_ARVALID;
-  wire [15:0]ps7_0_axi_periph_M01_AXI_AWADDR;
+  wire ps7_0_axi_periph_M01_AXI_ARVALID;
+  wire [18:0]ps7_0_axi_periph_M01_AXI_AWADDR;
   wire [2:0]ps7_0_axi_periph_M01_AXI_AWPROT;
   wire ps7_0_axi_periph_M01_AXI_AWREADY;
-  wire [0:0]ps7_0_axi_periph_M01_AXI_AWVALID;
-  wire [0:0]ps7_0_axi_periph_M01_AXI_BREADY;
+  wire ps7_0_axi_periph_M01_AXI_AWVALID;
+  wire ps7_0_axi_periph_M01_AXI_BREADY;
   wire [1:0]ps7_0_axi_periph_M01_AXI_BRESP;
   wire ps7_0_axi_periph_M01_AXI_BVALID;
   wire [31:0]ps7_0_axi_periph_M01_AXI_RDATA;
-  wire [0:0]ps7_0_axi_periph_M01_AXI_RREADY;
+  wire ps7_0_axi_periph_M01_AXI_RREADY;
   wire [1:0]ps7_0_axi_periph_M01_AXI_RRESP;
   wire ps7_0_axi_periph_M01_AXI_RVALID;
   wire [31:0]ps7_0_axi_periph_M01_AXI_WDATA;
   wire ps7_0_axi_periph_M01_AXI_WREADY;
   wire [3:0]ps7_0_axi_periph_M01_AXI_WSTRB;
-  wire [0:0]ps7_0_axi_periph_M01_AXI_WVALID;
+  wire ps7_0_axi_periph_M01_AXI_WVALID;
   wire [4:0]ps7_0_axi_periph_M02_AXI_ARADDR;
   wire [2:0]ps7_0_axi_periph_M02_AXI_ARPROT;
   wire ps7_0_axi_periph_M02_AXI_ARREADY;
@@ -1070,15 +1072,19 @@ module z2_voltage_experiments
   wire [7:0]ring_oscillator_modu_0_status;
   wire [0:0]rst_ps7_0_100M_peripheral_aresetn;
   wire [0:0]rst_ps7_0_200M_peripheral_aresetn;
+  wire [7:0]xlconcat_0_dout;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
+  wire [4:0]xlconstant_2_dout;
   wire [3:0]xlslice_0_Dout;
   wire [5:0]xlslice_1_Dout;
   wire [15:0]xlslice_2_Dout;
+  wire [0:0]xlslice_3_Dout;
 
   assign arduino_gpio_tri_io[0] = power_virus_wrap_0_dummy;
   assign leds_4bits_tri_o[3:0] = xlslice_0_Dout;
   assign rgbleds_6bits_tri_o[5:0] = xlslice_1_Dout;
+  assign rpi_gpio_tri_io[7:0] = xlconcat_0_dout;
   (* BMM_INFO_ADDRESS_SPACE = "byte  0x40000000 32 > z2_voltage_experiments blk_mem_gen_0" *) 
   (* KEEP_HIERARCHY = "yes" *) 
   z2_voltage_experiments_axi_bram_ctrl_0_0 axi_bram_ctrl_0
@@ -1143,7 +1149,7 @@ module z2_voltage_experiments
         .start_aquire(axi_ro_control_0_start_aquire));
   z2_voltage_experiments_blk_mem_gen_0_0 blk_mem_gen_0
        (.addra(ring_oscillator_modu_0_bram_addr_a),
-        .addrb({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,axi_bram_ctrl_0_BRAM_PORTA_ADDR}),
+        .addrb({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,axi_bram_ctrl_0_BRAM_PORTA_ADDR}),
         .clka(ring_oscillator_modu_0_bram_clk_a),
         .clkb(axi_bram_ctrl_0_BRAM_PORTA_CLK),
         .dina(ring_oscillator_modu_0_bram_din_a),
@@ -1385,10 +1391,18 @@ module z2_voltage_experiments
         .s_axi_wvalid(ps7_0_axi_periph_M00_AXI_WVALID),
         .vn_in(1'b0),
         .vp_in(1'b0));
+  z2_voltage_experiments_xlconcat_0_0 xlconcat_0
+       (.In0(axi_ro_control_0_start_aquire),
+        .In1(xlslice_3_Dout),
+        .In2(ring_oscillator_modu_0_bram_we_a),
+        .In3(xlconstant_2_dout),
+        .dout(xlconcat_0_dout));
   z2_voltage_experiments_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   z2_voltage_experiments_xlconstant_1_0 xlconstant_1
        (.dout(xlconstant_1_dout));
+  z2_voltage_experiments_xlconstant_2_0 xlconstant_2
+       (.dout(xlconstant_2_dout));
   z2_voltage_experiments_xlslice_0_0 xlslice_0
        (.Din(ring_oscillator_modu_0_last_ro_sum),
         .Dout(xlslice_0_Dout));
@@ -1398,6 +1412,9 @@ module z2_voltage_experiments
   z2_voltage_experiments_xlslice_0_2 xlslice_2
        (.Din(ring_oscillator_modu_0_last_ro_sum),
         .Dout(xlslice_2_Dout));
+  z2_voltage_experiments_xlslice_3_0 xlslice_3
+       (.Din(axi_ro_control_0_num_power_virus_enabled_states_packed),
+        .Dout(xlslice_3_Dout));
 endmodule
 
 module z2_voltage_experiments_ps7_0_axi_periph_0
@@ -1527,25 +1544,25 @@ module z2_voltage_experiments_ps7_0_axi_periph_0
   output [0:0]M00_AXI_wvalid;
   input M01_ACLK;
   input M01_ARESETN;
-  output [15:0]M01_AXI_araddr;
+  output [18:0]M01_AXI_araddr;
   output [2:0]M01_AXI_arprot;
-  input [0:0]M01_AXI_arready;
-  output [0:0]M01_AXI_arvalid;
-  output [15:0]M01_AXI_awaddr;
+  input M01_AXI_arready;
+  output M01_AXI_arvalid;
+  output [18:0]M01_AXI_awaddr;
   output [2:0]M01_AXI_awprot;
-  input [0:0]M01_AXI_awready;
-  output [0:0]M01_AXI_awvalid;
-  output [0:0]M01_AXI_bready;
+  input M01_AXI_awready;
+  output M01_AXI_awvalid;
+  output M01_AXI_bready;
   input [1:0]M01_AXI_bresp;
-  input [0:0]M01_AXI_bvalid;
+  input M01_AXI_bvalid;
   input [31:0]M01_AXI_rdata;
-  output [0:0]M01_AXI_rready;
+  output M01_AXI_rready;
   input [1:0]M01_AXI_rresp;
-  input [0:0]M01_AXI_rvalid;
+  input M01_AXI_rvalid;
   output [31:0]M01_AXI_wdata;
-  input [0:0]M01_AXI_wready;
+  input M01_AXI_wready;
   output [3:0]M01_AXI_wstrb;
-  output [0:0]M01_AXI_wvalid;
+  output M01_AXI_wvalid;
   input M02_ACLK;
   input M02_ARESETN;
   output [4:0]M02_AXI_araddr;
@@ -1633,23 +1650,23 @@ module z2_voltage_experiments_ps7_0_axi_periph_0
   wire [0:0]m00_couplers_to_ps7_0_axi_periph_WREADY;
   wire [3:0]m00_couplers_to_ps7_0_axi_periph_WSTRB;
   wire [0:0]m00_couplers_to_ps7_0_axi_periph_WVALID;
-  wire [15:0]m01_couplers_to_ps7_0_axi_periph_ARADDR;
+  wire [18:0]m01_couplers_to_ps7_0_axi_periph_ARADDR;
   wire [2:0]m01_couplers_to_ps7_0_axi_periph_ARPROT;
-  wire [0:0]m01_couplers_to_ps7_0_axi_periph_ARREADY;
+  wire m01_couplers_to_ps7_0_axi_periph_ARREADY;
   wire m01_couplers_to_ps7_0_axi_periph_ARVALID;
-  wire [15:0]m01_couplers_to_ps7_0_axi_periph_AWADDR;
+  wire [18:0]m01_couplers_to_ps7_0_axi_periph_AWADDR;
   wire [2:0]m01_couplers_to_ps7_0_axi_periph_AWPROT;
-  wire [0:0]m01_couplers_to_ps7_0_axi_periph_AWREADY;
+  wire m01_couplers_to_ps7_0_axi_periph_AWREADY;
   wire m01_couplers_to_ps7_0_axi_periph_AWVALID;
   wire m01_couplers_to_ps7_0_axi_periph_BREADY;
   wire [1:0]m01_couplers_to_ps7_0_axi_periph_BRESP;
-  wire [0:0]m01_couplers_to_ps7_0_axi_periph_BVALID;
+  wire m01_couplers_to_ps7_0_axi_periph_BVALID;
   wire [31:0]m01_couplers_to_ps7_0_axi_periph_RDATA;
   wire m01_couplers_to_ps7_0_axi_periph_RREADY;
   wire [1:0]m01_couplers_to_ps7_0_axi_periph_RRESP;
-  wire [0:0]m01_couplers_to_ps7_0_axi_periph_RVALID;
+  wire m01_couplers_to_ps7_0_axi_periph_RVALID;
   wire [31:0]m01_couplers_to_ps7_0_axi_periph_WDATA;
-  wire [0:0]m01_couplers_to_ps7_0_axi_periph_WREADY;
+  wire m01_couplers_to_ps7_0_axi_periph_WREADY;
   wire [3:0]m01_couplers_to_ps7_0_axi_periph_WSTRB;
   wire m01_couplers_to_ps7_0_axi_periph_WVALID;
   wire [4:0]m02_couplers_to_ps7_0_axi_periph_ARADDR;
@@ -1801,17 +1818,17 @@ module z2_voltage_experiments_ps7_0_axi_periph_0
   assign M00_AXI_wvalid[0] = m00_couplers_to_ps7_0_axi_periph_WVALID;
   assign M01_ACLK_1 = M01_ACLK;
   assign M01_ARESETN_1 = M01_ARESETN;
-  assign M01_AXI_araddr[15:0] = m01_couplers_to_ps7_0_axi_periph_ARADDR;
+  assign M01_AXI_araddr[18:0] = m01_couplers_to_ps7_0_axi_periph_ARADDR;
   assign M01_AXI_arprot[2:0] = m01_couplers_to_ps7_0_axi_periph_ARPROT;
-  assign M01_AXI_arvalid[0] = m01_couplers_to_ps7_0_axi_periph_ARVALID;
-  assign M01_AXI_awaddr[15:0] = m01_couplers_to_ps7_0_axi_periph_AWADDR;
+  assign M01_AXI_arvalid = m01_couplers_to_ps7_0_axi_periph_ARVALID;
+  assign M01_AXI_awaddr[18:0] = m01_couplers_to_ps7_0_axi_periph_AWADDR;
   assign M01_AXI_awprot[2:0] = m01_couplers_to_ps7_0_axi_periph_AWPROT;
-  assign M01_AXI_awvalid[0] = m01_couplers_to_ps7_0_axi_periph_AWVALID;
-  assign M01_AXI_bready[0] = m01_couplers_to_ps7_0_axi_periph_BREADY;
-  assign M01_AXI_rready[0] = m01_couplers_to_ps7_0_axi_periph_RREADY;
+  assign M01_AXI_awvalid = m01_couplers_to_ps7_0_axi_periph_AWVALID;
+  assign M01_AXI_bready = m01_couplers_to_ps7_0_axi_periph_BREADY;
+  assign M01_AXI_rready = m01_couplers_to_ps7_0_axi_periph_RREADY;
   assign M01_AXI_wdata[31:0] = m01_couplers_to_ps7_0_axi_periph_WDATA;
   assign M01_AXI_wstrb[3:0] = m01_couplers_to_ps7_0_axi_periph_WSTRB;
-  assign M01_AXI_wvalid[0] = m01_couplers_to_ps7_0_axi_periph_WVALID;
+  assign M01_AXI_wvalid = m01_couplers_to_ps7_0_axi_periph_WVALID;
   assign M02_ACLK_1 = M02_ACLK;
   assign M02_ARESETN_1 = M02_ARESETN;
   assign M02_AXI_araddr[4:0] = m02_couplers_to_ps7_0_axi_periph_ARADDR;
@@ -1846,14 +1863,14 @@ module z2_voltage_experiments_ps7_0_axi_periph_0
   assign m00_couplers_to_ps7_0_axi_periph_RRESP = M00_AXI_rresp[1:0];
   assign m00_couplers_to_ps7_0_axi_periph_RVALID = M00_AXI_rvalid[0];
   assign m00_couplers_to_ps7_0_axi_periph_WREADY = M00_AXI_wready[0];
-  assign m01_couplers_to_ps7_0_axi_periph_ARREADY = M01_AXI_arready[0];
-  assign m01_couplers_to_ps7_0_axi_periph_AWREADY = M01_AXI_awready[0];
+  assign m01_couplers_to_ps7_0_axi_periph_ARREADY = M01_AXI_arready;
+  assign m01_couplers_to_ps7_0_axi_periph_AWREADY = M01_AXI_awready;
   assign m01_couplers_to_ps7_0_axi_periph_BRESP = M01_AXI_bresp[1:0];
-  assign m01_couplers_to_ps7_0_axi_periph_BVALID = M01_AXI_bvalid[0];
+  assign m01_couplers_to_ps7_0_axi_periph_BVALID = M01_AXI_bvalid;
   assign m01_couplers_to_ps7_0_axi_periph_RDATA = M01_AXI_rdata[31:0];
   assign m01_couplers_to_ps7_0_axi_periph_RRESP = M01_AXI_rresp[1:0];
-  assign m01_couplers_to_ps7_0_axi_periph_RVALID = M01_AXI_rvalid[0];
-  assign m01_couplers_to_ps7_0_axi_periph_WREADY = M01_AXI_wready[0];
+  assign m01_couplers_to_ps7_0_axi_periph_RVALID = M01_AXI_rvalid;
+  assign m01_couplers_to_ps7_0_axi_periph_WREADY = M01_AXI_wready;
   assign m02_couplers_to_ps7_0_axi_periph_ARREADY = M02_AXI_arready;
   assign m02_couplers_to_ps7_0_axi_periph_AWREADY = M02_AXI_awready;
   assign m02_couplers_to_ps7_0_axi_periph_BRESP = M02_AXI_bresp[1:0];

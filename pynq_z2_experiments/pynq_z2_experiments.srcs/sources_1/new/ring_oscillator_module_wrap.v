@@ -38,12 +38,13 @@ module ring_oscillator_module_wrap
 		.last_ro_sum(last_ro_sum),
 		.status(status),
 		
-		.bram_addr_a(bram_addr_a[16:0]),
+		.bram_addr_a(bram_addr_a[18:2]),
 		.bram_clk_a(bram_clk_a),
 		.bram_din_a(bram_din_a[31:0]),
 		.bram_we_a(bram_we_a)
 	);
 	
-	assign bram_addr_a[31:17] = 0;
+	assign bram_addr_a[31:19] = 0;
+	assign bram_addr_a[1:0] = 0; //Becuase its using the weird BRAM controller port mode, maybe 2 LSBs are byte offset?
 	
 endmodule

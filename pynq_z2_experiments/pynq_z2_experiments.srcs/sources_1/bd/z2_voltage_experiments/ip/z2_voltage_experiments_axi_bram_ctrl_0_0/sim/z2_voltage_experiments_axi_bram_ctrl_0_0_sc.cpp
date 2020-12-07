@@ -61,9 +61,9 @@ z2_voltage_experiments_axi_bram_ctrl_0_0_sc::z2_voltage_experiments_axi_bram_ctr
 
   // initialize module
     xsc::common_cpp::properties model_param_props;
-    model_param_props.addLong("C_MEMORY_DEPTH", "16384");
-    model_param_props.addLong("C_BRAM_ADDR_WIDTH", "14");
-    model_param_props.addLong("C_S_AXI_ADDR_WIDTH", "16");
+    model_param_props.addLong("C_MEMORY_DEPTH", "131072");
+    model_param_props.addLong("C_BRAM_ADDR_WIDTH", "17");
+    model_param_props.addLong("C_S_AXI_ADDR_WIDTH", "19");
     model_param_props.addLong("C_S_AXI_DATA_WIDTH", "32");
     model_param_props.addLong("C_S_AXI_ID_WIDTH", "1");
     model_param_props.addLong("C_S_AXI_SUPPORTS_NARROW_BURST", "0");

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Dec  6 23:03:02 2020" VIVADOVERSION="2020.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Wed Dec  9 03:06:01 2020" VIVADOVERSION="2020.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="tul.com.tw:pynq-z2:part0:1.0" DEVICE="7z020" NAME="z2_voltage_experiments" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -821,7 +821,6 @@
         </PORT>
         <PORT DIR="O" LEFT="63" NAME="num_power_virus_enabled_states_packed" RIGHT="0" SIGIS="undef" SIGNAME="axi_ro_control_0_num_power_virus_enabled_states_packed">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlslice_3" PORT="Din"/>
             <CONNECTION INSTANCE="power_virus_fsm_wrap_0" PORT="num_power_virus_enabled_states_packed"/>
           </CONNECTIONS>
         </PORT>
@@ -843,7 +842,6 @@
         </PORT>
         <PORT DIR="O" NAME="start_aquire" SIGIS="undef" SIGNAME="axi_ro_control_0_start_aquire">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
             <CONNECTION INSTANCE="ring_oscillator_modu_0" PORT="start_acquire"/>
           </CONNECTIONS>
         </PORT>
@@ -1312,6 +1310,7 @@
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlslice_1" PORT="Din"/>
             <CONNECTION INSTANCE="power_virus_wrap_0" PORT="num_power_virus_enabled"/>
+            <CONNECTION INSTANCE="xlslice_3" PORT="Din"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -3704,7 +3703,7 @@
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="WIDTH" VALUE="10"/>
-        <PARAMETER NAME="LOG_NUM_RO" VALUE="9"/>
+        <PARAMETER NAME="LOG_NUM_RO" VALUE="8"/>
         <PARAMETER NAME="Component_Name" VALUE="z2_voltage_experiments_ring_oscillator_modu_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
@@ -3773,7 +3772,7 @@
         <PORT DIR="O" NAME="bram_we_a" SIGIS="undef" SIGNAME="ring_oscillator_modu_0_bram_we_a">
           <CONNECTIONS>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="wea"/>
-            <CONNECTION INSTANCE="xlconcat_0" PORT="In2"/>
+            <CONNECTION INSTANCE="xlconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4293,7 +4292,7 @@
       <DOCUMENTS/>
       <PARAMETERS>
         <PARAMETER NAME="IN0_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="IN1_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="IN1_WIDTH" VALUE="7"/>
         <PARAMETER NAME="IN2_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN3_WIDTH" VALUE="5"/>
         <PARAMETER NAME="IN4_WIDTH" VALUE="1"/>
@@ -4325,29 +4324,19 @@
         <PARAMETER NAME="IN30_WIDTH" VALUE="1"/>
         <PARAMETER NAME="IN31_WIDTH" VALUE="1"/>
         <PARAMETER NAME="dout_width" VALUE="8"/>
-        <PARAMETER NAME="NUM_PORTS" VALUE="4"/>
+        <PARAMETER NAME="NUM_PORTS" VALUE="2"/>
         <PARAMETER NAME="Component_Name" VALUE="z2_voltage_experiments_xlconcat_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="axi_ro_control_0_start_aquire">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ro_control_0" PORT="start_aquire"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_3_Dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="xlslice_3" PORT="Dout"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" LEFT="0" NAME="In2" RIGHT="0" SIGIS="undef" SIGNAME="ring_oscillator_modu_0_bram_we_a">
+        <PORT DIR="I" LEFT="0" NAME="In0" RIGHT="0" SIGIS="undef" SIGNAME="ring_oscillator_modu_0_bram_we_a">
           <CONNECTIONS>
             <CONNECTION INSTANCE="ring_oscillator_modu_0" PORT="bram_we_a"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" LEFT="4" NAME="In3" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_2_dout">
+        <PORT DIR="I" LEFT="6" NAME="In1" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_3_Dout">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconstant_2" PORT="dout"/>
+            <CONNECTION INSTANCE="xlslice_3" PORT="Dout"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" LEFT="7" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconcat_0_dout">
@@ -4387,23 +4376,6 @@
         <PORT DIR="O" LEFT="0" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_1_dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="blk_mem_gen_0" PORT="ena"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
-    </MODULE>
-    <MODULE COREREVISION="7" FULLNAME="/xlconstant_2" HWVERSION="1.1" INSTANCE="xlconstant_2" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlconstant" VLNV="xilinx.com:ip:xlconstant:1.1">
-      <DOCUMENTS/>
-      <PARAMETERS>
-        <PARAMETER NAME="CONST_WIDTH" VALUE="5"/>
-        <PARAMETER NAME="CONST_VAL" VALUE="0x05"/>
-        <PARAMETER NAME="Component_Name" VALUE="z2_voltage_experiments_xlconstant_2_0"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="O" LEFT="4" NAME="dout" RIGHT="0" SIGIS="undef" SIGNAME="xlconstant_2_dout">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="xlconcat_0" PORT="In3"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>
@@ -4484,20 +4456,20 @@
     <MODULE COREREVISION="2" FULLNAME="/xlslice_3" HWVERSION="1.0" INSTANCE="xlslice_3" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:1.0">
       <DOCUMENTS/>
       <PARAMETERS>
-        <PARAMETER NAME="DIN_WIDTH" VALUE="64"/>
-        <PARAMETER NAME="DIN_FROM" VALUE="63"/>
-        <PARAMETER NAME="DIN_TO" VALUE="63"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="16"/>
+        <PARAMETER NAME="DIN_FROM" VALUE="15"/>
+        <PARAMETER NAME="DIN_TO" VALUE="9"/>
         <PARAMETER NAME="Component_Name" VALUE="z2_voltage_experiments_xlslice_3_0"/>
-        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="7"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="63" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="axi_ro_control_0_num_power_virus_enabled_states_packed">
+        <PORT DIR="I" LEFT="15" NAME="Din" RIGHT="0" SIGIS="undef" SIGNAME="power_virus_fsm_wrap_0_num_power_virus_enabled">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="axi_ro_control_0" PORT="num_power_virus_enabled_states_packed"/>
+            <CONNECTION INSTANCE="power_virus_fsm_wrap_0" PORT="num_power_virus_enabled"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_3_Dout">
+        <PORT DIR="O" LEFT="6" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="xlslice_3_Dout">
           <CONNECTIONS>
             <CONNECTION INSTANCE="xlconcat_0" PORT="In1"/>
           </CONNECTIONS>

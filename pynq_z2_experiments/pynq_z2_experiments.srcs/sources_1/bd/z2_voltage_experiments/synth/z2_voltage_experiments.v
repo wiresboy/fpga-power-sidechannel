@@ -1,7 +1,7 @@
 //Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
-//Date        : Sun Dec  6 23:03:00 2020
+//Date        : Wed Dec  9 03:05:59 2020
 //Host        : LAPTOP-LHCIPRAJ running 64-bit major release  (build 9200)
 //Command     : generate_target z2_voltage_experiments.bd
 //Design      : z2_voltage_experiments
@@ -878,7 +878,7 @@ module s00_couplers_imp_C2PBLM
         .s_axi_wvalid(s00_couplers_to_auto_pc_WVALID));
 endmodule
 
-(* CORE_GENERATION_INFO = "z2_voltage_experiments,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=z2_voltage_experiments,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=27,numReposBlks=22,numNonXlnxBlks=1,numHierBlks=5,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "z2_voltage_experiments.hwdef" *) 
+(* CORE_GENERATION_INFO = "z2_voltage_experiments,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=z2_voltage_experiments,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=26,numReposBlks=21,numNonXlnxBlks=1,numHierBlks=5,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=3,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_clkrst_cnt=1,da_ps7_cnt=1,synth_mode=Global}" *) (* HW_HANDOFF = "z2_voltage_experiments.hwdef" *) 
 module z2_voltage_experiments
    (DDR_addr,
     DDR_ba,
@@ -1075,11 +1075,10 @@ module z2_voltage_experiments
   wire [7:0]xlconcat_0_dout;
   wire [0:0]xlconstant_0_dout;
   wire [0:0]xlconstant_1_dout;
-  wire [4:0]xlconstant_2_dout;
   wire [3:0]xlslice_0_Dout;
   wire [5:0]xlslice_1_Dout;
   wire [15:0]xlslice_2_Dout;
-  wire [0:0]xlslice_3_Dout;
+  wire [6:0]xlslice_3_Dout;
 
   assign arduino_gpio_tri_io[0] = power_virus_wrap_0_dummy;
   assign leds_4bits_tri_o[3:0] = xlslice_0_Dout;
@@ -1392,17 +1391,13 @@ module z2_voltage_experiments
         .vn_in(1'b0),
         .vp_in(1'b0));
   z2_voltage_experiments_xlconcat_0_0 xlconcat_0
-       (.In0(axi_ro_control_0_start_aquire),
+       (.In0(ring_oscillator_modu_0_bram_we_a),
         .In1(xlslice_3_Dout),
-        .In2(ring_oscillator_modu_0_bram_we_a),
-        .In3(xlconstant_2_dout),
         .dout(xlconcat_0_dout));
   z2_voltage_experiments_xlconstant_0_0 xlconstant_0
        (.dout(xlconstant_0_dout));
   z2_voltage_experiments_xlconstant_1_0 xlconstant_1
        (.dout(xlconstant_1_dout));
-  z2_voltage_experiments_xlconstant_2_0 xlconstant_2
-       (.dout(xlconstant_2_dout));
   z2_voltage_experiments_xlslice_0_0 xlslice_0
        (.Din(ring_oscillator_modu_0_last_ro_sum),
         .Dout(xlslice_0_Dout));
@@ -1413,7 +1408,7 @@ module z2_voltage_experiments
        (.Din(ring_oscillator_modu_0_last_ro_sum),
         .Dout(xlslice_2_Dout));
   z2_voltage_experiments_xlslice_3_0 xlslice_3
-       (.Din(axi_ro_control_0_num_power_virus_enabled_states_packed),
+       (.Din(axi_ro_control_0_num_power_virus_enabled),
         .Dout(xlslice_3_Dout));
 endmodule
 
